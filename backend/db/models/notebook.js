@@ -8,19 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Notebook.belongsTo(models.User, {
-        foreignKey: "userId",
-      })
+      Notebook.belongsTo(models.User, { foreignKey: "userId" });
       Notebook.hasMany(models.Note, {
         foreignKey: "notebookId",
         onDelete: "CASCADE",
         hooks: true,
-      })
-      Notebook.hasMany(models.Task, {
-        foreignKey: "notebookId",
-        onDelete: "CASCADE",
-        hooks: true,
-      })
+      });
+      // Notebook.hasMany(models.Task, {
+      //   foreignKey: "notebookId",
+      //   onDelete: "CASCADE",
+      //   hooks: true,
+      // });
     }
   }
   Notebook.init(

@@ -2,6 +2,12 @@ const express = require("express");
 const { route } = require("../app");
 const router = express.Router();
 const apiRouter = require("./api");
+const { User } = require("../db/models");
+
+// router.use("/", async (req, res) => {
+//   const users = await User.findAll();
+//   res.json(users);
+// });
 
 router.use("/api", apiRouter);
 
