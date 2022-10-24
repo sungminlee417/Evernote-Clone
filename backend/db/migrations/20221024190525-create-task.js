@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Notebooks", {
+    await queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -21,6 +21,17 @@ module.exports = {
         },
         onDelete: "cascade"
       },
+      content: {
+        type: Sequelize.STRING(1000)
+      },
+      notebookId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Notebooks",
+          key: "id"
+        },
+        onDelete: "cascade"
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -28,10 +39,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Notebooks");
-  },
+    await queryInterface.dropTable('Tasks');
+  }
 };
