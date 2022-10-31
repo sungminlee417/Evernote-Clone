@@ -1,41 +1,28 @@
 const { Note } = require("../../db/models");
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-// GET CURRENT USER'S NOTES IN CURRENT NOTEBOOK
-router.get("/:notebookId/notes", async (req, res) => {
-    const user = req.user;
-    const {notebookId} = req.params;
-    const notes = await Note.findAll({
-      where: { notebookId: notebookId },
-    });
-    res.json({notes});
-  });
-
-// POST NEW NOTE IN CURRENT NOTEBOOK
-router.post("/:notebookId/notes", async (req,res) => {
-    const user = req.user;
-    const {notebookId} = req.params;
-    const {name} = req.body;
-    const note = await Note.create({
-        name,
-        notebookId: notebookId,
-        userId: user.id,
-    })
-    res.status(201).json(note);
+// GET ALL USER'S NOTES
+router.get("/notes", async (req, res) => {
+  const user = req.user;
+  const notes = await Note.findAll({
+    where: {userId: user.id}
+  })
+  res.json({notes: notes})
 })
+
 // UPDATE NOTE
-router.put("/:notebookId/notes/noteId", async (req, res) => {
+router.put("/:noteId", async (req, res) => {
     const user = req.user;
-    const { name } = req.body;
-    const {noteId} = req.params;
+    const { name, content } = req.body;
+    const { noteId } = req.params;
     const note = await Note.findByPk(noteId);
-    //await note.update({ name: name }) update content?
+    await note.update({ name: name, content: content })
     res.status(200).json(note);
   });
 
 // DELETE NOTE
-router.delete("/:notebookId/notes/noteId", async (req, res) => {
+router.delete("/:noteId", async (req, res) => {
     const user = req.user;
     const { notebookId } = req.params;
     const {noteId} = req.params
