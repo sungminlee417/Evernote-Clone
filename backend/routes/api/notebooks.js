@@ -1,7 +1,9 @@
 const { Notebook } = require("../../db/models");
-
+const noteRouter = require("./notes")
 const express = require("express");
 const router = express.Router();
+
+router.use("/", noteRouter)
 
 // GET ALL CURRENT USER'S NOTEBOOK
 router.get("/", async (req, res) => {
@@ -12,10 +14,36 @@ router.get("/", async (req, res) => {
   res.json({ notebooks });
 });
 
-router.post("/");
+// POST NEW NOTEBOOK
+router.post("/", async (req, res) => {
+  const user = req.user;
+  const { name } = req.body;
+  const notebook = await Notebook.create({
+    name,
+    userId: user.id,
+  });
+  res.status(201).json(notebook);
+});
 
-router.put("/:notebookId");
+// UPDATE NOTEBOOK
+router.put("/:notebookId", async (req, res) => {
+  const user = req.user;
+  const { name } = req.body;
+  const { notebookId } = req.params;
+  const notebook = await Notebook.findByPk(notebookId);
+  await notebook.update({ name: name });
+  res.status(200).json(notebook);
+});
 
-router.delete("/:notebookId");
+// DELETE NOTEBOOK
+router.delete("/:notebookId", async (req, res) => {
+  const user = req.user;
+  const { notebookId } = req.params;
+  const notebook = await Notebook.findByPk(notebookId);
+  await notebook.destroy();
+  res.status().json({
+    message: "Notebook successfully deleted."
+  });
+});
 
 module.exports = router;

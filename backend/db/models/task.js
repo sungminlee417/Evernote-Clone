@@ -11,9 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       Task.belongsTo(models.User, {
         foreignKey: "userId",
       });
-      Task.belongsTo(models.Notebook, {
-        foreignKey: "notebookId",
-      });
     }
   }
   Task.init(
