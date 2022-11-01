@@ -11,9 +11,8 @@ router.use(restoreUser);
 router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
 router.use("/notebooks", notebookRouter);
-router.use("/notes", noteRouter)
-router.use("/tags", tagRouter)
-
+router.use("/notes", noteRouter);
+router.use("/tags", tagRouter);
 
 router.post("/test", (req, res) => {
   res.json({ requestBody: req.body });
