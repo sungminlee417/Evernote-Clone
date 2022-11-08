@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   const notebooks = await Notebook.findAll({
     where: { userId: user.id },
   });
-  res.json({ notebooks });
+  res.json(notebooks);
 });
 
 // POST NEW NOTEBOOK

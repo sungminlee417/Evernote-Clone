@@ -1,0 +1,64 @@
+.landing-page {
+    background-color: white;
+}
+
+.landing-header {
+    margin: 2.3rem 6rem;
+    display: inline-block;
+}
+
+.home-button {
+    text-decoration: none;
+    color:black;
+    font-size: 2.5rem;
+}
+.content {
+    align-items: center;
+    display: flex;
+    margin: auto;
+    padding: 5rem 13rem;
+    max-width: 125rem;
+    letter-spacing: 0.05rem;
+    font-family: 'Heebo', sans-serif;
+}
+.intro {
+    text-align: center;
+    padding-bottom: 5rem;
+    font-size: 1.75rem;
+}
+
+.intro-text {
+    font-size: 5.5rem;
+    padding-bottom: 1.75rem;
+    font-weight: 600;
+}
+
+.description {
+    font-size: 2.4rem;
+    font-weight: lighter;
+    line-height: 4rem;
+    padding-bottom: 4.5rem; 
+    font-weight: 400;
+}
+
+.sign-up-button {
+    background-color: #00a82d;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    color: white;
+    border: 0;
+    padding: 1.75rem 8.5rem;
+    font-size: 1.75rem;
+    text-decoration: none;
+    height: 5rem;
+    width: 30rem;
+}
+
+.login-link {
+    display: block;
+    cursor: pointer;
+    padding-top: 4rem;
+    text-decoration: underline;
+    font-size: 1.75rem;
+    color:black;
+}

@@ -8,7 +8,7 @@ router.get("/notes", async (req, res) => {
   const notes = await Note.findAll({
     where: {userId: user.id}
   })
-  res.json({notes: notes})
+  res.json(notes)
 })
 
 // UPDATE NOTE
