@@ -1,6 +1,7 @@
 .landing-header {
     position: fixed;
     padding: 2rem 11rem;
+    width: 100%;
     font-family: 'Heebo', sans-serif;
     letter-spacing: 0.08rem;
     margin-bottom: 1rem;
@@ -11,6 +12,7 @@
 }
 
 .landing-header-scrolled {
+    width: 100%;
     position: fixed;
     padding: 2rem 11rem;
     font-family: 'Heebo', sans-serif;
@@ -33,7 +35,7 @@
     cursor: pointer;
 }
 .login-button {
-    padding-left: 100rem;
+    padding-left: 97rem;
     text-decoration: none;
     color:black;
     cursor: pointer;

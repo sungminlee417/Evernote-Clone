@@ -1,18 +1,87 @@
 .LoginFormPage {
     background-color: #f7fcf9;
-    height: 100vh;
+    display:flex;
+    font-family: 'Heebo', sans-serif;
+    letter-spacing: 0.08rem;
+
 }
 
 .form-container {
     display:flex;
-    flex-direction: column;
     align-items: center;
-    margin: 10rem 25rem;
-    padding: 30rem 35rem;
+    flex-direction: column;
+    margin: 5rem 40rem;
+    padding: 8rem 15rem;
     background-color: white;
     box-shadow: 0.5rem 0.5rem 1rem 0.5rem rgb(0 0 0 / 10%);
+}
 
+.form-image {
+    padding-bottom: 3.5rem;
+}
 
+.evernote-slogan {
+    font-size: 1.65rem;
+    color: #555555;
+    padding-bottom: 5rem;
+}
 
-    
+.login-inputs {
+    align-items: center;
+    display:block;
+    align-items: center;
+}
+
+.continue-button {
+    cursor: pointer;
+    background-color: #00a82d;
+    color: white;
+    border: 0;
+    border-radius: 0.6rem;
+    height: 4.5rem;
+    width: 33rem;
+    font-size: 1.75rem;
+    letter-spacing: 0.08rem;
+    margin-bottom: 10rem;
+}
+
+.continue-button:hover {
+    background-color: #088c24;
+    transition-duration: 0.1s;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-user-info {
+    outline: none;
+    border-color: #a9a9a9;
+    border-radius: 0.6rem;
+    border-width: thin;
+    margin-bottom: 1.5rem;
+    padding-left: 1.75rem;
+    font-size: 1.75rem;
+    width: 33rem;
+    height: 4.5rem;
+}
+.login-user-info:focus {
+    box-shadow: 0rem 0rem 0.1rem 0.1rem rgb(144, 238, 144, 75%)
+
+}
+
+.ask-user-account {
+    font-size: 1.4rem;
+    color: #949494;
+    margin-bottom: 1.75rem;
+}
+
+.login-page-sign-up-link {
+    font-size: 1.75rem;
+    text-decoration: none;
+    color:  #00a82d;
+    margin-bottom: 1.75rem;
+}
+
+.login-page-sign-up-link:hover {
+    color: #088c24;
+    transition-duration: 0.1s;
+    transition: all 0.2s ease-in-out;
 }

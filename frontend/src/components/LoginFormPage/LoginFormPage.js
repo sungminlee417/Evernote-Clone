@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/session";
 import { Redirect } from "react-router-dom"
+import form_img from "../../images/EvernoteLogo-Form.svg"
+import { NavLink } from "react-router-dom";
 import './LoginFormPage.css'
 
 const LoginFormPage = () => {
@@ -26,27 +28,34 @@ const LoginFormPage = () => {
     return (
         <div className="LoginFormPage">
             <div className="form-container">
-                <form onSubmit={submit}>
+                <img className="form-image" src={form_img} alt="Evernote"/>
+                <div className="evernote-slogan">Remember everything important.</div>
+                <form className="login-inputs" onSubmit={submit}>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>
                         {error}
                         </li>)}
                     </ul>
                     <input
+                        className="login-user-info"
                         type="text"
                         placeholder="Email address or username"
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                     />
                     <input
+                        className="login-user-info"
                         type="text"
+                        placeholder="Password"
                         value={password}
                         onChange= {(e) => setPassword(e.target.value)}
                     />
-                    <button className="login" type="submit">
+                    <button className="continue-button" type="submit">
                         Continue
                     </button>
                 </form>
+                <div className="ask-user-account">Don't have an account?</div>
+                <NavLink to="/signup" className="login-page-sign-up-link">Create account</NavLink> 
             </div>
         </div>
     );
