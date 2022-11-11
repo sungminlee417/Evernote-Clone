@@ -1,30 +1,18 @@
 .landing-page {
-    background-color: white;
-}
-
-.landing-header {
-    margin: 2.3rem 6rem;
-    display: inline-block;
-}
-
-.home-button {
-    text-decoration: none;
-    color:black;
-    font-size: 2.5rem;
-}
-.content {
-    align-items: center;
-    display: flex;
-    margin: auto;
-    padding: 5rem 13rem;
-    max-width: 125rem;
-    letter-spacing: 0.05rem;
+    padding: 10rem 10rem;
     font-family: 'Heebo', sans-serif;
+    letter-spacing: 0.08rem;
+}
+
+.content {
+    
+    align-items: center;
+    margin: auto;
 }
 .intro {
+    padding: 3rem 11rem;
     text-align: center;
     padding-bottom: 5rem;
-    font-size: 1.75rem;
 }
 
 .intro-text {
@@ -33,7 +21,7 @@
     font-weight: 600;
 }
 
-.description {
+.intro-description {
     font-size: 2.4rem;
     font-weight: lighter;
     line-height: 4rem;
@@ -53,12 +41,47 @@
     height: 5rem;
     width: 30rem;
 }
+.sign-up-button:hover {
+    background-color: #18cc44;
+    transition-duration: 0.1s;
+    transition: all 0.2s ease-in-out;
+}
 
 .login-link {
     display: block;
     cursor: pointer;
-    padding-top: 4rem;
+    padding-top: 4.5rem;
     text-decoration: underline;
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     color:black;
 }
+
+.login-link:hover {
+    color:#00a82d;
+    transition-duration: 0.1s;
+    transition: all 0.2s ease-in-out;
+}
+.description {
+    display: flex;
+}
+.app-image {
+    height: 70rem;
+    width: auto;
+}
+.description-points {
+    display: block;
+    padding-top: 5rem;
+    font-size: 1.6rem;
+}
+
+.description-point-title {
+    font-weight: 600;
+    letter-spacing: 0.12rem;
+    padding-bottom: 1.5rem;
+}
+
+.description-point-info {
+    padding-bottom: 1.5rem;
+    line-height: 2.3rem;
+}
+

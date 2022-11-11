@@ -25,26 +25,29 @@ const LoginFormPage = () => {
     }
     return (
         <div className="LoginFormPage">
-            <form onSubmit={submit}>
-                <ul>
-                    {errors.map((error, idx) => <li key={idx}>
-                    {error}
-                    </li>)}
-                </ul>
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                />
-                <input
-                    type="text"
-                    value={password}
-                    onChange= {(e) => setPassword(e.target.value)}
-                />
-                <button className="login" type="submit">
-                    Login
-                </button>
-            </form>
+            <div className="form-container">
+                <form onSubmit={submit}>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>
+                        {error}
+                        </li>)}
+                    </ul>
+                    <input
+                        type="text"
+                        placeholder="Email address or username"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        value={password}
+                        onChange= {(e) => setPassword(e.target.value)}
+                    />
+                    <button className="login" type="submit">
+                        Continue
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

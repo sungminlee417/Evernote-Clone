@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Switch, Route } from 'react-router-dom'
-import Navigation from "./components/Navigation";
 import LoginFormPage from './components/LoginFormPage/LoginFormPage';
 import SignUpFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import * as sessionActions from "./store/session";
+import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
+import Footer from "./components/Footer";
 import Notebooks from "./components/Notebooks";
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
     {/* <Navigation/> */}
     <Switch>
       <Route exact path="/">
+        <Header/>
         <LandingPage/>
+        <Footer/>
       </Route>
       <Route path="/login">
         <LoginFormPage/>

@@ -1,0 +1,35 @@
+.footer-content {
+  display: flex;
+  border-top: 0.3rem solid black;
+  justify-content: space-between;
+  padding-top: 4rem;
+  height: 10rem;
+  margin: 10rem;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 0.08rem;
+  font-size: 1.5rem;
+}
+  
+.social-media-links {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+}
+
+.git-link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.git-link:hover {
+  color:#00a82d;
+  transition-duration: 0.1s;
+  transition: all 0.2s ease-in-out;
+
+}
+.contributor-name{
+  padding-right: 0.5rem;
+}
+
