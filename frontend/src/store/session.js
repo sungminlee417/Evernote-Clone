@@ -14,7 +14,7 @@ export const removeUser = () => {
     type: REMOVE_USER,
   };
 };
-export const signUp = ({username, email, password}) => async (dispatch) => {
+export const signUp = (username, email, password) => async (dispatch) => {
   const response = await csrfFetch(`/api/users`, {
     method: "POST",
     headers: {

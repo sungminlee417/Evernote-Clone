@@ -7,7 +7,7 @@ import * as sessionActions from "./store/session";
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
-import Notebooks from "./components/Notebooks";
+import DisplayNotebooks from "./components/Notebooks/DisplayNotebooks";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function App() {
         <SignUpFormPage/>
       </Route>
       <Route path ="/notebooks">
-        <Notebooks/>
+        <DisplayNotebooks/>
       </Route>
     </Switch></>
   );

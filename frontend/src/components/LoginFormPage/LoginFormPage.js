@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom"
 import form_img from "../../images/EvernoteLogo-Form.svg"
 import { NavLink } from "react-router-dom";
 import './LoginFormPage.css'
+import '../UserForm/UserForm.css'
 
 const LoginFormPage = () => {
     const dispatch = useDispatch()
@@ -32,36 +33,36 @@ const LoginFormPage = () => {
     }
     
     return (
-        <div className="LoginFormPage">
+        <div className="FormPage">
             <div className="form-container">
                 <img className="form-image" src={form_img} alt="Evernote"/>
                 <div className="evernote-slogan">Remember everything important.</div>
-                <form className="login-inputs" onSubmit={submit}>
+                <form className="user-inputs" onSubmit={submit}>
                     <input
-                        className="login-user-info"
+                        className="user-info"
                         type="text"
                         placeholder="Email address or username"
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                     />
-                    <p className="error-message" id="error-email">
+                    <p className="account-error-message">
                     {errors.credential}
                     </p>
                     <input
-                        className="login-user-info"
+                        className="user-info"
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange= {(e) => setPassword(e.target.value)}
                     />
-                    <p className="error-message" id="error-password">
+                    <p className="account-error-message">
                     {errors.password}
                     </p>
                     <button className="continue-button" type="submit">
                         Continue
                     </button>
                 </form>
-                <div className="ask-user-account">Don't have an account?</div>
+                <div className="ask-user-sign-up">Don't have an account?</div>
                 <NavLink to="/signup" className="login-page-sign-up-link">Create account</NavLink> 
                 <div className="login-options">or</div>
                 <button className="demo-login-info" onClick={demoSubmit}>Demo log in</button>
