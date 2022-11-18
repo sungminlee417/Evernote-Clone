@@ -29,7 +29,7 @@ export const signUp = ({username, email, password}) => async (dispatch) => {
 
 
 export const login =
-  ({ credential, password }) =>
+  (credential, password) =>
   async (dispatch) => {
     const response = await csrfFetch(`/api/session`, {
       method: "POST",
@@ -42,6 +42,7 @@ export const login =
     dispatch(setUser(data));
     return data
   };
+  
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch(`/api/session`, {
     method: "DELETE",

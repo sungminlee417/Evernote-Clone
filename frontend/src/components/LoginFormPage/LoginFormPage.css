@@ -1,17 +1,17 @@
 .LoginFormPage {
     background-color: #f7fcf9;
-    display:flex;
     font-family: 'Heebo', sans-serif;
     letter-spacing: 0.08rem;
-
+    color: #949494;
+    font-size: 1.4rem;
 }
 
 .form-container {
     display:flex;
     align-items: center;
     flex-direction: column;
-    margin: 5rem 40rem;
-    padding: 8rem 15rem;
+    margin: 3rem 43rem;
+    padding: 6.5rem 13rem;
     background-color: white;
     box-shadow: 0.5rem 0.5rem 1rem 0.5rem rgb(0 0 0 / 10%);
 }
@@ -23,13 +23,12 @@
 .evernote-slogan {
     font-size: 1.65rem;
     color: #555555;
-    padding-bottom: 5rem;
+    padding-bottom: 4.5rem;
 }
 
 .login-inputs {
-    align-items: center;
-    display:block;
-    align-items: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 .continue-button {
@@ -42,7 +41,7 @@
     width: 33rem;
     font-size: 1.75rem;
     letter-spacing: 0.08rem;
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
 }
 
 .continue-button:hover {
@@ -53,7 +52,7 @@
 
 .login-user-info {
     outline: none;
-    border-color: #a9a9a9;
+    border:0.05rem solid rgb(171,171,171, 50%);
     border-radius: 0.6rem;
     border-width: thin;
     margin-bottom: 1.5rem;
@@ -64,12 +63,9 @@
 }
 .login-user-info:focus {
     box-shadow: 0rem 0rem 0.1rem 0.1rem rgb(144, 238, 144, 75%)
-
 }
 
 .ask-user-account {
-    font-size: 1.4rem;
-    color: #949494;
     margin-bottom: 1.75rem;
 }
 
@@ -84,4 +80,33 @@
     color: #088c24;
     transition-duration: 0.1s;
     transition: all 0.2s ease-in-out;
+}
+
+.login-options {
+    margin-bottom: 1.75rem;
+}
+.login-options:before, .login-options:after {
+    content:"\00a0\00a0\00a0\00a0\00a0\00a0";
+    font-family: monospace;
+    text-decoration:line-through;
+    padding: 0.5rem;
+}
+
+.demo-login-info {
+    border: none;
+    cursor:pointer;
+    background-color: transparent;
+    font-size: 1.75rem;
+    color:  #00a82d;
+}
+
+.demo-login-info:hover {
+    color: #088c24;
+    transition-duration: 0.1s;
+    transition: all 0.2s ease-in-out;
+}
+
+.error-message{
+    color: #CC4539;
+    padding-bottom: 1.5rem;
 }
