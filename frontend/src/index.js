@@ -5,6 +5,7 @@ import "./index.css";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { ModalProvider } from "./components/context/Modal";
 import App from "./App";
 
 import configureStore from "./store";
@@ -31,7 +32,9 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+
         <App />
+      
       </BrowserRouter>
     </Provider>
   );
