@@ -57,7 +57,6 @@
     letter-spacing: 0.1rem;
     background-color: transparent;
     cursor: pointer;
-
 }
 
 .new-notebook-button:hover{
@@ -80,6 +79,7 @@
     align-items: flex-start;
     color: #b8b4b4;
     align-items: center;
+    border-bottom: 0.15rem solid #f4f4f4;
 
 }
 .notebook-desc-title,
@@ -100,13 +100,23 @@
 
 .style-even-notebook,
 .style-odd-notebook {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
     list-style: none;
+    min-height: 4rem;
     height:4rem;
     padding:1rem;
 }
 
 .style-odd-notebook{
     background: #f8f8f8;
+}
+
+.list-notebooks-columns:hover,
+.style-even-notebook:hover,
+.style-odd-notebook:hover {
+    background-color:#f4f4f4;
 }
 
 .notebook-buttons {

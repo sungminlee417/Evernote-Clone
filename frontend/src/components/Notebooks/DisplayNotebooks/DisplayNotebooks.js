@@ -5,6 +5,7 @@ import { loadNotebooksThunk } from "../../../store/notebooks"
 import './DisplayNotebooks.css';
 import search_icon from "../../../images/search.svg"
 import CreateNotebookModal  from "../CreateNotebookModal/CreateNotebookModal";
+import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
 
 const DisplayNotebooks = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const DisplayNotebooks = () => {
                         className="search-for-notebooks"
                         type="text"
                         placeholder="Find Notebooks..."
-                        src={search_icon}
+                        // src={search_icon}
                 />
             </div>
             <div className="second-notebook-header">
@@ -38,8 +39,7 @@ const DisplayNotebooks = () => {
                 {notebooks.map((notebook, i) => {
                         return <li key={i} className={i%2===0?'style-even-notebook':'style-odd-notebook'}>
                             <NavLink to={`/notebooks/${notebook.id}`}>{notebook.name}</NavLink>
-                            <button className="notebook-buttons">
-                            </button>
+                            <ModifyNotebook/>
                             </li>
                     })}
                 </ul>

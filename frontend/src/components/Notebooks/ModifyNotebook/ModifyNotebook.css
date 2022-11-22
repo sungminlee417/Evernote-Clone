@@ -1,0 +1,11 @@
+.notebook-buttons {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+.notebook-buttons:hover {
+    cursor: pointer;
+    background-color: #e8e4e4;
+}

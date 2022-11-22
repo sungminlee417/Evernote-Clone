@@ -1,6 +1,6 @@
 import "./Header.css"
 import { NavLink } from "react-router-dom"
-import logo from "../../images/EvernoteLogo.svg"
+import logo from "../../../images/EvernoteLogo.svg"
 import { useState, useEffect } from "react"
 
 const Header = () => {
@@ -19,7 +19,7 @@ const [scroll, setScroll] = useState(false);
     return (
         <div className={scroll ? "landing-header-scrolled" : "landing-header"}>
             <NavLink to="/" className="home-button">
-            <img src={logo}/>
+            <img src={logo} alt="evernote_logo"/>
             </NavLink>
             <NavLink to="/login" className="login-button">Log In</NavLink>
         </div>

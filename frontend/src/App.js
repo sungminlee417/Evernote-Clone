@@ -4,10 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import * as sessionActions from "./store/session";
-import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
-import Footer from "./components/Footer";
-import DisplayNotebooks from "./components/Notebooks/DisplayNotebooks";
 import HomePage from "./components/HomePage";
 
 function App() {
@@ -26,9 +23,9 @@ function App() {
         ) : (
           <Switch>
             <Route exact path="/">
-              <Header />
+              {/* <Header /> */}
               <LandingPage />
-              <Footer />
+              {/* <Footer /> */}
             </Route>
             <Route path="/login">
               <LoginFormPage />
