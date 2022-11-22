@@ -4,6 +4,10 @@ padding: 0;
 box-sizing: border-box;
 font-family: 'Heebo', sans-serif;}
 
+*:hover {
+    cursor:default;
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;

@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { loadNotebooksThunk } from "../../../store/notebooks"
 import './DisplayNotebooks.css';
-import new_notebook_img from "../../../images/NewNotebook.svg"
 import search_icon from "../../../images/search.svg"
+import CreateNotebookModal  from "../CreateNotebookModal/CreateNotebookModal";
+
 const DisplayNotebooks = () => {
     const dispatch = useDispatch();
     const notebooks = Object.values(useSelector(state => state.notebooks)); 
-    //const styleEvenNotebook =
-    //const styleOddNotebook = 
     useEffect(()=>{
         dispatch(loadNotebooksThunk())
     }, [dispatch])
@@ -26,24 +25,25 @@ const DisplayNotebooks = () => {
             </div>
             <div className="second-notebook-header">
                 <div id="second-header-text"> {notebooks.length} {notebooks.length > 1 ? "notebooks":"notebook"} </div>
-                <button className="new-notebook-button">
-                    <img className="new-notebook-image" src={new_notebook_img}/>
-                    <div id="second-header-text">New Notebook</div>
-                </button>
+                <CreateNotebookModal/>
             </div>
             <div className="list-notebooks">
-                <div className="notebook-rows">
-                    <div className="notebook-columns"></div>
+                <div className="list-notebooks-columns">
+                    <button className="notebook-desc-title">TITLE</button>
+                    <div className="notebook-author">CREATED BY</div>
+                    <button className="notebook-desc-updated">UPDATED</button>
+                    <div className="modify-notebook">ACTIONS</div>
                 </div>
-            </div>
-
-            <ul>
+               <ul>
                 {notebooks.map((notebook, i) => {
-                    return <li key={i} className={i%2===0?'style-even-notebook':'style-odd-notebook'}>
-                        <NavLink to={`/notebooks/${notebook.id}`}>{notebook.name}</NavLink>
-                        </li>
-                })}
-            </ul>
+                        return <li key={i} className={i%2===0?'style-even-notebook':'style-odd-notebook'}>
+                            <NavLink to={`/notebooks/${notebook.id}`}>{notebook.name}</NavLink>
+                            <button className="notebook-buttons">
+                            </button>
+                            </li>
+                    })}
+                </ul>
+            </div>
         </div>
     )
 }

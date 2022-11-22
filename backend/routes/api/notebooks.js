@@ -1,6 +1,17 @@
 const { Notebook, Note } = require("../../db/models");
 const express = require("express");
 const router = express.Router();
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
+
+
+const validateNotebook = [
+  check("name")
+    .exists({ checkFalsy:true })
+    .isLength({ min:1 })
+    .withMessage("Your notebook name must contain at least one character"),
+    handleValidationErrors
+];
 
 // GET ALL CURRENT USER'S NOTEBOOK
 router.get("/", async (req, res) => {
@@ -12,7 +23,10 @@ router.get("/", async (req, res) => {
 });
 
 // POST NEW NOTEBOOK
-router.post("/", async (req, res) => {
+router.post("/",
+  validateNotebook,
+  async (req, res) => {
+  console.log(req.body.name)
   const user = req.user;
   const { name } = req.body;
   const notebook = await Notebook.create({

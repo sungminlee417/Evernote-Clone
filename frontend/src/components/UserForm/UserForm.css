@@ -1,6 +1,7 @@
 .FormPage {
     display: flex;
     background-color: #f7fcf9;
+    height: 100vh;
     letter-spacing: 0.08rem;
     color: #949494;
     font-size: 1.4rem;
@@ -13,7 +14,7 @@
     margin: 3rem 43rem;
     padding: 6.5rem 13rem;
     background-color: white;
-    box-shadow: 0.5rem 0.5rem 1rem 0.5rem rgb(0 0 0 / 10%);
+    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
 }
 
 .form-image {

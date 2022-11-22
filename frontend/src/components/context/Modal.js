@@ -23,12 +23,6 @@ export function ModalProvider({ children }) {
 export function Modal({ children, type }) {
   const modalNode = useContext(ModalContext);
 
-  useEffect(() => {
-    const html = document.querySelector("html");
-    html.style.overflow = "hidden";
-    return () => (html.style.overflow = "auto");
-  }, []);
-
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(

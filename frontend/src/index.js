@@ -32,9 +32,9 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-
+      <ModalProvider>
         <App />
-      
+      </ModalProvider>
       </BrowserRouter>
     </Provider>
   );

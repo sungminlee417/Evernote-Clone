@@ -22,7 +22,7 @@ export const loadNotebooksThunk = () => async (dispatch) => {
     dispatch(loadNotebooks(notebooks));
 }
 
-export const createNotebook = ({name}) => async (dispatch) => {
+export const createNotebook = (name) => async (dispatch) => {
     const response = await csrfFetch('/api/notebooks', {
         method: "POST",
         headers: {

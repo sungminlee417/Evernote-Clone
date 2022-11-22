@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { User } = require("../db/models")
+const { User, Notebook } = require("../db/models")
 const { Op } = require("sequelize");
 
 const handleValidationErrors = (req, _res, next) => {
@@ -72,7 +72,6 @@ const checkDuplicateCredential = async (req, res, next) => {
       email: email
     }
   })
-  console.log(userName)
   if (userName && !err.errors.username) {
     err.errors.username = "The username is already in use.";
   }
