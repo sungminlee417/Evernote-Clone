@@ -6,13 +6,19 @@ import './DisplayNotebooks.css';
 import search_icon from "../../../images/search.svg"
 import CreateNotebookModal  from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
-
+import notebook_icon from "../../../images/Notebook.svg"
 const DisplayNotebooks = () => {
     const dispatch = useDispatch();
     const notebooks = Object.values(useSelector(state => state.notebooks)); 
+    const sessionUser = useSelector(state => state.session.user)
     useEffect(()=>{
         dispatch(loadNotebooksThunk())
     }, [dispatch])
+    const convertDate = (date) => {
+        const dateTime = new Date(date);
+        const formatDate = dateTime.toDateString();
+        return formatDate.slice(4,)
+    }
     return (
         <div className="DisplayNotebooksPage">
             <div className="notebook-header">
@@ -38,8 +44,14 @@ const DisplayNotebooks = () => {
                <ul>
                 {notebooks.map((notebook, i) => {
                         return <li key={i} className={i%2===0?'style-even-notebook':'style-odd-notebook'}>
-                            <NavLink to={`/notebooks/${notebook.id}`}>{notebook.name}</NavLink>
-                            <ModifyNotebook/>
+                            <NavLink className="individual-notebook" to={`/notebooks/${notebook.id}`}>
+                                <img className="notebook-icon" src={notebook_icon}></img>
+                                {notebook.name}
+                                <div className="num-notes-in-notebook"></div>
+                            </NavLink>
+                            <div className="notebook-creator">{sessionUser.username}</div>
+                            <div className="notebook-updated-date">{convertDate(notebook.updatedAt)}</div>
+                            <ModifyNotebook index={i}/>
                             </li>
                     })}
                 </ul>

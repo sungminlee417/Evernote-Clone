@@ -57,6 +57,8 @@ router.delete("/:notebookId", async (req, res) => {
   });
 });
 
+// GET FORMATTED DATE OF CERTAIN NOTEBOOK
+
 // GET CURRENT USER'S NOTES IN CERTAIN NOTEBOOK
 router.get("/:notebookId/notes", async (req, res) => {
   const user = req.user;

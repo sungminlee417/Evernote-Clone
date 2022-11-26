@@ -100,13 +100,15 @@
 
 .style-even-notebook,
 .style-odd-notebook {
-    display:flex;
     align-items: center;
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns: 4fr 3fr 2fr 1fr;
+    flex-direction: row;
     list-style: none;
+    font-size: 1.25rem;
+    color:#787474;
+    padding: 0rem 1rem;
     min-height: 4rem;
-    height:4rem;
-    padding:1rem;
 }
 
 .style-odd-notebook{
@@ -117,6 +119,18 @@
 .style-even-notebook:hover,
 .style-odd-notebook:hover {
     background-color:#f4f4f4;
+}
+
+.individual-notebook {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+}
+.individual-notebook:hover {
+    text-decoration: underline;
 }
 
 .notebook-buttons {

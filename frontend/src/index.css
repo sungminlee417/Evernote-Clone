@@ -2,10 +2,7 @@
 *{margin: 0;
 padding: 0;
 box-sizing: border-box;
-font-family: 'Heebo', sans-serif;}
-
-*:hover {
-    cursor:default;
+font-family: 'Heebo', sans-serif;
 }
 
 html {
@@ -13,5 +10,7 @@ html {
     overflow-x: hidden;
 }
 
-/* body { */
+body {
+    cursor:default;
+}
 
