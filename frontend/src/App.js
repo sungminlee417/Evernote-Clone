@@ -19,7 +19,9 @@ function App() {
     isLoaded && (
       <>
         {isLoaded && currentUser ? (
-          <HomePage />
+          <Route path="/">
+            <HomePage />
+          </Route>
         ) : (
           <Switch>
             <Route exact path="/">
