@@ -2,18 +2,40 @@ import { NavLink, Route } from "react-router-dom";
 import { logout } from "../../store/session";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const [clickedNew, setClickedNew] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
   const onLogout = () => {
     dispatch(logout());
   };
 
-  const onClickNew = () => {};
+  const onClick = () => {
+    const settingsContainer = document.querySelector('.nav-bar-new-pop-up-container')
+    if(clicked) {
+      settingsContainer.classList.remove("visible")
+      setClicked(false)
+    }
+
+    else {
+      settingsContainer.classList.add("visible")
+      setClicked(true)
+    }
+  };
+  const parentFunction = (e) => {
+    if(clicked) {
+        e.stopPropagation()
+    }
+
+  } 
+  useEffect(()=> {
+    if (!clicked) return
+    document.addEventListener("click", onClick)
+    return () => document.removeEventListener("click", onClick)
+  })
 
   return (
     <section className="nav-bar-section">
@@ -21,6 +43,7 @@ const Navigation = () => {
         <div className="nav-bar-header-session-username">
           {sessionUser.username}
         </div>
+        <i className="fa-solid fa-chevron-down"></i>
       </header>
       <div className="nav-bar-button-search">
         <div className="nav-bar-search">
@@ -28,14 +51,14 @@ const Navigation = () => {
           <input placeholder="Search" className="nav-bar-search-input" />
         </div>
         <div className="nav-bar-new-button-container">
-          <button className="nav-bar-new-button" onClick={onClickNew}>
+          <button className="nav-bar-new-button" onClick={onClick}>
             <div className="nav-bar-new-button-new">
               <i className="fa-solid fa-plus nav-bar-new-button-plus"></i>
               New
             </div>
             <i className="fa-solid fa-chevron-down"></i>
           </button>
-          <div className="nav-bar-new-pop-up-container">
+          <div className="nav-bar-new-pop-up-container" onClick={parentFunction}>
             <div className="nav-bar-new-pop-up-button-container">
               <button className="nav-bar-new-pop-up-button note">
                 <i className="fa-solid fa-note-sticky"></i>
@@ -45,7 +68,7 @@ const Navigation = () => {
             <div className="nav-bar-new-pop-up-button-container">
               <button className="nav-bar-new-pop-up-button tasks">
                 <i className="fa-solid fa-circle-check"></i>
-                Tasks
+                Task
               </button>
             </div>
           </div>

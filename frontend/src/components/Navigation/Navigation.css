@@ -1,11 +1,12 @@
 .nav-bar-section {
-  background-color: rgb(26, 25, 25);
+  background-color:#201c1c;
   height: 100%;
   width: 22rem;
 }
 
 .nav-bar-header {
-  color: white;
+  display:flex;
+  color: #a8a4a4;
   font-size: 1.4rem;
   padding: 2rem;
 }
@@ -18,7 +19,7 @@
 
 .nav-bar-link {
   display: flex;
-  color: white;
+  color: #a8a4a4;
   cursor: pointer;
   font-size: 1.4rem;
   gap: 0.8rem;
@@ -27,7 +28,7 @@
 }
 
 .nav-bar-link:hover {
-  background-color: rgb(51, 51, 51);
+  background-color: #484444;
 }
 
 .nav-bar-link-icon {
@@ -57,6 +58,7 @@
   background-color: rgb(51, 51, 51);
   border: none;
   border-radius: 2rem;
+  outline: none;
   color: white;
   height: 3.6rem;
   padding: 0.8rem 2.6rem;
@@ -88,6 +90,7 @@
   justify-content: space-between;
   padding: 0.8rem 1rem;
   width: 20rem;
+  
 }
 
 .nav-bar-new-button > * {
@@ -122,9 +125,16 @@
   padding: 1rem;
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 120%;
   transform: translate(-50%, -50%);
   width: 95%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-bar-new-pop-up-container.visible {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .nav-bar-new-pop-up-button-container {
@@ -146,5 +156,9 @@
 }
 
 .nav-bar-new-pop-up-button.tasks {
-  background-color: #863097;
+  background-color: #a83cbc;
+}
+
+.nav-bar-new-pop-up-button.tasks:hover {
+  background-color: #883494;
 }
