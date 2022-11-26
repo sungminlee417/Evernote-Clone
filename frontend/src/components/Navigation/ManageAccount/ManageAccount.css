@@ -1,0 +1,60 @@
+.manage-account {
+    display: flex;
+    flex-direction: column;    
+} 
+.nav-bar-user-drop-down {
+    margin:auto;
+    position: relative;
+    cursor:pointer;
+    font-size: 0.8rem;
+}
+
+.manage-account-container {
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 0.05rem solid rgb(171, 171, 171, 50%);
+    border-radius: 0.25rem;
+    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+    top: 7.1%;
+    width: 30rem;
+    left: 0;
+    z-index: 1;
+    padding:2rem;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.manage-account-container.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+.manage-acc-user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-left: -0.45rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.manage-account-separator{
+    border-top:0.1rem solid rgb(171,171,171, 30%);
+    width: 100%;
+    position: absolute;
+    margin: 6rem -2rem 0.5rem -2rem;
+}
+
+.sign-out-of-acc {
+    margin: 2.5rem -2rem 0rem -2rem;
+    padding: 0.5rem 2rem;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+}
+.sign-out-of-acc:hover{
+    background-color:#f4f4f4;
+}

@@ -27,7 +27,6 @@ const DisplayNotebooks = () => {
           className="search-for-notebooks"
           type="text"
           placeholder="Find Notebooks..."
-          // src={search_icon}
         />
       </div>
       <div className="second-notebook-header">

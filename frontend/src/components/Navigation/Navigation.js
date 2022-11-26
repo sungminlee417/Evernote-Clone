@@ -3,15 +3,16 @@ import { logout } from "../../store/session";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useEffect, useState } from "react";
+import ManageAccount from "./ManageAccount";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
-
-  const onLogout = () => {
-    dispatch(logout());
-  };
+  console.log(sessionUser)
+  // const onLogout = () => {
+  //   dispatch(logout());
+  // };
 
   const onClick = () => {
     const settingsContainer = document.querySelector('.nav-bar-new-pop-up-container')
@@ -36,14 +37,14 @@ const Navigation = () => {
     document.addEventListener("click", onClick)
     return () => document.removeEventListener("click", onClick)
   })
-
+  console.log(sessionUser.username)
   return (
     <section className="nav-bar-section">
       <header className="nav-bar-header">
         <div className="nav-bar-header-session-username">
           {sessionUser.username}
         </div>
-        <i className="fa-solid fa-chevron-down"></i>
+        <ManageAccount/>
       </header>
       <div className="nav-bar-button-search">
         <div className="nav-bar-search">

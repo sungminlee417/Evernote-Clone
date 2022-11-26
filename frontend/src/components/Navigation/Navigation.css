@@ -6,9 +6,11 @@
 
 .nav-bar-header {
   display:flex;
+  justify-content: space-between;
   color: #a8a4a4;
   font-size: 1.4rem;
   padding: 2rem;
+
 }
 
 .nav-bar-links {

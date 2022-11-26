@@ -4,6 +4,7 @@ import { login } from "../../store/session";
 import { Redirect } from "react-router-dom"
 import form_img from "../../images/EvernoteLogo-Form.svg"
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './LoginFormPage.css'
 import '../UserForm/UserForm.css'
 
@@ -13,6 +14,7 @@ const LoginFormPage = () => {
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]); 
+    const history = useHistory()
 
     if (sessionUser) return (
         <Redirect to="/"/>
@@ -20,7 +22,7 @@ const LoginFormPage = () => {
     const submit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(login(credential, password)).catch(async (res) => {
+        return dispatch(login(credential, password)).then(() => history.push("/")).catch(async (res) => {
             const data = await res.json()
             if (data && data.errors) {
                 setErrors(data.errors)
@@ -29,7 +31,7 @@ const LoginFormPage = () => {
     }
 
     const demoSubmit = () => {
-        return dispatch(login("Demo-lition","password"))
+        return dispatch(login("Demo-lition","password")).then(() => history.push("/"))
     }
     
     return (
