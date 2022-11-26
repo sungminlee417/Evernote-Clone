@@ -1,0 +1,132 @@
+.edit-notebook-modal {
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 0.125rem solid #787474;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem 2.5rem;
+  top: 50%;
+  width: 44rem;
+}
+
+.edit-notebook-modal-header {
+  align-items: center;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.edit-new-notebook {
+  font-size: 1.6rem;
+}
+
+.edit-close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  justify-content: center;
+  right: 3.6rem;
+  top: 3.6rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  margin-left: auto;
+}
+
+.modal-line-one,
+.modal-line-two {
+  background-color: black;
+  cursor: pointer;
+  height: 0.1rem;
+  position: absolute;
+  width: 1.75rem;
+}
+
+.modal-line-one {
+  transform: rotate(135deg);
+}
+
+.modal-line-two {
+  transform: rotate(-135deg);
+}
+
+.edit-notebook-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.edit-notebook-input-label {
+  font-size: 1.2rem;
+}
+
+.edit-notebook-form-input {
+  width: 100%;
+  height: 4rem;
+  padding-left: 1rem;
+  outline: none;
+  border: 0.05rem solid rgb(171, 171, 171, 50%);
+  border-radius: 0.6rem;
+  border-width: thin;
+  font-size: 1.5rem;
+}
+
+.edit-notebook-form-input:focus {
+  border: 0.125rem solid #2596be;
+}
+
+.edit-notebook-error-message {
+  padding-bottom: 4rem;
+  color: #ff7474;
+}
+
+.edit-notebook-buttons-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.edit-notebook-button {
+  border-radius: 0.6rem;
+  height: 4rem;
+  width: 8rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.edit-notebook-cancel {
+  background-color: transparent;
+  border: 0.05rem solid #787474;
+  border-radius: 0.6rem;
+  border-width: thin;
+  color: #787474;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.edit-notebook-cancel:hover {
+  border: 0.05rem solid #504c4c;
+  color: #504c4c;
+  background-color: #f8f4f4;
+}
+
+.edit-notebook-button {
+  border: 0.05rem solid #08a42c;
+  border-width: thin;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #08a42c;
+}
+
+.edit-notebook-button:hover {
+  border: 0.05rem solid #088c24;
+  background-color: #088c24;
+}

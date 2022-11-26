@@ -2,30 +2,45 @@
 } */
 
 .notebook-buttons {
-    position: relative;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    right: 0;
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  right: 0;
 }
 .notebook-buttons:hover {
-    background-color: #e8e4e4;
+  background-color: #e8e4e4;
 }
 
 .modify-notebook-container {
-    background-color: white;
-    border:0.05rem solid rgb(171,171,171, 50%);
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    position:absolute;
+  align-items: center;
+  background-color: white;
+  border: 0.05rem solid rgb(171, 171, 171, 50%);
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  bottom: -285%;
+  width: 16rem;
+  z-index: 1;
 }
 
 .modify-notebook-container.visible {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
 
+.modify-notebook-buttons {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.4rem;
+  width: 100%;
+}
