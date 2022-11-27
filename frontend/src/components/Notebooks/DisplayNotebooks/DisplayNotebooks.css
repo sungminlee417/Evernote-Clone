@@ -1,140 +1,143 @@
 .DisplayNotebooksPage {
-    width: 100%;
-    height: 100vh;
-    padding: 2.5rem 3.5rem;
-    letter-spacing: 0.1rem;
+  width: 100%;
+  height: 100vh;
+  padding: 2.5rem 3.5rem;
+  letter-spacing: 0.1rem;
 }
 
 .notebook-header {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 4.5rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4.5rem;
 }
 
 .notebook-title-page {
-    color: #383434;
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
+  color: #383434;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
 }
 
 .search-for-notebooks {
-    outline: none;
-    border:0.05rem solid rgb(171,171,171, 50%);
-    border-radius: 0.3rem;
-    border-width: thin;
-    margin-left:auto;
-    height: 3.5rem;
-    width: 22rem;
-    padding-left: 1rem;
-    font-size: 1.5rem;
+  outline: none;
+  border: 0.05rem solid rgb(171, 171, 171, 50%);
+  border-radius: 0.3rem;
+  border-width: thin;
+  margin-left: auto;
+  height: 3.5rem;
+  width: 22rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
 }
 
 .search-for-notebooks:focus {
-    border:0.125rem solid #2596be;
+  border: 0.125rem solid #2596be;
 }
 
 .second-notebook-header {
-    font-size: 1.5rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-    margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .new-notebook-button {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #08a42c;
-    gap: 0.5rem;
-    border:none;
-    outline:none;
-    letter-spacing: 0.1rem;
-    background-color: transparent;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #08a42c;
+  gap: 0.5rem;
+  border: none;
+  outline: none;
+  letter-spacing: 0.1rem;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.new-notebook-button:hover{
-    opacity: 75%;
+.new-notebook-button:hover {
+  opacity: 75%;
 }
 
 .list-notebooks {
-    border-top: 0.2rem solid #606c6c;
+  border-top: 0.2rem solid #606c6c;
 }
 
-.list-notebooks-columns{
-    padding: 1rem;
-    display:grid;
-    grid-template-columns: 4fr 3fr 2fr 1fr;
-    flex-direction: row;
-    height:4rem;
-    background: #f8f8f8;
-    font-size: 1rem;
-    justify-content: flex-start;
-    align-items: flex-start;
-    color: #b8b4b4;
-    align-items: center;
-    border-bottom: 0.15rem solid #f4f4f4;
-
+.list-notebooks-columns {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  flex-direction: row;
+  height: 4rem;
+  background: #f8f8f8;
+  font-size: 1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #b8b4b4;
+  align-items: center;
+  border-bottom: 0.15rem solid #f4f4f4;
 }
 .notebook-desc-title,
 .notebook-desc-updated {
-    text-align: left;
-    border:none;
-    outline:none;
-    letter-spacing: 0.1rem;
-    background-color: transparent;
-    cursor: pointer;
-    font-size:1rem;
-    color: #b8b4b4;
+  text-align: left;
+  border: none;
+  outline: none;
+  letter-spacing: 0.1rem;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #b8b4b4;
 }
 
 .modify-notebook {
-    text-align: right;
+  text-align: right;
 }
 
 .style-even-notebook,
 .style-odd-notebook {
-    align-items: center;
-    display:grid;
-    grid-template-columns: 4fr 3fr 2fr 1fr;
-    flex-direction: row;
-    list-style: none;
-    font-size: 1.25rem;
-    color:#787474;
-    padding: 0rem 1rem;
-    min-height: 4rem;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  flex-direction: row;
+  list-style: none;
+  font-size: 1.25rem;
+  color: #787474;
+  padding: 0rem 1rem;
+  min-height: 4rem;
 }
 
-.style-odd-notebook{
-    background: #f8f8f8;
+.style-odd-notebook {
+  background: #f8f8f8;
 }
 
 .list-notebooks-columns:hover,
 .style-even-notebook:hover,
 .style-odd-notebook:hover {
-    background-color:#f4f4f4;
+  background-color: #f4f4f4;
 }
 
 .individual-notebook {
-    align-items: center;
-    display: flex;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: black;
-    font-size: 1.25rem;
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.25rem;
 }
 .individual-notebook:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.individual-notebook > * {
+  cursor: pointer;
 }
 
 .notebook-buttons {
-    display: flex;
-    align-items: center;
-    margin-left:auto;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }

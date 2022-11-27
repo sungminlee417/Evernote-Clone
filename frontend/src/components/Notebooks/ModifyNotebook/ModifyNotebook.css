@@ -1,6 +1,3 @@
-/* .modify-notebook {
-} */
-
 .notebook-buttons {
   position: relative;
   background-color: transparent;
@@ -12,6 +9,10 @@
 }
 .notebook-buttons:hover {
   background-color: #e8e4e4;
+}
+
+.notebook-buttons > * {
+  cursor: pointer;
 }
 
 .modify-notebook-container {
