@@ -2,8 +2,8 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
-import Notes from "../Notes/Notes";
 import "./HomePage.css";
+import Notes from "../NoteComponents/Notes";
 
 const HomePage = () => {
   return (
