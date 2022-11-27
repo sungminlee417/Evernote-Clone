@@ -2,6 +2,7 @@ import options from "../../../images/modify.svg";
 import "./ModifyNotebook.css";
 import { useEffect, useState } from "react";
 import EditNotebookModal from "./EditNotebookModal/EditNotebookModal";
+import DeleteNotebookModal from "./DeleteNotebookModal";
 
 const ModifyNotebook = ({ notebook }) => {
   const [clicked, setClicked] = useState(false);
@@ -34,7 +35,11 @@ const ModifyNotebook = ({ notebook }) => {
   return (
     <div
       className={`modify-notebook-${notebook.id}`}
-      style={{ position: "relative", display: "flex", alignItems: "center" }}
+      style={{
+        alignItems: "center",
+        display: "flex",
+        position: "relative",
+      }}
       onClick={parentFunction}
     >
       <button className="notebook-buttons" onClick={onClick}>
@@ -48,9 +53,7 @@ const ModifyNotebook = ({ notebook }) => {
         className={`modify-notebook-container modify-notebook-container-${notebook.id}`}
       >
         <EditNotebookModal notebook={notebook} />
-        <button className="modify-notebook-buttons modify-notebook-delete">
-          Delete Notebook
-        </button>
+        <DeleteNotebookModal notebook={notebook} />
       </div>
     </div>
   );

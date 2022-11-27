@@ -2,11 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { loadNotebooksThunk } from "../../../store/notebooks";
-import "./DisplayNotebooks.css";
-import search_icon from "../../../images/search.svg";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
 import notebook_icon from "../../../images/Notebook.svg";
+import "./DisplayNotebooks.css";
 
 const DisplayNotebooks = () => {
   const dispatch = useDispatch();
@@ -58,7 +57,7 @@ const DisplayNotebooks = () => {
                   to={`/notebooks/${notebook.id}`}
                 >
                   <img className="notebook-icon" src={notebook_icon}></img>
-                  {notebook.name}
+                  <div>{notebook.name}</div>
                   <div className="num-notes-in-notebook"></div>
                 </NavLink>
                 <div className="notebook-creator">{sessionUser.username}</div>

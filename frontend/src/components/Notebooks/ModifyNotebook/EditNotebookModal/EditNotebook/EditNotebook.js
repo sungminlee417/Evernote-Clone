@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { editNotebookThunk } from "../../../../../store/notebooks";
 import "./EditNotebook.css";
 
 const EditNotebook = ({ notebook, onClose }) => {
@@ -8,20 +9,17 @@ const EditNotebook = ({ notebook, onClose }) => {
   const [errors, setErrors] = useState("");
   const notebooks = Object.values(useSelector((state) => state.notebooks));
 
-  // const submit = (e) => {
-  //   e.preventDefault();
-  //   setErrors([]);
-  //   dispatch()
-  //     .then(() => onClose())
-  //     .catch(async (res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) {
-  //         setErrors(data.errors);
-  //       }
-  //     });
-  // };
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!errors) {
+      await dispatch(editNotebookThunk(notebook.id, { name })).then(() =>
+        onClose()
+      );
+    }
+  };
 
   useEffect(() => {
+    const submitButton = document.querySelector(".edit-notebook-button");
     setErrors("");
     if (!name)
       setErrors("Your notebook name must contain at least one character");
@@ -30,6 +28,20 @@ const EditNotebook = ({ notebook, onClose }) => {
         setErrors(`Notebook name '${name}' is already in use`);
     });
   }, [name]);
+
+  useEffect(() => {
+    const submitButton = document.querySelector(".edit-notebook-button");
+
+    if (errors) {
+      submitButton.disabled = "true";
+      submitButton.style.cursor = "not-allowed";
+    } else {
+      console.log("hi");
+      submitButton.removeAttribute("disabled");
+      submitButton.style.cursor = "pointer";
+    }
+  }, [errors]);
+
   return (
     <div className="edit-notebook-modal" onClick={(e) => e.stopPropagation()}>
       <div className="edit-notebook-modal-header">
@@ -44,7 +56,7 @@ const EditNotebook = ({ notebook, onClose }) => {
           <span className="modal-line-two"></span>
         </button>
       </div>
-      <form className="edit-notebook-form">
+      <form className="edit-notebook-form" onSubmit={submit}>
         <div className="edit-notebook-input-container">
           <label
             className="edit-notebook-input-label"
@@ -74,7 +86,7 @@ const EditNotebook = ({ notebook, onClose }) => {
             Cancel
           </button>
           <button className="edit-notebook-button" type="submit">
-            Create
+            Edit
           </button>
         </div>
       </form>
