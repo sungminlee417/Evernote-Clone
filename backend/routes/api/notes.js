@@ -3,13 +3,23 @@ const express = require('express')
 const router = express.Router()
 
 // GET ALL USER'S NOTES
-router.get("/notes", async (req, res) => {
+router.get("/", async (req, res) => {
   const user = req.user;
   const notes = await Note.findAll({
     where: {userId: user.id}
   })
   res.json(notes)
 })
+
+// POST NEW NOTE
+router.post("/",
+  async (req, res) => {
+    const user = req.user;
+    const note = await Note.create({
+      userId: user.id
+    })
+    res.status(201).json(note);
+  })
 
 // UPDATE NOTE
 router.put("/:noteId", async (req, res) => {
