@@ -1,49 +1,67 @@
 .landing-header {
-    position: fixed;
-    padding: 2rem 11rem;
-    width: 100%;
-    font-family: 'Heebo', sans-serif;
-    letter-spacing: 0.08rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    transition: all .5s;
+  position: fixed;
+  padding: 2rem 11rem;
+  width: 100%;
+  font-family: "Heebo", sans-serif;
+  letter-spacing: 0.08rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  transition: all 0.5s;
 }
 
 .landing-header-scrolled {
-    width: 100%;
-    position: fixed;
-    padding: 2rem 11rem;
-    font-family: 'Heebo', sans-serif;
-    letter-spacing: 0.08rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    transition: all .5s;
-    box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
+  width: 100%;
+  position: fixed;
+  padding: 2rem 11rem;
+  font-family: "Heebo", sans-serif;
+  letter-spacing: 0.08rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  transition: all 0.5s;
+  box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
 }
 
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .home-button {
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
+
+.home-button > * {
+  cursor: pointer;
+}
+
+.landing-page-header-right {
+  align-items: center;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.landing-page-github {
+  color: black;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
 .login-button {
-    padding-left: 97rem;
-    text-decoration: none;
-    color:black;
-    cursor: pointer;
-    font-size: 1.75rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-size: 1.75rem;
 }
 
 .login-button:hover {
-    color:#00a82d;
-    transition-duration: 0.1s;
-    transition: all 0.2s ease-in-out;
+  color: #00a82d;
+  transition-duration: 0.1s;
+  transition: all 0.2s ease-in-out;
 }
