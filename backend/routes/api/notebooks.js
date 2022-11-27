@@ -26,7 +26,6 @@ router.get("/", async (req, res) => {
 router.post("/",
   validateNotebook,
   async (req, res) => {
-  console.log(req.body.name)
   const user = req.user;
   const { name } = req.body;
   const notebook = await Notebook.create({

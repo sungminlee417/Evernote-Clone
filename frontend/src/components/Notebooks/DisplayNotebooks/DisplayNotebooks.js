@@ -7,6 +7,7 @@ import search_icon from "../../../images/search.svg";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
 import notebook_icon from "../../../images/Notebook.svg";
+
 const DisplayNotebooks = () => {
   const dispatch = useDispatch();
   const notebooks = Object.values(useSelector((state) => state.notebooks));

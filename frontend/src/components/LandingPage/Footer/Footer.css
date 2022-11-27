@@ -2,8 +2,9 @@
   display: flex;
   border-top: 0.3rem solid black;
   justify-content: space-between;
-  padding-top: 4rem;
-  height: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  height: 15rem;
   margin: 10rem;
   font-family: 'Heebo', sans-serif;
   letter-spacing: 0.08rem;

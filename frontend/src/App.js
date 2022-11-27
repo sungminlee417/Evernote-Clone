@@ -25,9 +25,7 @@ function App() {
         ) : (
           <Switch>
             <Route exact path="/">
-              {/* <Header /> */}
               <LandingPage />
-              {/* <Footer /> */}
             </Route>
             <Route path="/login">
               <LoginFormPage />

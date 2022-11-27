@@ -4,15 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
+import { createNote } from "../../store/notes";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
-  console.log(sessionUser)
-  // const onLogout = () => {
-  //   dispatch(logout());
-  // };
 
   const onClick = () => {
     const settingsContainer = document.querySelector('.nav-bar-new-pop-up-container')
@@ -30,14 +27,18 @@ const Navigation = () => {
     if(clicked) {
         e.stopPropagation()
     }
-
   } 
+  
+  const newNote = () => {
+    dispatch(createNote())
+  }
+
   useEffect(()=> {
     if (!clicked) return
     document.addEventListener("click", onClick)
     return () => document.removeEventListener("click", onClick)
   })
-  console.log(sessionUser.username)
+
   return (
     <section className="nav-bar-section">
       <header className="nav-bar-header">
@@ -61,7 +62,7 @@ const Navigation = () => {
           </button>
           <div className="nav-bar-new-pop-up-container" onClick={parentFunction}>
             <div className="nav-bar-new-pop-up-button-container">
-              <button className="nav-bar-new-pop-up-button note">
+              <button className="nav-bar-new-pop-up-button note" onClick={newNote}>
                 <i className="fa-solid fa-note-sticky"></i>
                 Note
               </button>

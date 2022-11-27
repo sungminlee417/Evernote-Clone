@@ -1,0 +1,16 @@
+.notes-section {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 3.5rem;
+}
+
+
+.list-notes {
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    background-color: blue;
+}
+
+.create-note {
+}
