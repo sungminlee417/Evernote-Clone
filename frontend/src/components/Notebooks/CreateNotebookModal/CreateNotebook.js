@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createNotebook } from "../../../store/notebooks";
 import "./CreateNotebook.css";
 
@@ -7,6 +7,7 @@ const CreateNotebook = ({ onClose }) => {
     const dispatch = useDispatch()
     const [name, setName] = useState("");
     const [errors, setErrors] = useState([]); 
+    const notebooks = Object.values(useSelector((state) => state.notebooks));
 
     const submit = (e) => {
         e.preventDefault();
@@ -14,10 +15,41 @@ const CreateNotebook = ({ onClose }) => {
         dispatch(createNotebook(name)).then(() => onClose()).catch(async (res) => {
             const data = await res.json()
             if (data && data.errors) {
-                setErrors(data.errors)
+                setErrors(data.errors[1])
             }
         })
     }
+    // const submit = async (e) => {
+    //     e.preventDefault();
+    //     if (!errors) {
+    //         await dispatch(createNotebook(name)).then(() => 
+    //         onClose()
+    //     );
+    //     }
+    // };
+
+    useEffect(() => {
+        setErrors("");
+        // if (!name)
+        //     setErrors("Your notebook name must contain at least one character");
+        notebooks.forEach((notebookObj) => {
+            if (notebookObj.name === name)
+              setErrors(`Notebook name '${name}' is already in use`);
+          });
+        }, [name]);
+
+    useEffect(() => {
+        const submitButton = document.querySelector(".create-notebook-button");
+        if (errors) {
+            submitButton.disabled = "true";
+            submitButton.classList.add("disabled")
+            submitButton.style.cursor = "not-allowed";
+        } else {
+            submitButton.classList.remove("disabled")
+            submitButton.removeAttribute("disabled");
+            submitButton.style.cursor = "pointer";
+        }
+        }, [errors]);
     return (
     <>
       <div className="create-new-notebook-modal" onClick={(e) => e.stopPropagation()}>
@@ -43,7 +75,7 @@ const CreateNotebook = ({ onClose }) => {
                 onChange={(e) => setName(e.target.value)}
             />
             <p className="create-notebook-error-message">
-                {errors.name}
+                {errors}
             </p>
             <div className="create-new-notebook-modal-separator"></div>
             <div className="buttons-for-creating-notebook-modal">

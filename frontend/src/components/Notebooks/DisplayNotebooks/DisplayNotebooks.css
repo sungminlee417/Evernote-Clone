@@ -38,9 +38,28 @@
   font-size: 1.5rem;
   font-weight: 600;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+}
+
+.second-notebook-header-options{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.sort-notebooks-button {
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    right: 0;
+}
+
+.sort-notebooks-button:hover {
+background-color: #e8e4e4;
 }
 
 .new-notebook-button {
@@ -125,8 +144,11 @@
   display: flex;
   gap: 0.75rem;
   text-decoration: none;
-  color: black;
+  color:#383434;
   font-size: 1.25rem;
+}
+.indiv-notebook-link-icon {
+    color: #787474;
 }
 .individual-notebook:hover {
   text-decoration: underline;

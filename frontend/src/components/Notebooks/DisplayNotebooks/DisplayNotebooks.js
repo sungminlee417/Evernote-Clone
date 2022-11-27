@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { loadNotebooksThunk } from "../../../store/notebooks";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
-import notebook_icon from "../../../images/Notebook.svg";
+import sort from "../../../images/sort.svg";
 import "./DisplayNotebooks.css";
 
 const DisplayNotebooks = () => {
@@ -34,7 +34,11 @@ const DisplayNotebooks = () => {
           {" "}
           {notebooks.length} {notebooks.length > 1 ? "notebooks" : "notebook"}{" "}
         </div>
-        <CreateNotebookModal />
+        <div className="second-notebook-header-options">
+          <CreateNotebookModal />
+          <img className="sort-notebooks-button" src={sort} alt="sort"></img>
+        </div>
+        
       </div>
       <div className="list-notebooks">
         <div className="list-notebooks-columns">
@@ -56,7 +60,7 @@ const DisplayNotebooks = () => {
                   className="individual-notebook"
                   to={`/notebooks/${notebook.id}`}
                 >
-                  <img className="notebook-icon" src={notebook_icon}></img>
+                  <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
                   <div>{notebook.name}</div>
                   <div className="num-notes-in-notebook"></div>
                 </NavLink>

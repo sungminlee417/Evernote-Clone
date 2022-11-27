@@ -34,9 +34,10 @@ const EditNotebook = ({ notebook, onClose }) => {
 
     if (errors) {
       submitButton.disabled = "true";
+      submitButton.classList.add("disabled")
       submitButton.style.cursor = "not-allowed";
     } else {
-      console.log("hi");
+      submitButton.classList.remove("disabled")
       submitButton.removeAttribute("disabled");
       submitButton.style.cursor = "pointer";
     }
@@ -73,8 +74,8 @@ const EditNotebook = ({ notebook, onClose }) => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div>{errors}</div>
-        <p className="edit-notebook-error-message">{errors.name}</p>
+        <p className="edit-notebook-error-message">{errors}</p>
+        <div className="edit-notebook-modal-separator"></div>
         <div className="edit-notebook-buttons-container">
           <button
             className="edit-notebook-cancel"

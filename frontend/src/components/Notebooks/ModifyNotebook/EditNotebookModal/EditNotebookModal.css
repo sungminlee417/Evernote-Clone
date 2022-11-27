@@ -1,0 +1,8 @@
+.modify-notebook-edit {
+    background-color: white;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+.modify-notebook-edit:hover {
+    background-color: #f4f4f4;
+}

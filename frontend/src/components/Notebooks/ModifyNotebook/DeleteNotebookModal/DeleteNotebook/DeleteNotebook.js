@@ -25,9 +25,10 @@ const DeleteNotebook = ({ notebook, onClose }) => {
           <span className="modal-line-two"></span>
         </button>
       </div>
-      <div>
+      <div className='delete-notebook-desc'>
         Any notes in the notebook will be moved to Trash. This cannot be undone.
       </div>
+      <div className="delete-notebook-modal-separator"></div>
       <div className="delete-notebook-buttons-container">
         <button
           className="delete-notebook-cancel"

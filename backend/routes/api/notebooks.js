@@ -46,14 +46,11 @@ router.put("/:notebookId", async (req, res) => {
 router.delete("/:notebookId", async (req, res) => {
   const { notebookId } = req.params;
   const notebook = await Notebook.findByPk(notebookId);
-  console.log("hi");
   await notebook.destroy();
   res.status(204).json({
     message: "Notebook successfully deleted.",
   });
 });
-
-// GET FORMATTED DATE OF CERTAIN NOTEBOOK
 
 // GET CURRENT USER'S NOTES IN CERTAIN NOTEBOOK
 router.get("/:notebookId/notes", async (req, res) => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditNotebook from "./EditNotebook/EditNotebook";
+import "./EditNotebookModal.css";
 
 const EditNotebookModal = ({ notebook }) => {
   const [showModal, setShowModal] = useState(false);

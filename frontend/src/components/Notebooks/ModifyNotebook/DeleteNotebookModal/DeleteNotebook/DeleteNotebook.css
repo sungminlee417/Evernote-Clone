@@ -8,7 +8,7 @@
   transform: translate(-50%, -50%);
   padding: 2.5rem 2.5rem;
   top: 50%;
-  width: 44rem;
+  width: 50rem;
 }
 
 .delete-notebook-modal-header {
@@ -20,7 +20,8 @@
 }
 
 .delete-notebook {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  padding-bottom: 1.3rem;
 }
 
 .delete-close-button {
@@ -63,10 +64,6 @@
   margin-bottom: 1.5rem;
 }
 
-.delete-notebook-input-label {
-  font-size: 1.2rem;
-}
-
 .delete-notebook-form-input {
   width: 100%;
   height: 4rem;
@@ -82,9 +79,17 @@
   border: 0.125rem solid #2596be;
 }
 
-.delete-notebook-error-message {
-  padding-bottom: 4rem;
-  color: #ff7474;
+.delete-notebook-desc {
+  font-size: 1.35rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.delete-notebook-modal-separator{
+  border-top:0.05rem solid rgb(171,171,171);
+  position:absolute;
+  width: 100%;
+  margin-left: -2.5rem;
 }
 
 .delete-notebook-buttons-container {
@@ -119,14 +124,14 @@
 }
 
 .delete-notebook-button {
-  border: 0.05rem solid #08a42c;
+  border: 0.05rem solid #e84c3c;
   border-width: thin;
   font-size: 1.5rem;
   color: white;
-  background-color: #08a42c;
+  background-color: #e84c3c;
 }
 
 .delete-notebook-button:hover {
-  border: 0.05rem solid #088c24;
-  background-color: #088c24;
+  border: 0.05rem solid #d04434;
+  background-color: #d04434;
 }

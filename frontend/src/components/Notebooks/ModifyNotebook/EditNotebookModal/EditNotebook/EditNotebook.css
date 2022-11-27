@@ -1,14 +1,14 @@
 .edit-notebook-modal {
   background-color: white;
   border-radius: 0.5rem;
-  border: 0.125rem solid #787474;
+  border: 0.125rem solid #d8d4d4;
   box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   padding: 2.5rem 2.5rem;
   top: 50%;
-  width: 44rem;
+  width: 48rem;
 }
 
 .edit-notebook-modal-header {
@@ -20,7 +20,8 @@
 }
 
 .edit-new-notebook {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  padding-bottom: 1.3rem;
 }
 
 .edit-close-button {
@@ -64,7 +65,7 @@
 }
 
 .edit-notebook-input-label {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
 }
 
 .edit-notebook-form-input {
@@ -83,8 +84,15 @@
 }
 
 .edit-notebook-error-message {
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
+  font-size: 1.35rem;
   color: #ff7474;
+}
+.edit-notebook-modal-separator{
+  border-top:0.05rem solid rgb(171,171,171);
+  position:absolute;
+  width: 100%;
+  margin-left: -2.5rem;
 }
 
 .edit-notebook-buttons-container {
@@ -130,3 +138,15 @@
   border: 0.05rem solid #088c24;
   background-color: #088c24;
 }
+
+.edit-notebook-button.disabled,
+.edit-notebook-button.disabled:hover{
+  border: 0.05rem solid #d0cccc;
+  border-width: thin;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #d0cccc;
+}
+
+
+
