@@ -2,8 +2,6 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## About the Evernote Clone
 
-This application is an Evernote clone featuring both backend and frontend technologies using the PERN stack.
-
-
+This Evernote clone is a PERN stack application using React/Redux for the frontend, and Express/PostgresSQL for the backend. This app allows users to create notes/notebooks. Users also have the ability to edit their notes/notebooks as long as the changes pass validations listed on the backend.
