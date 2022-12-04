@@ -1,0 +1,64 @@
+.sort-notebooks-button {
+    position: relative;
+    display: flex;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    right: 0;
+}
+
+.sort-notebooks-button:hover {
+background-color: #e8e4e4;
+}
+
+.sort-notebooks-container {
+    position: absolute;
+    background-color: white;
+    border: 0.05rem solid rgb(171, 171, 171, 50%);
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    top: 18.5%;
+    right: 2.5%;
+    pointer-events: none;
+    width: 18rem;
+    z-index: 1;
+    font-size: 1rem;
+    color:#a8a4a4;
+}
+.sort-notebooks-container-header {
+    padding: 1.75rem;
+}
+
+.sort-notebooks-container.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+.sort-notebooks-by-date-created,
+.sort-notebooks-by-date-updated,
+.sort-notebooks-by-title {
+    padding: 1.35rem;
+    display: flex;
+    gap: 3rem;
+    color:black;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: right;
+    cursor:pointer
+}
+.sort-notebooks-by-date-created:hover,
+.sort-notebooks-by-date-updated:hover,
+.sort-notebooks-by-title:hover {
+    background-color: #f4f4f4;
+}
+
+.sort-direction {
+    padding-left: 0.5rem;
+    color:blue;
+}
