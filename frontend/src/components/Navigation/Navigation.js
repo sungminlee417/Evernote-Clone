@@ -8,7 +8,6 @@ import { loadNotesThunk } from "../../store/notes";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const notes = Object.values(useSelector((state) => state.notes));
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
@@ -31,12 +30,10 @@ const Navigation = () => {
   };
 
   const newNote = () => {
-    dispatch(createNote());
+    dispatch(createNote()).then(() => {
+      dispatch(loadNotesThunk());
+    });
   };
-
-  useEffect(() => {
-    dispatch(loadNotesThunk());
-  }, [dispatch]);
 
   useEffect(() => {
     if (!clicked) return;
@@ -92,7 +89,7 @@ const Navigation = () => {
           <NavLink exact to="/" className="nav-bar-link">
             <i className="fa-solid fa-house nav-bar-link-icon"></i> Home
           </NavLink>
-          <NavLink to={`/notes/${notes[0]?.id}`} className="nav-bar-link">
+          <NavLink to={`/notes`} className="nav-bar-link">
             <i className="fa-solid fa-note-sticky nav-bar-link-icon"></i> Notes
           </NavLink>
         </div>

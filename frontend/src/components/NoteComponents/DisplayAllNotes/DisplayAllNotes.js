@@ -1,14 +1,20 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { loadNotesThunk } from "../../../store/notes";
+import ViewAndEditNote from "../ViewAndEditNote";
 import "./DisplayAllNotes.css";
 
 const DisplayAllNotes = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const notes = Object.values(useSelector((state) => state.notes));
+
   useEffect(() => {
-    dispatch(loadNotesThunk());
+    dispatch(loadNotesThunk()).then((notesData) => {
+      history.push(`/notes/${notesData[0].id}`);
+    });
   }, [dispatch]);
 
   return (
@@ -36,7 +42,6 @@ const DisplayAllNotes = () => {
             );
           })}
         </div>
-        <div className="create-note"></div>
       </div>
     </section>
   );

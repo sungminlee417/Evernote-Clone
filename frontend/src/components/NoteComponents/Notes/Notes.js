@@ -4,7 +4,6 @@ import DisplayAllNotes from "../DisplayAllNotes";
 import ViewAndEditNote from "../ViewAndEditNote";
 
 const Notes = () => {
-  const notes = useSelector((state) => state.notes);
   return (
     <>
       <DisplayAllNotes />

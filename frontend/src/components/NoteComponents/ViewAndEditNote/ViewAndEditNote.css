@@ -1,0 +1,35 @@
+.edit-note-section {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.edit-note-inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  padding: 4rem;
+}
+
+.edit-note-title-input {
+  border: none;
+  cursor: text;
+  font-size: 3.4rem;
+  font-weight: bold;
+  height: 6rem;
+}
+
+.edit-note-title-input:focus {
+  outline: none;
+}
+
+.edit-note-content-input {
+  border: none;
+  cursor: text;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.edit-note-content-input:focus {
+  outline: none;
+}
