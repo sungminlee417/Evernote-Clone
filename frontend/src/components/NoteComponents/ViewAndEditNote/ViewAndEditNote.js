@@ -35,7 +35,20 @@ const ViewAndEditNote = () => {
   }, [title, content]);
 
   return (
-    <section className="edit-note-section">
+    <section className="edit-delete-note-section">
+      <div className="edit-delete-note-section-header">
+        <div></div>
+        <div className="edit-delete-note-button-settings-container">
+          <button className="edit-delete-note-delete-button">
+            <i className="fa-solid fa-ellipsis edit-delete-note-delete-button-icon"></i>
+          </button>
+          <div className="edit-delete-note-settings-container">
+            <button className="edit-delete-note-settings-button">
+              Move to Trash
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="edit-note-inputs-container">
         <input
           className="edit-note-title-input"

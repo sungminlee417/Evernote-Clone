@@ -1,6 +1,44 @@
-.edit-note-section {
+.edit-delete-note-section {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   height: 100%;
+}
+
+.edit-delete-note-section-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.edit-delete-note-button-settings-container {
+  position: relative;
+}
+.edit-delete-note-delete-button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.6rem;
+}
+
+.edit-delete-note-delete-button-icon {
+  cursor: pointer;
+}
+
+.edit-delete-note-settings-container {
+  box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
+  position: absolute;
+  right: 0;
+  width: 14rem;
+}
+
+.edit-delete-note-settings-button {
+  background-color: transparent;
+  border: none;
+  padding: 1rem 2rem;
+  width: 100%;
 }
 
 .edit-note-inputs-container {
