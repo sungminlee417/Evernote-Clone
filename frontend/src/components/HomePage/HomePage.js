@@ -5,6 +5,7 @@ import Navigation from "../Navigation";
 import "./HomePage.css";
 import Notes from "../NoteComponents/Notes";
 
+
 const HomePage = () => {
   return (
     <section className="home-page-section">
