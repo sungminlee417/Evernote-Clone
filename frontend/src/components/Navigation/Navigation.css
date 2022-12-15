@@ -164,3 +164,22 @@
 .nav-bar-new-pop-up-button.tasks:hover {
   background-color: #883494;
 }
+
+.nav-bar-link.tags {
+  position: relative;
+}
+
+.tags-container {
+  position: absolute;
+  animation: container-slide-in 0.2s;
+  display:flex;
+  background-color: white;
+  opacity:0;
+  width: 10rem;
+  height:100%;
+  left: 25rem;
+}
+
+.tags-container.visible {
+  opacity:1;
+}

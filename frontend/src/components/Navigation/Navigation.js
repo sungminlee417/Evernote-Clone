@@ -1,14 +1,16 @@
-import { NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
 import { createNote } from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
+import Tags from "../Tags";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
+  const [tagClicked, setTagClicked] = useState(false);
   const dispatch = useDispatch();
 
   const onClick = () => {
@@ -23,8 +25,23 @@ const Navigation = () => {
       setClicked(true);
     }
   };
+  const tagOnClick = () => {
+    const tagsContainer = document.querySelector(
+      ".tags-container"
+    );
+    if (tagClicked) {
+      tagsContainer.classList.remove("visible");
+      setTagClicked(false);
+    } else {
+      tagsContainer.classList.add("visible");
+      setTagClicked(true);
+    }
+  };
   const parentFunction = (e) => {
     if (clicked) {
+      e.stopPropagation();
+    }
+    if (tagClicked) {
       e.stopPropagation();
     }
   };
@@ -39,7 +56,15 @@ const Navigation = () => {
     if (!clicked) return;
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  });
+  },[clicked]);
+
+  useEffect(() => {
+    if (!tagClicked) return;
+    document.addEventListener("click", tagOnClick);
+    return () => document.removeEventListener("click", tagOnClick);
+  },[tagClicked]);
+
+
 
   return (
     <section className="nav-bar-section">
@@ -97,6 +122,12 @@ const Navigation = () => {
           <NavLink to="/notebooks" className="nav-bar-link">
             <i className="fa-solid fa-book  nav-bar-link-icon"></i> Notebooks
           </NavLink>
+          <div className="nav-bar-link tags" onClick={tagOnClick}>
+            <i class="fa-solid fa-tag"></i> Tags
+            <div className="tags-container" onClick={parentFunction}>
+            Tags
+          </div>
+          </div>
         </div>
         <div className="nav-bar-links-section-three">
           <NavLink to="/trash" className="nav-bar-link">

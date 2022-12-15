@@ -19,3 +19,15 @@ html {
   height: 100vh;
   width: 100vw;
 }
+
+@keyframes container-slide-in {
+  from {
+    transform: translate(-10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
