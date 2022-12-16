@@ -14,6 +14,7 @@
 .edit-delete-note-button-settings-container {
   position: relative;
 }
+
 .edit-delete-note-delete-button {
   align-items: center;
   background-color: transparent;
@@ -37,6 +38,7 @@
 .edit-delete-note-settings-button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
   padding: 1rem 2rem;
   width: 100%;
 }
@@ -55,7 +57,7 @@
   font-size: 3.4rem;
   font-weight: bold;
   height: 6rem;
-  color:#383434;
+  color: #383434;
 }
 
 .edit-note-title-input:focus {

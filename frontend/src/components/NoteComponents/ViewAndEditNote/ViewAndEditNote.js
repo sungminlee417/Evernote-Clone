@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {
   clearNotes,
+  deleteNoteThunk,
   editNoteThunk,
   loadNotesThunk,
 } from "../../../store/notes";
@@ -10,6 +11,7 @@ import "./ViewAndEditNote.css";
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { noteId } = useParams();
   const notes = useSelector((state) => state.notes);
   const [title, setTitle] = useState("");
@@ -34,6 +36,13 @@ const ViewAndEditNote = () => {
     }
   }, [title, content]);
 
+  const onDelete = () => {
+    dispatch(deleteNoteThunk(noteId)).then(() => {
+      history.push("/notes");
+      dispatch(loadNotesThunk());
+    });
+  };
+
   return (
     <section className="edit-delete-note-section">
       <div className="edit-delete-note-section-header">
@@ -43,8 +52,11 @@ const ViewAndEditNote = () => {
             <i className="fa-solid fa-ellipsis edit-delete-note-delete-button-icon"></i>
           </button>
           <div className="edit-delete-note-settings-container">
-            <button className="edit-delete-note-settings-button">
-              Move to Trash
+            <button
+              className="edit-delete-note-settings-button"
+              onClick={onDelete}
+            >
+              Delete Note
             </button>
           </div>
         </div>
