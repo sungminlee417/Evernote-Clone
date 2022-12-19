@@ -4,7 +4,7 @@ import { createNotebook } from "../../../../store/notebooks";
 import "./CreateNotebook.css";
 
 const CreateNotebook = ({ onClose }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [errors, setErrors] = useState([]); 
     const notebooks = Object.values(useSelector((state) => state.notebooks));

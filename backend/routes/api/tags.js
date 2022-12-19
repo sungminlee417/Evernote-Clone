@@ -1,6 +1,16 @@
 const { Tag } = require("../../db/models");
 const express = require("express");
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
+
+const validateTag = [
+  check("name")
+    .exists({ checkFalsy: true })
+    .isLength({ min: 1 })
+    .withMessage("Tag name field must have min length 1"),
+    handleValidationErrors,
+];
 
 // GET ALL CURRENT USER'S TAGS
 router.get("/", async (req, res) => {
@@ -12,7 +22,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST NEW TAG
-router.post("/", async (req, res) => {
+router.post("/", validateTag, async (req, res) => {
   const user = req.user;
   const { name } = req.body;
   const tag = await Tag.create({

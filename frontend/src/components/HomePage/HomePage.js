@@ -4,7 +4,7 @@ import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
 import "./HomePage.css";
 import Notes from "../NoteComponents/Notes";
-
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
   return (

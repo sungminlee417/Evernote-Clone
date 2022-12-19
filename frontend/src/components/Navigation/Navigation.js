@@ -5,12 +5,16 @@ import { useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
 import { createNote } from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
-import Tags from "../Tags";
+import CreateTag from "../Tags/CreateTag";
+import DisplayTags from "../Tags/DisplayTags";
+import { Modal } from "../context/Modal";
+import tag from "../../images/new-tag.svg"
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
   const [tagClicked, setTagClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const onClick = () => {
@@ -29,11 +33,16 @@ const Navigation = () => {
     const tagsContainer = document.querySelector(
       ".tags-container"
     );
+    const tagsButton = document.querySelector(
+      ".nav-bar-link.tags"
+    )
     if (tagClicked) {
       tagsContainer.classList.remove("visible");
+      tagsButton.classList.remove("active");
       setTagClicked(false);
     } else {
       tagsContainer.classList.add("visible");
+      tagsButton.classList.add("active");
       setTagClicked(true);
     }
   };
@@ -41,6 +50,8 @@ const Navigation = () => {
     if (clicked) {
       e.stopPropagation();
     }
+  };
+  const tagParentFunction = (e) => {
     if (tagClicked) {
       e.stopPropagation();
     }
@@ -52,19 +63,17 @@ const Navigation = () => {
     });
   };
 
-  useEffect(() => {
+  useEffect((onClick) => {
     if (!clicked) return;
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   },[clicked]);
 
-  useEffect(() => {
+  useEffect((tagOnClick) => {
     if (!tagClicked) return;
     document.addEventListener("click", tagOnClick);
     return () => document.removeEventListener("click", tagOnClick);
   },[tagClicked]);
-
-
 
   return (
     <section className="nav-bar-section">
@@ -124,10 +133,27 @@ const Navigation = () => {
           </NavLink>
           <div className="nav-bar-link tags" onClick={tagOnClick}>
             <i class="fa-solid fa-tag"></i> Tags
-            <div className="tags-container" onClick={parentFunction}>
-            Tags
           </div>
+          <div className="tags-container" onClick={tagParentFunction}>
+              <div className="tags-header">
+                <div className="tags-header-title">Tags</div>
+                <img className="new-tag-button" 
+                    src={tag} 
+                    alt="new-tag"
+                    onClick={() => setShowModal(true)}></img>
+              </div>
+              <input
+              className="search-for-tags"
+              type="text"
+              placeholder="Find tags..."
+              />
+              <DisplayTags/>
           </div>
+          {showModal && (
+            <Modal showModal={showModal} onClose={() => setShowModal(false)}>
+              <CreateTag onClose={() => setShowModal(false)} />
+            </Modal>
+          )}
         </div>
         <div className="nav-bar-links-section-three">
           <NavLink to="/trash" className="nav-bar-link">
