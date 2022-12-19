@@ -22,7 +22,7 @@ html {
 
 @keyframes container-slide-in {
   from {
-    transform: translate(-10%);
+    transform: translate(0);
     opacity: 0;
   }
 
