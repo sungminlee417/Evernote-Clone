@@ -14,15 +14,16 @@ const ViewAndEditNote = () => {
   const history = useHistory();
   const { noteId } = useParams();
   const notes = useSelector((state) => state.notes);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const note = notes[noteId];
+  const [title, setTitle] = useState(note?.name);
+  const [content, setContent] = useState(note?.content);
+  const [settingsClicked, setSettingsClicked] = useState(false);
 
   useEffect(() => {
     dispatch(loadNotesThunk()).then(() => {
       const note = notes[noteId];
-      setTitle(note.name);
-      setContent(note.content);
-      console.log(title);
+      setTitle(note?.name);
+      setContent(note?.content);
     });
 
     return () => dispatch(clearNotes());
@@ -36,6 +37,23 @@ const ViewAndEditNote = () => {
     }
   }, [title, content]);
 
+  useEffect(() => {
+    if (!settingsClicked) return;
+
+    const settingsContainer = document.querySelector(
+      ".edit-delete-note-settings-container"
+    );
+
+    const closeSettings = () => {
+      settingsContainer.classList.remove("visible");
+      setSettingsClicked(false);
+    };
+
+    document.addEventListener("click", closeSettings);
+
+    return () => document.removeEventListener("click", closeSettings);
+  }, [settingsClicked]);
+
   const onDelete = () => {
     dispatch(deleteNoteThunk(noteId)).then(() => {
       history.push("/notes");
@@ -43,12 +61,28 @@ const ViewAndEditNote = () => {
     });
   };
 
+  const showSettings = () => {
+    const settingsContainer = document.querySelector(
+      ".edit-delete-note-settings-container"
+    );
+    if (settingsClicked) {
+      settingsContainer.classList.remove("visible");
+      setSettingsClicked(false);
+    } else {
+      settingsContainer.classList.add("visible");
+      setSettingsClicked(true);
+    }
+  };
+
   return (
     <section className="edit-delete-note-section">
       <div className="edit-delete-note-section-header">
         <div></div>
         <div className="edit-delete-note-button-settings-container">
-          <button className="edit-delete-note-delete-button">
+          <button
+            className="edit-delete-note-delete-button"
+            onClick={showSettings}
+          >
             <i className="fa-solid fa-ellipsis edit-delete-note-delete-button-icon"></i>
           </button>
           <div className="edit-delete-note-settings-container">

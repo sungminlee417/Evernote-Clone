@@ -29,10 +29,21 @@
 }
 
 .edit-delete-note-settings-container {
+  bottom: 0rem;
+  border-radius: 0.8rem;
   box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
+  pointer-events: none;
   position: absolute;
   right: 0;
+  opacity: 0;
+  transition: 0.2s;
   width: 14rem;
+}
+
+.edit-delete-note-settings-container.visible {
+  bottom: -4rem;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .edit-delete-note-settings-button {

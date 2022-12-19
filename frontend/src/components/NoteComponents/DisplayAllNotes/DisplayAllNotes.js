@@ -6,13 +6,10 @@ import "./DisplayAllNotes.css";
 
 const DisplayAllNotes = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const notes = Object.values(useSelector((state) => state.notes));
 
   useEffect(() => {
     dispatch(loadNotesThunk());
-
-    console.log("hi");
 
     return () => dispatch(clearNotes());
   }, [dispatch]);
