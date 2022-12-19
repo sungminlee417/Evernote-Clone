@@ -14,7 +14,7 @@ const DisplayTags = () => {
   useEffect(() => {
     const subContainer = document.querySelector(".tags-subcontainer");
 
-    if (tags.length === 0 && subContainer) {
+    if (tags.length && subContainer) {
       subContainer.classList.add("no-tags");
     } else {
       subContainer.classList.add("tags");
