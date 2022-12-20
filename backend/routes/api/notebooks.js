@@ -2,7 +2,10 @@ const { Notebook, Note } = require("../../db/models");
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
+const {
+  handleValidationErrors,
+  checkFirstNotebook,
+} = require("../../utils/validation");
 
 const validateNotebook = [
   check("name")
@@ -43,7 +46,7 @@ router.put("/:notebookId", async (req, res) => {
 });
 
 // DELETE NOTEBOOK
-router.delete("/:notebookId", async (req, res) => {
+router.delete("/:notebookId", checkFirstNotebook, async (req, res) => {
   const { notebookId } = req.params;
   const notebook = await Notebook.findByPk(notebookId);
   await notebook.destroy();

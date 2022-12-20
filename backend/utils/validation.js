@@ -86,8 +86,22 @@ const checkDuplicateCredential = async (req, _res, next) => {
   next();
 };
 
+const checkFirstNotebook = async (req, res, next) => {
+  const { notebookId } = req.params;
+  const notebook = await Notebook.findByPk(notebookId);
+
+  if (notebook.firstNotebook) {
+    const err = new Error("Bad request.");
+    err.status = 400;
+    err.message = "Cannot delete user's first notebook.";
+    next(err);
+  }
+  next();
+};
+
 module.exports = {
   handleValidationErrors,
   checkDuplicateCredential,
   checkValidUserLogin,
+  checkFirstNotebook,
 };

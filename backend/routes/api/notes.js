@@ -1,4 +1,4 @@
-const { Note } = require("../../db/models");
+const { Note, Notebook } = require("../../db/models");
 const express = require("express");
 const router = express.Router();
 
@@ -14,8 +14,15 @@ router.get("/", async (req, res) => {
 // POST NEW NOTE
 router.post("/", async (req, res) => {
   const user = req.user;
+  const notebook = await Notebook.findOne({
+    where: {
+      userId: user.id,
+      firstNotebook: true,
+    },
+  });
   const note = await Note.create({
     userId: user.id,
+    notebookId: notebook.id,
   });
   res.status(201).json(note);
 });
