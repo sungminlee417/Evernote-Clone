@@ -49,7 +49,7 @@ const checkValidUserLogin = async (req, res, next) => {
   next();
 };
 
-const checkDuplicateCredential = async (req, res, next) => {
+const checkDuplicateCredential = async (req, _res, next) => {
   const validationErrors = validationResult(req);
   const errors = {};
   const err = new Error("Bad request.");
@@ -62,6 +62,7 @@ const checkDuplicateCredential = async (req, res, next) => {
   }
   err.errors = errors;
   const { username, email } = req.body;
+  console.log(username);
   const userName = await User.findOne({
     where: {
       username: username,

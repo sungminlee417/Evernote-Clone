@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       userId: DataTypes.INTEGER,
+      firstNotebook: DataTypes.BOOLEAN,
     },
     {
       sequelize,

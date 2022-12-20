@@ -1,10 +1,13 @@
 const express = require("express");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Notebook } = require("../../db/models");
 
 const { check } = require("express-validator");
-const { checkDuplicateCredential, handleValidationErrors } = require("../../utils/validation");
+const {
+  checkDuplicateCredential,
+  handleValidationErrors,
+} = require("../../utils/validation");
 const router = express.Router();
 
 const validateSignup = [
@@ -20,15 +23,18 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage("Password must be 6 characters or more."),
-  checkDuplicateCredential
+  checkDuplicateCredential,
 ];
 
 // SIGN UP USER
-router.post("/", 
-  validateSignup,
-  async (req, res) => {
+router.post("/", validateSignup, async (req, res) => {
   const { email, password, username } = req.body;
   const user = await User.signup({ username, email, password });
+  await Notebook.create({
+    name: "First Notebook",
+    userId: user.id,
+    firstNotebook: true,
+  });
 
   setTokenCookie(res, user);
 

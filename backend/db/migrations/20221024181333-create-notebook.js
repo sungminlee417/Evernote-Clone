@@ -22,6 +22,9 @@ module.exports = {
         },
         onDelete: "cascade",
       },
+      firstNotebook: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
