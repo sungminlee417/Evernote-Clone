@@ -11,6 +11,8 @@ const HomePage = () => {
     <section className="home-page-section">
       <Navigation />
       <Switch>
+        <Route exact path ="/">
+        </Route>
         <Route path="/notebooks">
           <DisplayNotebooks />
         </Route>

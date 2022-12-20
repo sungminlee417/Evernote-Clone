@@ -63,13 +63,13 @@ const Navigation = () => {
     });
   };
 
-  useEffect((onClick) => {
+  useEffect(() => {
     if (!clicked) return;
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   },[clicked]);
 
-  useEffect((tagOnClick) => {
+  useEffect(() => {
     if (!tagClicked) return;
     document.addEventListener("click", tagOnClick);
     return () => document.removeEventListener("click", tagOnClick);

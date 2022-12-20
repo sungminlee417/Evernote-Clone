@@ -20,8 +20,6 @@ const ModifyNotebook = ({ notebook }) => {
     }
   };
 
-  const onEdit = () => {};
-
   const parentFunction = (e) => {
     if (clicked) {
       e.stopPropagation();

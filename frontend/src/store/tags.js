@@ -54,27 +54,35 @@ export const createTag = (name) => async (dispatch) => {
       return data;
     }
   };
+export const deleteTagThunk = (tagId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags/${tagId}`, {
+    method: "DELETE",
+  });
 
+  if (response.ok) {
+    dispatch(deleteTag(tagId));
+  }
+};
   const initialState = {};
-  const tagsReducer = (state = initialState, action) => {
-    const newState = { ...state };
-    switch (action.type) {
-      case LOAD_TAGS:
-        const tagsObj = {};
-        Object.values(action.tags);
-        return tagsObj;
-      case ADD_TAG:
-        newState[action.tag.id] = action.tag;
-        return newState;
-      case EDIT_TAG:
-        newState[action.tag.id] = action.tag;
-        return newState;
-      case DELETE_TAG:
-        delete newState[action.tagId];
-        return newState;
-      default:
-        return newState;
-    }
-  };
+const tagsReducer = (state = initialState, action) => {
+  const newState = { ...state };
+  switch (action.type) {
+    case LOAD_TAGS:
+      const tagsObj = {};
+      Object.values(action.tags).forEach(tag => tagsObj[tag.id] = tag);
+      return tagsObj;
+    case ADD_TAG:
+      newState[action.tag.id] = action.tag;
+      return newState;
+    case EDIT_TAG:
+      newState[action.tag.id] = action.tag;
+      return newState;
+    case DELETE_TAG:
+      delete newState[action.tagId];
+      return newState;
+    default:
+      return newState;
+  }
+};
   
 export default tagsReducer;
