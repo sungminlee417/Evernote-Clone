@@ -63,13 +63,16 @@ export const deleteTagThunk = (tagId) => async (dispatch) => {
     dispatch(deleteTag(tagId));
   }
 };
-  const initialState = {};
+const initialState = {};
 const tagsReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case LOAD_TAGS:
       const tagsObj = {};
       Object.values(action.tags).forEach(tag => tagsObj[tag.id] = tag);
+      // action.tags.forEach((tag) => {
+      //   tagsObj[tag.id] = tag;
+      // });
       return tagsObj;
     case ADD_TAG:
       newState[action.tag.id] = action.tag;

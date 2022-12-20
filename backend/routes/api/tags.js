@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   const tags = await Tag.findAll({
     where: { userId: user.id },
   });
-  res.json({ tags });
+  res.json(tags);
 });
 
 // POST NEW TAG

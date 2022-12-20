@@ -2,6 +2,8 @@
   background-color:#201c1c;
   height: 100%;
   width: 22rem;
+  box-shadow: 0.5rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .nav-bar-header {
@@ -190,11 +192,13 @@
   border-right: 0.125rem solid #d8d4d4;
   pointer-events: none;
   gap: 1.5rem;
+  
 }
 .tags-container.visible {
   opacity:1;
   animation: container-slide-in 0.2s;
   pointer-events: all;
+  z-index: 2;
 }
 
 .tags-header {

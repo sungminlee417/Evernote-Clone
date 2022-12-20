@@ -2,4 +2,63 @@
   height: 100%;
   width: 100%;
   display:flex;
+  position:absolute;
+  overflow: hidden;
+}
+
+.home-page-photo {
+  width: 100%;
+  margin: -40rem 0rem 0rem 0rem;
+}
+
+.home-page-notes-subsection {
+  display:flex;
+  gap:3rem;
+  padding: 0rem 3rem 0rem 3rem;
+
+}
+
+.home-page-notes-container {
+  position: relative;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  width: 77rem;
+  height:35rem;
+  top: -15rem;
+}
+.home-page-notes-header {
+  padding: 1.5rem 2rem 1.5rem 2rem;
+
+}
+.home-page-notes-title {
+  display: flex;
+  font-size: 1.5rem;
+  width:8rem;
+  height: 3rem;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.home-page-notes-title:hover {
+  background-color:#f8f4f4;
+  cursor:pointer
+}
+
+.home-page-notes-text {
+  display: flex;
+  align-items: center;
+  color:black;
+}
+
+.home-page-scratch-pad {
+  position: relative;
+  background-color: #fff4bc;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  width: 35rem;
+  height:35rem;
+  top: -15rem;
 }
