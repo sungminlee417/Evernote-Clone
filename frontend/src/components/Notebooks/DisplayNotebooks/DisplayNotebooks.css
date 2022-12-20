@@ -43,23 +43,23 @@
   margin-bottom: 1.5rem;
 }
 
-.second-notebook-header-options{
-    display: flex;
-    gap: 1.5rem;
+.second-notebook-header-options {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .sort-notebooks-button {
-    position: relative;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    right: 0;
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  right: 0;
 }
 
 .sort-notebooks-button:hover {
-background-color: #e8e4e4;
+  background-color: #e8e4e4;
 }
 
 .new-notebook-button {
@@ -139,16 +139,31 @@ background-color: #e8e4e4;
   background-color: #f4f4f4;
 }
 
+.display-notebooks-first-col {
+  display: flex;
+  gap: 1rem;
+}
+
+.display-notebooks-note-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.display-notebooks-note-button > * {
+  cursor: pointer;
+}
+
 .individual-notebook {
   align-items: center;
   display: flex;
   gap: 0.75rem;
   text-decoration: none;
-  color:#383434;
+  color: #383434;
   font-size: 1.25rem;
 }
 .indiv-notebook-link-icon {
-    color: #787474;
+  color: #787474;
 }
 .individual-notebook:hover {
   text-decoration: underline;

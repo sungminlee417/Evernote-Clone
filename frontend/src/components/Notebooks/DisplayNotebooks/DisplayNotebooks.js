@@ -38,7 +38,6 @@ const DisplayNotebooks = () => {
           <CreateNotebookModal />
           <img className="sort-notebooks-button" src={sort} alt="sort"></img>
         </div>
-        
       </div>
       <div className="list-notebooks">
         <div className="list-notebooks-columns">
@@ -47,32 +46,44 @@ const DisplayNotebooks = () => {
           <button className="notebook-desc-updated">UPDATED</button>
           <div className="modify-notebook">ACTIONS</div>
         </div>
-        <ul>
-          {notebooks.map((notebook, i) => {
+        <div>
+          {notebooks.reverse().map((notebook, i) => {
             return (
-              <li
-                key={i}
-                className={
-                  i % 2 === 0 ? "style-even-notebook" : "style-odd-notebook"
-                }
-              >
-                <NavLink
-                  className="individual-notebook"
-                  to={`/notebooks/${notebook.id}`}
+              <div>
+                <div
+                  key={i}
+                  className={
+                    i % 2 === 0 ? "style-even-notebook" : "style-odd-notebook"
+                  }
                 >
-                  <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
-                  <div>{notebook.name}</div>
-                  <div className="num-notes-in-notebook"></div>
-                </NavLink>
-                <div className="notebook-creator">{sessionUser.username}</div>
-                <div className="notebook-updated-date">
-                  {convertDate(notebook.updatedAt)}
+                  <div className="display-notebooks-first-col">
+                    <button className="display-notebooks-note-button">
+                      <i className="fa-solid fa-caret-right"></i>
+                    </button>
+                    <NavLink
+                      className="individual-notebook"
+                      to={`/notebooks/${notebook.id}`}
+                    >
+                      <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
+                      <div>{notebook.name}</div>
+                      <div className="num-notes-in-notebook"></div>
+                    </NavLink>
+                  </div>
+                  <div className="notebook-creator">{sessionUser.username}</div>
+                  <div className="notebook-updated-date">
+                    {convertDate(notebook.updatedAt)}
+                  </div>
+                  <ModifyNotebook notebook={notebook} />
                 </div>
-                <ModifyNotebook notebook={notebook} />
-              </li>
+                <div>
+                  {notebook.Notes.reverse().map((note, i) => {
+                    return <div>{note.name}</div>;
+                  })}
+                </div>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </div>
   );

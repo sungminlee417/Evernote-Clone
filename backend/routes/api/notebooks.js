@@ -19,6 +19,7 @@ const validateNotebook = [
 router.get("/", async (req, res) => {
   const user = req.user;
   const notebooks = await Notebook.findAll({
+    include: { model: Note },
     where: { userId: user.id },
   });
   res.json(notebooks);
