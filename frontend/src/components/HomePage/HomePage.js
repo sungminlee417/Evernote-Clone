@@ -1,5 +1,6 @@
-import { Route } from "react-router-dom";
-import { Switch } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
 import "./HomePage.css";
@@ -8,11 +9,24 @@ import home_photo from "../../images/sean-benesh-wK8LMfHtRoM-unsplash.jpg";
 import HomePageHeader from "./HomePageHeader/HomePageHeader";
 import click_notes from "../../images/green-side-arrow.svg";
 import options from "../../images/modify.svg";
-import { NavLink } from "react-router-dom";
 import DisplayAllNotes from "../NoteComponents/DisplayAllNotes";
 import ViewAndEditNote from "../NoteComponents/ViewAndEditNote";
+import view_notes from "../../images/view-notes.svg"
+import { loadNotesThunk, clearNotes } from "../../store/notes";
+
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const notes = Object.values(useSelector((state) => state.notes));
+  // useEffect(() => {
+  //   dispatch(loadNotesThunk());
+  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadNotesThunk());
+
+    return () => dispatch(clearNotes());
+  }, [dispatch]);
+
   return (
     <section className="home-page-section">
       <Navigation />
@@ -37,6 +51,28 @@ const HomePage = () => {
                     src={options}
                     alt="notes_options"
                   ></img>
+                </div>
+                <div className="home-page-view-notes">
+                  <div className="home-page-notes-list">
+                    {notes.map((note, i) => {
+                      return (
+                        <NavLink
+                          className="home-page-display-note-container"
+                          key={i}
+                          to={`/notes/${note.id}`}
+                        >
+                          <div className="home-page-display-note-container-name">{note?.name}</div>
+                          <div className="display-note-container-created-at">
+                            {note?.createdAt}
+                          </div>
+                        </NavLink>
+                      );
+                    })}
+                  </div>  
+                  <div className="home-page-view-all-notes">
+                    <img src={view_notes} alt="view-notes"></img>
+                    Notes
+                  </div>       
                 </div>
               </div>
               <div className="home-page-scratch-pad">
