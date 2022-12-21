@@ -95,3 +95,57 @@
 .home-page-scratch-pad-input:focus {
   outline: none;
 }
+
+.home-page-view-notes {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background-color: white;
+  width: 100%;
+  height: 81.5%;
+  border-radius: 0.5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 1rem 1.5rem 1.75rem 1.5rem;
+}
+.home-page-notes-list {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height:25rem;
+
+}
+.home-page-display-note-container {
+  background-color: white;
+  border: 0.2rem solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  text-decoration: none;
+  transition: 0.2s;
+  width: 17.95rem;
+}
+
+.home-page-display-note-container:hover {
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+}
+
+.home-page-display-note-container-name { 
+  font-size: 1.4rem;
+  color: #383434;
+  font-weight: bold;
+}
+
+.home-page-view-all-notes{
+  display:flex;
+  flex-direction: column;
+  height:25rem;
+  background-color: white;
+  border: 0.2rem solid transparent;
+  border-radius: 0.5rem;
+}
