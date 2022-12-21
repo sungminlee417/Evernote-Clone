@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_NOTEBOOKS = "notebooks/LOAD";
-const LOAD_NOTEBOOK = "notebook/LOAD";
 const ADD_NOTEBOOK = "notebooks/ADD";
 const EDIT_NOTEBOOK = "notebooks/EDIT";
 const DELETE_NOTEBOOK = "notebooks/DELETE";
@@ -11,13 +10,6 @@ export const loadNotebooks = (notebooks) => {
   return {
     type: LOAD_NOTEBOOKS,
     notebooks,
-  };
-};
-
-export const loadNotebook = (notebook) => {
-  return {
-    type: LOAD_NOTEBOOK,
-    notebook,
   };
 };
 
@@ -52,12 +44,6 @@ export const loadNotebooksThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/notebooks");
   const notebooks = await response.json();
   dispatch(loadNotebooks(notebooks));
-};
-
-export const loadNotebookThunk = (notebookId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/notebooks/${notebookId}`);
-  const notebook = await response.json();
-  dispatch(loadNotebook(notebook));
 };
 
 export const createNotebook = (name) => async (dispatch) => {
@@ -103,6 +89,7 @@ export const deleteNotebookThunk = (notebookId) => async (dispatch) => {
 };
 
 const initialState = {};
+
 const notebooksReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
@@ -112,8 +99,6 @@ const notebooksReducer = (state = initialState, action) => {
         notebooksObj[notebook.id] = notebook;
       });
       return notebooksObj;
-    case LOAD_NOTEBOOK:
-      return action.notebook;
     case ADD_NOTEBOOK:
       newState[action.notebook.id] = action.notebook;
       return newState;
