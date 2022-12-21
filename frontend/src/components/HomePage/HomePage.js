@@ -68,11 +68,14 @@ const HomePage = () => {
                         </NavLink>
                       );
                     })}
-                  </div>  
-                  <div className="home-page-view-all-notes">
-                    <img src={view_notes} alt="view-notes"></img>
-                    Notes
-                  </div>       
+                  </div> 
+                  <NavLink to="/notes" className="home-page-view-all-notes">
+                    <img className="home-page-view-notes-svg" src={view_notes} alt="view-notes"></img>
+                    <div className="home-page-view-notes-text">
+                      <div className="home-page-view-notes-text-label">Notes</div>
+                      <div className="home-page-view-notes-text-length"> ({notes.length})</div>
+                    </div>
+                  </NavLink>     
                 </div>
               </div>
               <div className="home-page-scratch-pad">

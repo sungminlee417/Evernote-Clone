@@ -8,6 +8,7 @@ import {
   loadNotesThunk,
 } from "../../../store/notes";
 import "./ViewAndEditNote.css";
+import options from "../../../images/modify.svg"
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
