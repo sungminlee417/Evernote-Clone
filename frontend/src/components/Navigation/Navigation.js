@@ -59,6 +59,7 @@ const Navigation = () => {
     });
   };
 
+<<<<<<< HEAD
   useEffect(
     (onClick) => {
       if (!clicked) return;
@@ -76,6 +77,19 @@ const Navigation = () => {
     },
     [tagClicked]
   );
+=======
+  useEffect(() => {
+    if (!clicked) return;
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  },[clicked]);
+
+  useEffect(() => {
+    if (!tagClicked) return;
+    document.addEventListener("click", tagOnClick);
+    return () => document.removeEventListener("click", tagOnClick);
+  },[tagClicked]);
+>>>>>>> refs/remotes/origin/main
 
   return (
     <section className="nav-bar-section">
