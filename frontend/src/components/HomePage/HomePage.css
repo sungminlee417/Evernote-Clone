@@ -28,29 +28,39 @@
   top: -15rem;
 }
 .home-page-notes-header {
-  padding: 1.5rem 2rem 1.5rem 2rem;
+  display:flex;
+  justify-content: space-between;
+  padding: 1.75rem 1.5rem 1.75rem 1.5rem;
 
 }
 .home-page-notes-title {
   display: flex;
-  font-size: 1.5rem;
   width:8rem;
   height: 3rem;
   display: flex;
   padding: 0.5rem;
   border-radius: 0.25rem;
   text-decoration: none;
+  cursor:pointer
 }
 
-.home-page-notes-title:hover {
-  background-color:#f8f4f4;
-  cursor:pointer
+.home-page-notes-title:hover,
+.home-page-notes-options:hover {
+  background-color: #e8e4e4;
 }
 
 .home-page-notes-text {
   display: flex;
   align-items: center;
   color:black;
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+.home-page-notes-options {
+  width: 3rem;
+  height:auto;
+  cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .home-page-scratch-pad {
@@ -61,4 +71,27 @@
   width: 35rem;
   height:35rem;
   top: -15rem;
+  padding: 1.75rem 1.5rem 1.75rem 1.5rem;
+}
+
+.home-page-scratch-pad-header {
+  padding-bottom: 1.5rem;
+}
+.home-page-scratch-pad-text {
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+.home-page-scratch-pad-input {
+  margin: auto;
+  width:100%;
+  height: 28rem;
+  background: none;
+  border: none;
+  cursor: text;
+  resize:none;
+}
+
+.home-page-scratch-pad-input:focus {
+  outline: none;
 }

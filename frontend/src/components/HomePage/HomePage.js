@@ -7,6 +7,7 @@ import Notes from "../NoteComponents/Notes";
 import home_photo from "../../images/sean-benesh-wK8LMfHtRoM-unsplash.jpg"
 import HomePageHeader from "./HomePageHeader/HomePageHeader";
 import click_notes from "../../images/green-side-arrow.svg";
+import options from "../../images/modify.svg"
 import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
@@ -21,7 +22,6 @@ const HomePage = () => {
             <div className="home-page-notes-subsection">
               <div className="home-page-notes-container">
                 <div className="home-page-notes-header">
-                
                   <NavLink to="/notes" className="home-page-notes-title">
                    <div className="home-page-notes-text">NOTES</div>
                     <img className="click-for-note-page" 
@@ -29,9 +29,21 @@ const HomePage = () => {
                         alt="get_notes">
                     </img>
                   </NavLink>
+                  <img className="home-page-notes-options"
+                       src={options}
+                       alt="notes_options">
+                  </img>
                 </div>
               </div>
-              <div className="home-page-scratch-pad"></div>
+              <div className="home-page-scratch-pad">
+                <div className="home-page-scratch-pad-header">
+                  <div className="home-page-scratch-pad-text">SCRATCH PAD</div>
+                </div>
+                <textarea
+                  className="home-page-scratch-pad-input"
+                  placeholder="Start writing..."
+                />
+              </div>
             </div>
           </section>
         </Route>
