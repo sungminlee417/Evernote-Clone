@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { loadNotebooksThunk } from "../../../store/notebooks";
+import { clearNotebooks, loadNotebooksThunk } from "../../../store/notebooks";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
-import sort from "../../../images/sort.svg";
 import "./DisplayNotebooks.css";
 
 const DisplayNotebooks = () => {
@@ -62,7 +61,6 @@ const DisplayNotebooks = () => {
         </div>
         <div className="second-notebook-header-options">
           <CreateNotebookModal />
-          {/* <img className="sort-notebooks-button" src={sort} alt="sort"></img> */}
         </div>
       </div>
       <div className="list-notebooks">
@@ -93,7 +91,9 @@ const DisplayNotebooks = () => {
                       to={`/notebooks/${notebook.id}`}
                     >
                       <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
-                      <div className="display-notebook-name">{notebook.name}</div>
+                      <div className="display-notebook-name">
+                        {notebook.name}
+                      </div>
                       <span className="num-notes-in-notebook">
                         {`(${Object.values(notebook.Notes).length})`}
                       </span>

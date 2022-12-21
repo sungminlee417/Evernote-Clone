@@ -50,6 +50,16 @@ export const loadNotesThunk = () => async (dispatch) => {
   }
 };
 
+export const loadNotesByNotebookIdThunk = (notebookId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/notebooks/${notebookId}/notes`);
+
+  if (response.ok) {
+    const notes = await response.json();
+    dispatch(loadNotes(notes));
+    return notes;
+  }
+};
+
 export const createNote = () => async (dispatch) => {
   const response = await csrfFetch("/api/notes", {
     method: "POST",

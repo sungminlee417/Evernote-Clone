@@ -7,7 +7,7 @@ const Notes = () => {
   return (
     <>
       <DisplayAllNotes />
-      <Route path="/notes/:noteId">
+      <Route path={["/notes/:noteId", "/notebooks/:notebookId/:noteId"]}>
         <ViewAndEditNote />
       </Route>
     </>

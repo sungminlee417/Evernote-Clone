@@ -124,7 +124,7 @@ const Navigation = () => {
           </NavLink>
         </div>
         <div className="nav-bar-links-section-two">
-          <NavLink to="/notebooks" className="nav-bar-link">
+          <NavLink exact to="/notebooks" className="nav-bar-link">
             <i className="fa-solid fa-book  nav-bar-link-icon"></i> Notebooks
           </NavLink>
           <div className="nav-bar-link tags" onClick={tagOnClick}>

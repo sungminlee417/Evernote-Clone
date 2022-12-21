@@ -27,7 +27,6 @@ router.get("/", async (req, res) => {
 
 // POST NEW NOTEBOOK
 router.post("/", validateNotebook, async (req, res) => {
-  console.log(req.body.name);
   const user = req.user;
   const { name } = req.body;
   const notebook = await Notebook.create({
@@ -35,6 +34,16 @@ router.post("/", validateNotebook, async (req, res) => {
     userId: user.id,
   });
   res.status(201).json(notebook);
+});
+
+// GET A USER'S NOTEBOOK
+router.get("/:notebookId", async (req, res) => {
+  const user = req.user;
+  const { notebookId } = req.params;
+  const notebook = await Notebook.findOne({
+    where: { userId: user.id, id: notebookId },
+  });
+  res.json(notebook);
 });
 
 // UPDATE NOTEBOOK
@@ -58,12 +67,11 @@ router.delete("/:notebookId", checkFirstNotebook, async (req, res) => {
 
 // GET CURRENT USER'S NOTES IN CERTAIN NOTEBOOK
 router.get("/:notebookId/notes", async (req, res) => {
-  const user = req.user;
   const { notebookId } = req.params;
   const notes = await Note.findAll({
     where: { notebookId: notebookId },
   });
-  res.json({ notes });
+  res.json(notes);
 });
 
 // POST NEW NOTE IN CURRENT NOTEBOOK
