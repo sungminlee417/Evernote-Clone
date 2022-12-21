@@ -62,7 +62,7 @@ const DisplayNotebooks = () => {
         </div>
         <div className="second-notebook-header-options">
           <CreateNotebookModal />
-          <img className="sort-notebooks-button" src={sort} alt="sort"></img>
+          {/* <img className="sort-notebooks-button" src={sort} alt="sort"></img> */}
         </div>
       </div>
       <div className="list-notebooks">
@@ -93,7 +93,7 @@ const DisplayNotebooks = () => {
                       to={`/notebooks/${notebook.id}`}
                     >
                       <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
-                      <div>{notebook.name}</div>
+                      <div className="display-notebook-name">{notebook.name}</div>
                       <span className="num-notes-in-notebook">
                         {`(${Object.values(notebook.Notes).length})`}
                       </span>
@@ -120,7 +120,6 @@ const DisplayNotebooks = () => {
                             >
                               <i className="fa-regular fa-note-sticky"></i>
                               <div>{note.name}</div>
-                              <div className="num-notes-in-notebook"></div>
                             </NavLink>
                           </div>
                           <div className="note-creator">

@@ -142,6 +142,7 @@
 .display-notebooks-first-col {
   display: flex;
   gap: 1rem;
+  
 }
 
 .display-notebooks-notes-button {
@@ -149,6 +150,7 @@
   border: none;
   cursor: pointer;
   transition: 0.2s;
+  color: #787474;
 }
 
 .display-notebooks-notes-button.rotated {
@@ -170,7 +172,7 @@
 .indiv-notebook-link-icon {
   color: #787474;
 }
-.individual-notebook:hover {
+.display-notebook-name:hover {
   text-decoration: underline;
 }
 
@@ -219,3 +221,4 @@
 .individual-note > * {
   cursor: pointer;
 }
+

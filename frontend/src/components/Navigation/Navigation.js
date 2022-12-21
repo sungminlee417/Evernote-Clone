@@ -153,11 +153,11 @@ const Navigation = () => {
             </Modal>
           )}
         </div>
-        <div className="nav-bar-links-section-three">
+        {/* <div className="nav-bar-links-section-three">
           <NavLink to="/trash" className="nav-bar-link">
             <i className="fa-solid fa-trash nav-bar-link-icon"></i> Trash
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </section>
   );
