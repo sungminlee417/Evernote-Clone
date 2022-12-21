@@ -144,13 +144,18 @@
   gap: 1rem;
 }
 
-.display-notebooks-note-button {
+.display-notebooks-notes-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.display-notebooks-note-button > * {
+.display-notebooks-notes-button.rotated {
+  transform: rotate(90deg);
+}
+
+.display-notebooks-notes-button > * {
   cursor: pointer;
 }
 
@@ -173,8 +178,44 @@
   cursor: pointer;
 }
 
+.num-notes-in-notebook {
+  opacity: 0.5;
+  text-decoration: none;
+}
+
 .notebook-buttons {
   display: flex;
   align-items: center;
   margin-left: auto;
+}
+
+.display-notebooks-note-container {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  flex-direction: row;
+  list-style: none;
+  font-size: 1.25rem;
+  color: #787474;
+  padding: 0rem 1rem;
+  min-height: 4rem;
+}
+
+.display-notebooks-note-first-col {
+  align-items: center;
+  display: flex;
+  padding-left: 4rem;
+}
+
+.individual-note {
+  align-items: center;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.individual-note > * {
+  cursor: pointer;
 }

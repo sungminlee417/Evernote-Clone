@@ -8,7 +8,7 @@ import { loadNotesThunk } from "../../store/notes";
 import CreateTag from "../Tags/CreateTag";
 import DisplayTags from "../Tags/DisplayTags";
 import { Modal } from "../context/Modal";
-import tag from "../../images/new-tag.svg"
+import tag from "../../images/new-tag.svg";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -30,12 +30,8 @@ const Navigation = () => {
     }
   };
   const tagOnClick = () => {
-    const tagsContainer = document.querySelector(
-      ".tags-container"
-    );
-    const tagsButton = document.querySelector(
-      ".nav-bar-link.tags"
-    )
+    const tagsContainer = document.querySelector(".tags-container");
+    const tagsButton = document.querySelector(".nav-bar-link.tags");
     if (tagClicked) {
       tagsContainer.classList.remove("visible");
       tagsButton.classList.remove("active");
@@ -63,17 +59,23 @@ const Navigation = () => {
     });
   };
 
-  useEffect((onClick) => {
-    if (!clicked) return;
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  },[clicked]);
+  useEffect(
+    (onClick) => {
+      if (!clicked) return;
+      document.addEventListener("click", onClick);
+      return () => document.removeEventListener("click", onClick);
+    },
+    [clicked]
+  );
 
-  useEffect((tagOnClick) => {
-    if (!tagClicked) return;
-    document.addEventListener("click", tagOnClick);
-    return () => document.removeEventListener("click", tagOnClick);
-  },[tagClicked]);
+  useEffect(
+    (tagOnClick) => {
+      if (!tagClicked) return;
+      document.addEventListener("click", tagOnClick);
+      return () => document.removeEventListener("click", tagOnClick);
+    },
+    [tagClicked]
+  );
 
   return (
     <section className="nav-bar-section">
@@ -132,22 +134,24 @@ const Navigation = () => {
             <i className="fa-solid fa-book  nav-bar-link-icon"></i> Notebooks
           </NavLink>
           <div className="nav-bar-link tags" onClick={tagOnClick}>
-            <i class="fa-solid fa-tag"></i> Tags
+            <i className="fa-solid fa-tag"></i> Tags
           </div>
           <div className="tags-container" onClick={tagParentFunction}>
-              <div className="tags-header">
-                <div className="tags-header-title">Tags</div>
-                <img className="new-tag-button" 
-                    src={tag} 
-                    alt="new-tag"
-                    onClick={() => setShowModal(true)}></img>
-              </div>
-              <input
+            <div className="tags-header">
+              <div className="tags-header-title">Tags</div>
+              <img
+                className="new-tag-button"
+                src={tag}
+                alt="new-tag"
+                onClick={() => setShowModal(true)}
+              ></img>
+            </div>
+            <input
               className="search-for-tags"
               type="text"
               placeholder="Find tags..."
-              />
-              <DisplayTags/>
+            />
+            <DisplayTags />
           </div>
           {showModal && (
             <Modal showModal={showModal} onClose={() => setShowModal(false)}>
