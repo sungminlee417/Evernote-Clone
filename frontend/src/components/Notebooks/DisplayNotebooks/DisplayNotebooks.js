@@ -14,6 +14,8 @@ const DisplayNotebooks = () => {
 
   useEffect(() => {
     dispatch(loadNotebooksThunk());
+
+    return () => dispatch(clearNotebooks());
   }, [dispatch]);
 
   const convertDate = (date) => {

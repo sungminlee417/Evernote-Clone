@@ -70,3 +70,37 @@
 .display-note-container:hover {
   background-color: white;
 }
+
+.display-notes-no-notes-section {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.display-notes-no-notes-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 5rem;
+}
+
+.display-notes-no-notes-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.display-notes-no-notes-text {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.display-notes-no-notes-button {
+  background-color: transparent;
+  border: none;
+  color: green;
+  cursor: pointer;
+  font-size: 1.4rem;
+}

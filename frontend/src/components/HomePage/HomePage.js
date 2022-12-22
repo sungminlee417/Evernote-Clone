@@ -90,11 +90,11 @@ const HomePage = () => {
             </div>
           </section>
         </Route>
-        <Route exact path="/notebooks">
-          <DisplayNotebooks />
-        </Route>
         <Route path="/notebooks/:notebookId">
           <Notes />
+        </Route>
+        <Route path="/notebooks">
+          <DisplayNotebooks />
         </Route>
         <Route path="/notes">
           <Notes />
