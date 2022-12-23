@@ -121,7 +121,7 @@ const DisplayNotebooks = () => {
                               to={`/notebooks/${notebook.id}`}
                             >
                               <i className="fa-regular fa-note-sticky"></i>
-                              <div>{note.name}</div>
+                              <div className="individual-note-name">{note.name}</div>
                             </NavLink>
                           </div>
                           <div className="note-creator">

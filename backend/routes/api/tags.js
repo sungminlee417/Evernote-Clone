@@ -48,7 +48,7 @@ router.delete("/:tagId", async (req, res) => {
   const { tagId } = req.params;
   const tag = await Tag.findByPk(tagId);
   await tag.destroy();
-  res.status().json({
+  res.status(204).json({
     message: "Tag successfully deleted."
   });
 });

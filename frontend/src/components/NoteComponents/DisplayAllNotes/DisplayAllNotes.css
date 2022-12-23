@@ -22,7 +22,13 @@
 }
 
 .list-notes-header-header {
+  display:flex;
   font-size: 2rem;
+  gap: 1rem;
+}
+
+.indiv-notebook-link-icon-display-notes {
+  color: #383434;
 }
 
 .list-notes-header-sub {

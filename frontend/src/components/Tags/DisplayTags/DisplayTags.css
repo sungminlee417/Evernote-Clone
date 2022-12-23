@@ -1,4 +1,5 @@
 .individual-tag {
+    position:relative;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -10,11 +11,13 @@
     color: #383434;
 }
 
-.individual-tag:hover {
+.individual-tag:hover,
+.individual-tag.visible {
     background-color: #e8e4e4;
 }
 
-.individual-tag:hover >* {
+.individual-tag:hover>*:not(:last-child),
+.tag-buttons.visible {
     opacity:1;
     cursor:pointer;
 }
@@ -34,14 +37,15 @@
     height:auto;
 }
 .tag-buttons {
-    display:flex;
-    align-items: center;
+    height: 2.25rem;
+    position: relative;
     background-color: transparent;
     outline: none;
     border: none;
     border-radius: 0.5rem;
     opacity:0;
 }
+
 .modify-tag-button{
     cursor:pointer;
 }
@@ -55,24 +59,26 @@
     line-height: 2rem;
 }
 
-.modify-tag-container {
-    align-items: center;
-    background-color: white;
-    border: 0.05rem solid rgb(171, 171, 171, 50%);
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+.tags-settings-container {
     display: flex;
     flex-direction: column;
-    opacity: 0;
     pointer-events: none;
+    background-color: white;
+    bottom: 0rem;
+    border: 0.05rem solid rgb(171, 171, 171, 50%);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
     position: absolute;
-    right: 0;
-    bottom: -285%;
-    width: 16rem;
-    z-index: 3;
-  }
+    right: 1.01rem;
+    opacity: 0;
+    transition: 0.2s;
+    width: 14rem;
+    z-index:1;
+    
+}
   
-  .modify-tag-container.visible {
+.tags-settings-container.visible {
+    bottom: -2.25rem;
     opacity: 1;
     pointer-events: all;
-  }
+}

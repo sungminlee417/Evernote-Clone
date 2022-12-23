@@ -8,7 +8,7 @@
 .edit-delete-note-section-header {
   display: flex;
   justify-content: space-between;
-  padding: 3rem 2rem 5.05rem 2rem;
+  padding: 3rem 2rem 4.2rem 2rem;
 }
 
 .edit-delete-note-button-settings-container {
@@ -25,7 +25,12 @@
 }
 
 .edit-delete-note-delete-button-icon {
+  border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.edit-delete-note-delete-button-icon:hover {
+  background-color: #e8e4e4;
 }
 
 .edit-delete-note-settings-container {
@@ -57,7 +62,7 @@
 .edit-note-inputs-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   height: 100%;
   padding: 4rem;
   border-top: 0.1rem solid #e8e4e4;

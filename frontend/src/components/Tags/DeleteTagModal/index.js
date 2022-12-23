@@ -1,3 +1,3 @@
 import DeleteTagModal from "./DeleteTagModal";
 
-export default DeleteTagModal;
+export default DeleteTagModal

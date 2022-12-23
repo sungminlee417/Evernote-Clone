@@ -25,7 +25,7 @@ const DeleteTag = ({ tag, onClose }) => {
         </button>
       </div>
       <div className='delete-tag-desc'>
-        Any notes in the notebook will be moved to Trash. This cannot be undone.
+        Are you sure you want to delete the {tag.name} tag? This tag will be removed from all notes.
       </div>
       <div className="delete-tag-modal-separator"></div>
       <div className="delete-tag-buttons-container">

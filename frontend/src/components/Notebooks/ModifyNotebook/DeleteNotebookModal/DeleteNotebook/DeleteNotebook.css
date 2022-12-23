@@ -21,7 +21,6 @@
 
 .delete-notebook {
   font-size: 1.8rem;
-  padding-bottom: 1.3rem;
 }
 
 .delete-close-button {
@@ -80,9 +79,10 @@
 }
 
 .delete-notebook-desc {
+  color:#787474;
+  line-height: 2.5rem;
   font-size: 1.35rem;
-  padding-bottom: 3rem;
-  text-align: center;
+  padding-bottom: 2.5rem;
 }
 
 .delete-notebook-modal-separator{

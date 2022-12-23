@@ -21,11 +21,16 @@ const HomePage = () => {
   // useEffect(() => {
   //   dispatch(loadNotesThunk());
   // }, [dispatch]);
+  const parentFunction = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     dispatch(loadNotesThunk());
 
     return () => dispatch(clearNotes());
   }, [dispatch]);
+
 
   return (
     <section className="home-page-section">
@@ -62,20 +67,23 @@ const HomePage = () => {
                           to={`/notes/${note.id}`}
                         >
                           <div className="home-page-display-note-container-name">{note?.name}</div>
+                          <div className="display-note-container-content">
+                            {note?.content}
+                          </div>
                           <div className="display-note-container-created-at">
                             {note?.createdAt}
                           </div>
                         </NavLink>
                       );
                     })}
-                  </div> 
-                  <NavLink to="/notes" className="home-page-view-all-notes">
-                    <img className="home-page-view-notes-svg" src={view_notes} alt="view-notes"></img>
-                    <div className="home-page-view-notes-text">
-                      <div className="home-page-view-notes-text-label">Notes</div>
-                      <div className="home-page-view-notes-text-length"> ({notes.length})</div>
-                    </div>
-                  </NavLink>     
+                    <NavLink to="/notes" className="home-page-view-all-notes">
+                      <img className="home-page-view-notes-svg" src={view_notes} alt="view-notes"></img>
+                      <div className="home-page-view-notes-text">
+                        <div className="home-page-view-notes-text-label">Notes</div>
+                        <div className="home-page-view-notes-text-length"> ({notes.length})</div>
+                      </div>
+                    </NavLink>  
+                  </div>
                 </div>
               </div>
               <div className="home-page-scratch-pad">

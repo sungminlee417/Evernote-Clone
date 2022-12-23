@@ -16,19 +16,18 @@ const Navigation = () => {
   const [tagClicked, setTagClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-
-  const onClick = () => {
-    const settingsContainer = document.querySelector(
-      ".nav-bar-new-pop-up-container"
-    );
-    if (clicked) {
-      settingsContainer.classList.remove("visible");
-      setClicked(false);
-    } else {
-      settingsContainer.classList.add("visible");
-      setClicked(true);
-    }
-  };
+  // const onClick = () => {
+  //   const settingsContainer = document.querySelector(
+  //     ".nav-bar-new-pop-up-container"
+  //   );
+  //   if (clicked) {
+  //     settingsContainer.classList.remove("visible");
+  //     setClicked(false);
+  //   } else {
+  //     settingsContainer.classList.add("visible");
+  //     setClicked(true);
+  //   }
+  // };
   const tagOnClick = () => {
     const tagsContainer = document.querySelector(".tags-container");
     const tagsButton = document.querySelector(".nav-bar-link.tags");
@@ -59,11 +58,11 @@ const Navigation = () => {
     });
   };
 
-  useEffect(() => {
-    if (!clicked) return;
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, [clicked]);
+  // useEffect(() => {
+  //   if (!clicked) return;
+  //   document.addEventListener("click", onClick);
+  //   return () => document.removeEventListener("click", onClick);
+  // }, [clicked]);
 
   useEffect(() => {
     if (!tagClicked) return;
@@ -84,15 +83,15 @@ const Navigation = () => {
           <i className="fa-solid fa-magnifying-glass nav-bar-magnifying-glass"></i>
           <input placeholder="Search" className="nav-bar-search-input" />
         </div>
-        <div className="nav-bar-new-button-container">
-          <button className="nav-bar-new-button" onClick={onClick}>
+        <div className="nav-bar-new-button-container" onClick={newNote}>
+          <button className="nav-bar-new-button">
             <div className="nav-bar-new-button-new">
               <i className="fa-solid fa-plus nav-bar-new-button-plus"></i>
-              New
+              New Note
             </div>
-            <i className="fa-solid fa-chevron-down"></i>
+            {/* <i className="fa-solid fa-chevron-down"></i> */}
           </button>
-          <div
+          {/* <div
             className="nav-bar-new-pop-up-container"
             onClick={parentFunction}
           >
@@ -111,7 +110,7 @@ const Navigation = () => {
                 Task
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="nav-bar-links">

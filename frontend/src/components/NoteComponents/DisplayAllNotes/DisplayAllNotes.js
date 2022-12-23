@@ -17,6 +17,7 @@ const DisplayAllNotes = () => {
   const dispatch = useDispatch();
   const notes = Object.values(useSelector((state) => state.notes));
   const notebook = useSelector((state) => state.singleNotebook);
+  const { notebookId } = useParams();
 
   useEffect(() => {
     if (notebookId) {
@@ -39,7 +40,7 @@ const DisplayAllNotes = () => {
           <div className="list-notes-header-header">
             {notebookId ? (
               <>
-                <i className="fa-solid fa-book  indiv-notebook-link-icon"></i>
+                <i className="fa-solid fa-book indiv-notebook-link-icon-display-notes"></i>
                 <span>{notebook?.name}</span>
               </>
             ) : (

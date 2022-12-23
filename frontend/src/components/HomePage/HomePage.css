@@ -176,10 +176,15 @@
   gap: 0.5rem;
 }
 
+.display-note-container-content{
+  color: #686464;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .home-page-view-notes-text-length {
-  display: flex;
-  align-items: flex-end;
+  padding-top: 0.45rem;
   color: #686464;
   font-weight: 400;
   font-size: 1rem;

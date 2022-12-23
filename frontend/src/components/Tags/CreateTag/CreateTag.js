@@ -64,9 +64,7 @@ const CreateTag = ({ onClose }) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
-                <p className="create-tag-error-message">
-                    {errors}
-                </p>
+                <p className="create-tag-error-message">{errors}</p>
                 <div className="create-new-tag-modal-separator"></div>
                 <div className="buttons-for-creating-tag-modal">
                     <button 

@@ -3,6 +3,7 @@
   height: 100%;
   padding: 2.5rem 3.5rem;
   letter-spacing: 0.1rem;
+  overflow-y: auto;
 }
 
 .notebook-header {
@@ -211,7 +212,7 @@
 
 .individual-note {
   align-items: center;
-  color: black;
+  color: #787474;
   cursor: pointer;
   display: flex;
   gap: 1rem;
@@ -222,3 +223,10 @@
   cursor: pointer;
 }
 
+.individual-note-name {
+  color: #383434;
+}
+
+.individual-note-name:hover{
+  text-decoration: underline;
+}

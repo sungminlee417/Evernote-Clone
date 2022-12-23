@@ -8,7 +8,7 @@ import {
   loadNotesThunk,
 } from "../../../store/notes";
 import "./ViewAndEditNote.css";
-import options from "../../../images/modify.svg"
+import options from "../../../images/modify.svg";
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ const ViewAndEditNote = () => {
             className="edit-delete-note-delete-button"
             onClick={showSettings}
           >
-            <i className="fa-solid fa-ellipsis edit-delete-note-delete-button-icon"></i>
+            <img src={options}className="edit-delete-note-delete-button-icon"></img>
           </button>
           <div className="edit-delete-note-settings-container">
             <button
@@ -93,6 +93,7 @@ const ViewAndEditNote = () => {
             >
               Delete Note
             </button>
+            
           </div>
         </div>
       </div>
