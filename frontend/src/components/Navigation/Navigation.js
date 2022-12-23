@@ -5,16 +5,13 @@ import { useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
 import { createNote } from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
-import CreateTag from "../Tags/CreateTag";
 import DisplayTags from "../Tags/DisplayTags";
-import { Modal } from "../context/Modal";
-import tag from "../../images/new-tag.svg";
+import CreateTagModal from "../Tags/CreateTagModal/CreateTagModal";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
   const [tagClicked, setTagClicked] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   // const onClick = () => {
   //   const settingsContainer = document.querySelector(
@@ -132,12 +129,7 @@ const Navigation = () => {
           <div className="tags-container" onClick={tagParentFunction}>
             <div className="tags-header">
               <div className="tags-header-title">Tags</div>
-              <img
-                className="new-tag-button"
-                src={tag}
-                alt="new-tag"
-                onClick={() => setShowModal(true)}
-              ></img>
+              <CreateTagModal/>
             </div>
             <input
               className="search-for-tags"
@@ -146,11 +138,6 @@ const Navigation = () => {
             />
             <DisplayTags />
           </div>
-          {showModal && (
-            <Modal showModal={showModal} onClose={() => setShowModal(false)}>
-              <CreateTag onClose={() => setShowModal(false)} />
-            </Modal>
-          )}
         </div>
         {/* <div className="nav-bar-links-section-three">
           <NavLink to="/trash" className="nav-bar-link">

@@ -1,7 +1,5 @@
 .modify-notebook-delete {
     background-color: white;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
 }
 .modify-notebook-delete:hover {
     background-color: #f4f4f4;

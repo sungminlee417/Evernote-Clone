@@ -54,6 +54,23 @@ export const createTag = (name) => async (dispatch) => {
       return data;
     }
   };
+
+export const editTagThunk = (tagId, payload) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags/${tagId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editTag(data));
+    return data;
+  }
+};
+
 export const deleteTagThunk = (tagId) => async (dispatch) => {
   const response = await csrfFetch(`/api/tags/${tagId}`, {
     method: "DELETE",

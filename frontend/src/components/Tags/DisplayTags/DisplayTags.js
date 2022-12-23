@@ -1,17 +1,14 @@
 import "./DisplayTags.css";
-import { loadTagsThunk, deleteTagThunk } from "../../../store/tags";
+import { loadTagsThunk } from "../../../store/tags";
 import { useDispatch, useSelector } from "react-redux";
-import  {useEffect, useState} from "react";
-import { useHistory, useParams } from "react-router-dom";
+import  { useEffect, useState } from "react";
 import no_tags from "../../../images/no-tags.png";
 import options from "../../../images/modify.svg";
 import DeleteTagModal from "../DeleteTagModal/DeleteTagModal";
-
+import EditTagModal from "../EditTagModal/EditTagModal";
 const DisplayTags = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const tags = Object.values(useSelector((state) => state.tags));
-    const { tagId } = useParams();
     const [settingsClicked, setSettingsClicked] = useState(false);
     useEffect(() => {
         dispatch(loadTagsThunk());
@@ -73,6 +70,7 @@ const DisplayTags = () => {
                     return (
                         <li className="individual-tag">
                             <div>{tag.name}</div>
+                            {/* <div className={`modify-tag-${tag.id}`}> */}
                             <button className="tag-buttons">
                                 <img
                                 onClick={showSettings}
@@ -82,8 +80,11 @@ const DisplayTags = () => {
                                 />
                             </button>
                             <div className="tags-settings-container">
+                                <EditTagModal tag={tag}/>
                                 <DeleteTagModal tag={tag} />
                             </div>
+                            
+                            {/* </div> */}
                         </li>
                     );
                 })}

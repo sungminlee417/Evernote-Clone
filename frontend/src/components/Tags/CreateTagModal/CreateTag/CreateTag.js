@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createTag } from "../../../store/tags";
+import { createTag } from "../../../../store/tags";
 import "./CreateTag.css";
 
 const CreateTag = ({ onClose }) => {

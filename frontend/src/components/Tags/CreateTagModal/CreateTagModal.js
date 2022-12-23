@@ -1,22 +1,28 @@
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
-import DeleteTag from "./DeleteTag/DeleteTag";
-import "./DeleteTagModal.css"
+import CreateTag from "./CreateTag/CreateTag";
+import tag from "../../../images/new-tag.svg";
+import "./CreateTagModal.css"
 
-const DeleteTagModal = ({ tag }) => {
+const CreateTagModal = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
-        className="modify-tag-buttons modify-tag-delete" 
+        className="modify-tag-buttons modify-tag-create" 
         onClick={() => setShowModal(true)}
       >
-        Delete Tag...
+        <img
+                className="new-tag-button"
+                src={tag}
+                alt="new-tag"
+                onClick={() => setShowModal(true)}
+        ></img>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)} showModal={showModal}>
-          <DeleteTag
+          <CreateTag
             tag={tag}
             onClose={() => setShowModal(false)}
           />
@@ -26,4 +32,4 @@ const DeleteTagModal = ({ tag }) => {
   );
 };
 
-export default DeleteTagModal;
+export default CreateTagModal;

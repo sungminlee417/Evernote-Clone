@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
-import DeleteTag from "./DeleteTag/DeleteTag";
-import "./DeleteTagModal.css"
+import EditTag from "./EditTag/EditTag";
+import "./EditTagModal.css";
 
-const DeleteTagModal = ({ tag }) => {
+const EditTagModal = ({ tag }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
-        className="modify-tag-buttons modify-tag-delete" 
+        className="modify-tag-buttons modify-tag-edit"
         onClick={() => setShowModal(true)}
       >
-        Delete Tag...
+        Rename Tag...
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)} showModal={showModal}>
-          <DeleteTag
+          <EditTag
             tag={tag}
             onClose={() => setShowModal(false)}
           />
@@ -26,4 +26,4 @@ const DeleteTagModal = ({ tag }) => {
   );
 };
 
-export default DeleteTagModal;
+export default EditTagModal;

@@ -1,4 +1,4 @@
-.modify-tag-delete {
+.modify-tag-edit {
     background-color: white;
     border: none;
     cursor: pointer;
@@ -7,6 +7,6 @@
     padding: 0.8rem 1.4rem;
     width: 100%;
 }
-.modify-tag-delete:hover {
+.modify-tag-edit:hover {
     background-color: #f4f4f4;
 }
