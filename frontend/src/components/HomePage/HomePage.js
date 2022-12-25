@@ -1,5 +1,5 @@
 import { Route, Switch, NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
@@ -17,10 +17,37 @@ import { loadNotesThunk, clearNotes } from "../../store/notes";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const [settingsClicked, setSettingsClicked] = useState(false);
   const notes = Object.values(useSelector((state) => state.notes));
-  // useEffect(() => {
-  //   dispatch(loadNotesThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    if (!settingsClicked) return;
+
+    const settingsContainer = document.querySelector(
+      ".home-page-notes-options-container"
+    );
+
+    const closeSettings = () => {
+      settingsContainer.classList.remove("visible");
+      setSettingsClicked(false);
+    };
+    document.addEventListener("click", closeSettings);
+    return () => document.removeEventListener("click", closeSettings);
+  }, [settingsClicked]);
+
+  const showSettings = () => {
+    const settingsContainer = document.querySelector(
+      ".home-page-notes-options-container"
+    );
+  
+    if (settingsClicked) {
+      settingsContainer.classList.remove("visible");
+      setSettingsClicked(false);
+    } else {
+      settingsContainer.classList.add("visible");
+      setSettingsClicked(true);
+    }
+  };
+
   const parentFunction = (e) => {
     e.preventDefault();
   };
@@ -55,7 +82,12 @@ const HomePage = () => {
                     className="home-page-notes-options"
                     src={options}
                     alt="notes_options"
+                    onClick={showSettings}
                   ></img>
+                  <div className="home-page-notes-options-container">
+                    <NavLink to="/notes" className="home-page-go-to-notes">Go to Notes</NavLink>
+                    <div className="home-page-create-new-note">Create new note</div>
+                  </div>
                 </div>
                 <div className="home-page-view-notes">
                   <div className="home-page-notes-list">
