@@ -2,37 +2,32 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import {
-  clearNotes,
   deleteNoteThunk,
   editNoteThunk,
   loadNotesThunk,
 } from "../../../store/notes";
 import "./ViewAndEditNote.css";
 import options from "../../../images/modify.svg";
+import { clearNote, loadNoteThunk } from "../../../store/singleNote";
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { noteId } = useParams();
-  const notes = useSelector((state) => state.notes);
-  const note = notes[noteId];
-  const [title, setTitle] = useState(note?.name);
-  const [content, setContent] = useState(note?.content);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [settingsClicked, setSettingsClicked] = useState(false);
 
   useEffect(() => {
-    dispatch(loadNotesThunk()).then(() => {
-      const note = notes[noteId];
-      setTitle(note?.name);
-      setContent(note?.content);
+    dispatch(loadNoteThunk(noteId)).then((noteData) => {
+      setTitle(noteData.name);
+      setContent(noteData.content);
     });
 
-    return () => dispatch(clearNotes());
+    return () => dispatch(clearNote());
   }, [dispatch, noteId]);
 
   useEffect(() => {
-    if (!title) setTitle("Untitled");
-    if (!content) setContent("");
     if (noteId) {
       dispatch(editNoteThunk(noteId, { name: title, content }));
     }
@@ -84,7 +79,10 @@ const ViewAndEditNote = () => {
             className="edit-delete-note-delete-button"
             onClick={showSettings}
           >
-            <img src={options}className="edit-delete-note-delete-button-icon"></img>
+            <img
+              src={options}
+              className="edit-delete-note-delete-button-icon"
+            ></img>
           </button>
           <div className="edit-delete-note-settings-container">
             <button
@@ -93,7 +91,6 @@ const ViewAndEditNote = () => {
             >
               Delete Note
             </button>
-            
           </div>
         </div>
       </div>

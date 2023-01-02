@@ -11,6 +11,13 @@ router.get("/", async (req, res) => {
   res.json(notes);
 });
 
+// GET SINGLE NOTE
+router.get("/:noteId", async (req, res) => {
+  const { noteId } = req.params;
+  const note = await Note.findByPk(noteId);
+  res.json(note);
+});
+
 // POST NEW NOTE
 router.post("/", async (req, res) => {
   const user = req.user;
@@ -32,7 +39,11 @@ router.put("/:noteId", async (req, res) => {
   const { name, content } = req.body;
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId);
-  await note.update({ name: name, content: content });
+  if (!name) {
+    await note.update({ name: "Untitled", content: content });
+  } else {
+    await note.update({ name: name, content: content });
+  }
   res.json(note);
 });
 

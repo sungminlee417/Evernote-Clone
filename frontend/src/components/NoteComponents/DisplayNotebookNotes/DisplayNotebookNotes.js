@@ -1,19 +1,30 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { loadNotesThunk, clearNotes } from "../../../store/notes";
+import { useParams, NavLink } from "react-router-dom";
+import { loadNotesByNotebookIdThunk, clearNotes } from "../../../store/notes";
 import noNotes from "../../../images/svgexport-28.svg";
-import "./DisplayAllNotes.css";
+import {
+  loadNotebookThunk,
+  clearNotebook,
+} from "../../../store/singleNotebook";
+import "./DisplayNotebookNotes.css";
 
-const DisplayAllNotes = () => {
+const DisplayNotebookNotes = () => {
   const dispatch = useDispatch();
+  const { notebookId } = useParams();
+  const notebook = useSelector((state) => state.singleNotebook);
   const notes = Object.values(useSelector((state) => state.notes));
 
   useEffect(() => {
-    dispatch(loadNotesThunk());
+    dispatch(loadNotebookThunk(notebookId)).then(() => {
+      dispatch(loadNotesByNotebookIdThunk(notebookId));
+    });
 
-    return () => dispatch(clearNotes());
-  }, [dispatch]);
+    return () => {
+      dispatch(clearNotes());
+      dispatch(clearNotebook());
+    };
+  }, [dispatch, notebookId]);
 
   const convertDate = (dateTime) => {
     const date = new Date(dateTime);
@@ -25,8 +36,8 @@ const DisplayAllNotes = () => {
       <div className="list-notes">
         <div className="list-notes-header">
           <div className="list-notes-header-header">
-            <i className="fa-solid fa-note-sticky"></i>
-            <span>Notes</span>
+            <i className="fa-solid fa-book indiv-notebook-link-icon-display-notes"></i>
+            <span>{notebook?.name}</span>
           </div>
           <div className="list-notes-header-sub">{notes.length} notes</div>
         </div>
@@ -37,7 +48,7 @@ const DisplayAllNotes = () => {
                 <NavLink
                   className="display-note-container"
                   key={i}
-                  to={`/notes/${note.id}`}
+                  to={`/notebooks/${notebookId}/${note.id}`}
                 >
                   <div className="display-note-container-name">{note.name}</div>
                   <div className="display-note-container-created-at">
@@ -68,4 +79,5 @@ const DisplayAllNotes = () => {
     </section>
   );
 };
-export default DisplayAllNotes;
+
+export default DisplayNotebookNotes;

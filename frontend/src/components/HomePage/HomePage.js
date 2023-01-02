@@ -11,9 +11,8 @@ import click_notes from "../../images/green-side-arrow.svg";
 import options from "../../images/modify.svg";
 import DisplayAllNotes from "../NoteComponents/DisplayAllNotes";
 import ViewAndEditNote from "../NoteComponents/ViewAndEditNote";
-import view_notes from "../../images/view-notes.svg"
+import view_notes from "../../images/view-notes.svg";
 import { loadNotesThunk, clearNotes } from "../../store/notes";
-
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const HomePage = () => {
     const settingsContainer = document.querySelector(
       ".home-page-notes-options-container"
     );
-  
+
     if (settingsClicked) {
       settingsContainer.classList.remove("visible");
       setSettingsClicked(false);
@@ -48,16 +47,11 @@ const HomePage = () => {
     }
   };
 
-  const parentFunction = (e) => {
-    e.preventDefault();
-  };
-
   useEffect(() => {
     dispatch(loadNotesThunk());
 
     return () => dispatch(clearNotes());
   }, [dispatch]);
-
 
   return (
     <section className="home-page-section">
@@ -85,8 +79,12 @@ const HomePage = () => {
                     onClick={showSettings}
                   ></img>
                   <div className="home-page-notes-options-container">
-                    <NavLink to="/notes" className="home-page-go-to-notes">Go to Notes</NavLink>
-                    <div className="home-page-create-new-note">Create new note</div>
+                    <NavLink to="/notes" className="home-page-go-to-notes">
+                      Go to Notes
+                    </NavLink>
+                    <div className="home-page-create-new-note">
+                      Create new note
+                    </div>
                   </div>
                 </div>
                 <div className="home-page-view-notes">
@@ -98,7 +96,9 @@ const HomePage = () => {
                           key={i}
                           to={`/notes/${note.id}`}
                         >
-                          <div className="home-page-display-note-container-name">{note?.name}</div>
+                          <div className="home-page-display-note-container-name">
+                            {note?.name}
+                          </div>
                           <div className="display-note-container-content">
                             {note?.content}
                           </div>
@@ -109,12 +109,21 @@ const HomePage = () => {
                       );
                     })}
                     <NavLink to="/notes" className="home-page-view-all-notes">
-                      <img className="home-page-view-notes-svg" src={view_notes} alt="view-notes"></img>
+                      <img
+                        className="home-page-view-notes-svg"
+                        src={view_notes}
+                        alt="view-notes"
+                      ></img>
                       <div className="home-page-view-notes-text">
-                        <div className="home-page-view-notes-text-label">Notes</div>
-                        <div className="home-page-view-notes-text-length"> ({notes.length})</div>
+                        <div className="home-page-view-notes-text-label">
+                          Notes
+                        </div>
+                        <div className="home-page-view-notes-text-length">
+                          {" "}
+                          ({notes.length})
+                        </div>
                       </div>
-                    </NavLink>  
+                    </NavLink>
                   </div>
                 </div>
               </div>

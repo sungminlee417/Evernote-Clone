@@ -6,13 +6,15 @@ import notesReducer from "./notes";
 import tagsReducer from "./tags";
 
 import sessionReducer from "./session";
+import singleNoteReducer from "./singleNote";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   notebooks: notebooksReducer,
-  singleNotebook: singleNotebookReducer,
   notes: notesReducer,
   tags: tagsReducer,
+  singleNotebook: singleNotebookReducer,
+  singleNote: singleNoteReducer,
 });
 
 let enhancer;

@@ -68,6 +68,14 @@ export const createNote = () => async (dispatch) => {
   dispatch(addNote(note));
 };
 
+export const createNoteByNotebookId = (notebookId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/notebooks/${notebookId}/notes`, {
+    method: "POST",
+  });
+  const data = response.json();
+  return data;
+};
+
 export const editNoteThunk = (noteId, payload) => async (dispatch) => {
   const response = await csrfFetch(`/api/notes/${noteId}`, {
     method: "PUT",

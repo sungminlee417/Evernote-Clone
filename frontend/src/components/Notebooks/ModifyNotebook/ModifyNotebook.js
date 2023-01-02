@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import EditNotebookModal from "./EditNotebookModal/EditNotebookModal";
 import DeleteNotebookModal from "./DeleteNotebookModal";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { createNoteByNotebookId } from "../../../store/notes";
 
 const ModifyNotebook = ({ notebook }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [clicked, setClicked] = useState(false);
 
   const onClick = () => {
@@ -22,8 +25,10 @@ const ModifyNotebook = ({ notebook }) => {
     }
   };
 
-  const addNote = () => {
-    dispatch();
+  const addNote = async () => {
+    await dispatch(createNoteByNotebookId(notebook.id)).then((note) => {
+      history.push(`/notebooks/${notebook.id}/${note.id}`);
+    });
   };
 
   const parentFunction = (e) => {

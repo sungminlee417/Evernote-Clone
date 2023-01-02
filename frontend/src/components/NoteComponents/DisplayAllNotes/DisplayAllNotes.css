@@ -17,12 +17,12 @@
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  height: 10rem;
+  height: 9.7rem;
   padding: 2rem;
 }
 
 .list-notes-header-header {
-  display:flex;
+  display: flex;
   font-size: 2rem;
   gap: 1rem;
 }
@@ -46,7 +46,6 @@
 
 .display-note-container {
   border: 0.2rem solid transparent;
-  border-bottom: 0.1rem solid #e8e4e4;
   color: white;
   cursor: pointer;
   display: flex;
