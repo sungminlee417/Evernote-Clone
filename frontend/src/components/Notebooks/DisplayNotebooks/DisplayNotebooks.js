@@ -4,24 +4,40 @@ import { NavLink } from "react-router-dom";
 import { clearNotebooks, loadNotebooksThunk } from "../../../store/notebooks";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
+import { searchNotebooksByNameThunk} from "../../../store/notebookSearch";
 import "./DisplayNotebooks.css";
 
 const DisplayNotebooks = () => {
   const dispatch = useDispatch();
   const notebooks = Object.values(useSelector((state) => state.notebooks));
+  const searchNotebooks = Object.values(useSelector((state) => state.notebookSearch));
   const sessionUser = useSelector((state) => state.session.user);
   const [openNotebooks, setOpenNotebooks] = useState({});
+  const [input, setInput] = useState("");
 
+
+  const convertDate = (date) => {
+    const dateTime = new Date(date);
+    const formatDate = dateTime.toDateString();
+    return formatDate.slice(4);
+  };
+
+  useEffect(() => {
+    if (input) {
+      dispatch(searchNotebooksByNameThunk(input));
+    }
+
+    return () => dispatch(clearNotebooks());
+  }, [dispatch, input]);
+  
   useEffect(() => {
     dispatch(loadNotebooksThunk());
 
     return () => dispatch(clearNotebooks());
   }, [dispatch]);
 
-  const convertDate = (date) => {
-    const dateTime = new Date(date);
-    const formatDate = dateTime.toDateString();
-    return formatDate.slice(4);
+  const onChangeInput = (e) => {
+    setInput(e.target.value);
   };
 
   const onNotebookExpand = (index) => {
@@ -54,6 +70,8 @@ const DisplayNotebooks = () => {
           className="search-for-notebooks"
           type="text"
           placeholder="Find Notebooks..."
+          onChange={onChangeInput}
+          value={input} 
         />
       </div>
       <div className="second-notebook-header">

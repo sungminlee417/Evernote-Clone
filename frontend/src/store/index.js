@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import notebooksReducer from "./notebooks";
 import singleNotebookReducer from "./singleNotebook";
+import notebookSearchReducer from "./notebookSearch";
 import notesReducer from "./notes";
 import tagsReducer from "./tags";
 
@@ -11,10 +12,9 @@ import singleNoteReducer from "./singleNote";
 const rootReducer = combineReducers({
   session: sessionReducer,
   notebooks: notebooksReducer,
+  notebookSearch: notebookSearchReducer,
   notes: notesReducer,
   tags: tagsReducer,
-  singleNotebook: singleNotebookReducer,
-  singleNote: singleNoteReducer,
 });
 
 let enhancer;

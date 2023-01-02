@@ -9,6 +9,13 @@ const DisplayAllNotes = () => {
   const dispatch = useDispatch();
   const notes = Object.values(useSelector((state) => state.notes));
 
+  const convertDate = (date) => {
+    const dateTime = new Date(date);
+    const formatDate = dateTime.toDateString();
+    return formatDate.slice(4);
+  };
+
+
   useEffect(() => {
     dispatch(loadNotesThunk());
 
@@ -32,7 +39,7 @@ const DisplayAllNotes = () => {
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">
-            {notes.map((note, i) => {
+            {notes.reverse().map((note, i) => {
               return (
                 <NavLink
                   className="display-note-container"
@@ -41,7 +48,7 @@ const DisplayAllNotes = () => {
                 >
                   <div className="display-note-container-name">{note.name}</div>
                   <div className="display-note-container-created-at">
-                    {convertDate(note.createdAt)}
+                    {convertDate(note?.updatedAt)}
                   </div>
                 </NavLink>
               );

@@ -25,6 +25,13 @@ router.get("/", async (req, res) => {
   res.json(notebooks);
 });
 
+router.get("/:notebookId", async (req, res) => {
+  const user = req.user;
+  const notebooks = req.query.name
+  res.json(notebooks);
+});
+
+
 // POST NEW NOTEBOOK
 router.post("/", validateNotebook, async (req, res) => {
   const user = req.user;

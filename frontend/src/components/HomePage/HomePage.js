@@ -16,6 +16,12 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [settingsClicked, setSettingsClicked] = useState(false);
   const notes = Object.values(useSelector((state) => state.notes));
+  const convertDate = (date) => {
+    const dateTime = new Date(date);
+    const formatDate = dateTime.toDateString();
+    return formatDate.slice(4);
+  };
+
   useEffect(() => {
     if (!settingsClicked) return;
 
@@ -87,7 +93,7 @@ const HomePage = () => {
                 </div>
                 <div className="home-page-view-notes">
                   <div className="home-page-notes-list">
-                    {notes.map((note, i) => {
+                    {notes.reverse().map((note, i) => {
                       return (
                         <NavLink
                           className="home-page-display-note-container"
@@ -101,7 +107,7 @@ const HomePage = () => {
                             {note?.content}
                           </div>
                           <div className="display-note-container-created-at">
-                            {note?.createdAt}
+                            {convertDate(note?.updatedAt)}
                           </div>
                         </NavLink>
                       );
