@@ -3,8 +3,10 @@ import "./ModifyNotebook.css";
 import { useEffect, useState } from "react";
 import EditNotebookModal from "./EditNotebookModal/EditNotebookModal";
 import DeleteNotebookModal from "./DeleteNotebookModal";
+import { useDispatch } from "react-redux";
 
 const ModifyNotebook = ({ notebook }) => {
+  const dispatch = useDispatch();
   const [clicked, setClicked] = useState(false);
 
   const onClick = () => {
@@ -18,6 +20,10 @@ const ModifyNotebook = ({ notebook }) => {
       settingsContainer.classList.add("visible");
       setClicked(true);
     }
+  };
+
+  const addNote = () => {
+    dispatch();
   };
 
   const parentFunction = (e) => {
@@ -50,6 +56,12 @@ const ModifyNotebook = ({ notebook }) => {
       <div
         className={`modify-notebook-container modify-notebook-container-${notebook.id}`}
       >
+        <button
+          className="modify-notebook-buttons modify-notebook-button-add-note"
+          onClick={addNote}
+        >
+          Add New Note
+        </button>
         <EditNotebookModal notebook={notebook} />
         <DeleteNotebookModal notebook={notebook} />
       </div>

@@ -129,7 +129,7 @@ const Navigation = () => {
           <div className="tags-container" onClick={tagParentFunction}>
             <div className="tags-header">
               <div className="tags-header-title">Tags</div>
-              <CreateTagModal/>
+              <CreateTagModal />
             </div>
             <input
               className="search-for-tags"

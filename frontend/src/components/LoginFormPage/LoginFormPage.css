@@ -1,45 +1,47 @@
 .ask-user-sign-up {
-    margin-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .login-page-sign-up-link {
-    font-size: 1.75rem;
-    text-decoration: none;
-    color:  #00a82d;
-    margin-bottom: 1.75rem;
+  font-size: 1.75rem;
+  text-decoration: none;
+  color: #00a82d;
+  cursor: pointer;
+  margin-bottom: 1.75rem;
 }
 
 .login-page-sign-up-link:hover {
-    color: #088c24;
-    transition-duration: 0.1s;
-    transition: all 0.2s ease-in-out;
+  color: #088c24;
+  transition-duration: 0.1s;
+  transition: all 0.2s ease-in-out;
 }
 
 .login-options {
-    margin-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
 }
-.login-options:before, .login-options:after {
-    content:"\00a0\00a0\00a0\00a0\00a0\00a0";
-    font-family: monospace;
-    text-decoration:line-through;
-    padding: 0.5rem;
+.login-options:before,
+.login-options:after {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0";
+  font-family: monospace;
+  text-decoration: line-through;
+  padding: 0.5rem;
 }
 
 .demo-login-info {
-    border: none;
-    cursor:pointer;
-    background-color: transparent;
-    font-size: 1.75rem;
-    color:  #00a82d;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.75rem;
+  color: #00a82d;
 }
 
 .demo-login-info:hover {
-    color: #088c24;
-    transition-duration: 0.1s;
-    transition: all 0.2s ease-in-out;
+  color: #088c24;
+  transition-duration: 0.1s;
+  transition: all 0.2s ease-in-out;
 }
 
-.account-error-message{
-    color: #CC4539;
-    padding-bottom: 1.5rem;
+.account-error-message {
+  color: #cc4539;
+  padding-bottom: 1.5rem;
 }

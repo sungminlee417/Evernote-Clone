@@ -118,10 +118,12 @@ const DisplayNotebooks = () => {
                           <div className="display-notebooks-note-first-col">
                             <NavLink
                               className="individual-note"
-                              to={`/notebooks/${notebook.id}`}
+                              to={`/notebooks/${notebook.id}/${note.id}`}
                             >
                               <i className="fa-regular fa-note-sticky"></i>
-                              <div className="individual-note-name">{note.name}</div>
+                              <div className="individual-note-name">
+                                {note.name}
+                              </div>
                             </NavLink>
                           </div>
                           <div className="note-creator">

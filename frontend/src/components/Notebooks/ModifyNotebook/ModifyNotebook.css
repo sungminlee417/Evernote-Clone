@@ -16,8 +16,8 @@
 }
 
 .modify-notebook-container {
-  padding:1rem 0rem 1rem 0rem;
-  gap:0.5rem;
+  padding: 1rem 0rem 1rem 0rem;
+  gap: 0.5rem;
   align-items: center;
   background-color: white;
   border: 0.05rem solid rgb(171, 171, 171, 50%);
@@ -42,10 +42,15 @@
 }
 
 .modify-notebook-buttons {
+  background-color: white;
   border: none;
   cursor: pointer;
   display: flex;
   font-size: 1.2rem;
   padding: 0.8rem 1.4rem;
   width: 100%;
+}
+
+.modify-notebook-button-add-note:hover {
+  background-color: #f4f4f4;
 }
