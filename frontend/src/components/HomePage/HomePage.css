@@ -1,14 +1,17 @@
 .home-page-section {
   height: 100%;
   width: 100%;
-  display:flex;
-  position:absolute;
+  display: flex;
+  position: absolute;
   overflow: hidden;
-  color:#383434;
+  color: #383434;
 }
 
-.home-page-photo {
-  width: 100%;
-  margin: -40rem 0rem 0rem 0rem;
+.home-page-section-design {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+  width: 78%;
 }
-

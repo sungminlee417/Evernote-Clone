@@ -54,80 +54,76 @@ const HomePageNotes = () => {
 
   return (
     <div className="home-page-notes-subsection">
-        <div className="home-page-notes-container">
+      <div className="home-page-notes-container">
         <div className="home-page-notes-header">
-            <NavLink to="/notes" className="home-page-notes-title">
+          <NavLink to="/notes" className="home-page-notes-title">
             <div className="home-page-notes-text">NOTES</div>
             <img
-                className="click-for-note-page"
-                src={click_notes}
-                alt="get_notes"
+              className="click-for-note-page"
+              src={click_notes}
+              alt="get_notes"
             ></img>
-            </NavLink>
-            <img
+          </NavLink>
+          <img
             className="home-page-notes-options"
             src={options}
             alt="notes_options"
             onClick={showSettings}
-            ></img>
-            <div className="home-page-notes-options-container">
+          ></img>
+          <div className="home-page-notes-options-container">
             <NavLink to="/notes" className="home-page-go-to-notes">
-                Go to Notes
+              Go to Notes
             </NavLink>
-            <div className="home-page-create-new-note">
-                Create new note
-            </div>
-            </div>
+            <div className="home-page-create-new-note">Create new note</div>
+          </div>
         </div>
         <div className="home-page-view-notes">
-            <div className="home-page-notes-list">
+          <div className="home-page-notes-list">
             {notes.reverse().map((note, i) => {
-                return (
+              return (
                 <NavLink
-                    className="home-page-display-note-container"
-                    key={i}
-                    to={`/notes/${note.id}`}
+                  className="home-page-display-note-container"
+                  key={i}
+                  to={`/notes/${note.id}`}
                 >
-                    <div className="home-page-display-note-container-name">
+                  <div className="home-page-display-note-container-name">
                     {note?.name}
-                    </div>
-                    <div className="display-note-container-content">
+                  </div>
+                  <div className="display-note-container-content">
                     {note?.content}
-                    </div>
-                    <div className="display-note-container-created-at">
+                  </div>
+                  <div className="display-note-container-created-at">
                     {convertDate(note?.updatedAt)}
-                    </div>
+                  </div>
                 </NavLink>
-                );
+              );
             })}
             <NavLink to="/notes" className="home-page-view-all-notes">
-                <img
+              <img
                 className="home-page-view-notes-svg"
                 src={view_notes}
                 alt="view-notes"
-                ></img>
-                <div className="home-page-view-notes-text">
-                <div className="home-page-view-notes-text-label">
-                    Notes
-                </div>
+              ></img>
+              <div className="home-page-view-notes-text">
+                <div className="home-page-view-notes-text-label">Notes</div>
                 <div className="home-page-view-notes-text-length">
-                    {" "}
-                    ({notes.length})
+                  {" "}
+                  ({notes.length})
                 </div>
-                </div>
+              </div>
             </NavLink>
-            </div>
+          </div>
         </div>
-        </div>
-        <div className="home-page-scratch-pad">
+      </div>
+      <div className="home-page-scratch-pad">
         <div className="home-page-scratch-pad-header">
-            <div className="home-page-scratch-pad-text">SCRATCH PAD</div>
+          <div className="home-page-scratch-pad-text">SCRATCH PAD</div>
         </div>
         <textarea
-            className="home-page-scratch-pad-input"
-            placeholder="Start writing..."
+          className="home-page-scratch-pad-input"
+          placeholder="Start writing..."
         />
-        </div>
+      </div>
     </div>
   );
 };

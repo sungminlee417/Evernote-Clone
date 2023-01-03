@@ -1,223 +1,227 @@
 .home-page-notes-subsection {
-    display:flex;
-    gap:3rem;
-    padding: 0rem 3rem 0rem 3rem;
-  
+  display: flex;
+  gap: 3rem;
+  height: 30%;
+  justify-content: space-between;
+  padding: 0rem 3rem 0rem 3rem;
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
 }
-  
+
 .home-page-notes-container {
-    position: relative;
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
-    width: 77rem;
-    height:35rem;
-    top: -15rem;
+  position: relative;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  top: -15rem;
+  height: fit-content;
+  width: 62.5%;
 }
 
 .home-page-notes-header {
-    display:flex;
-    justify-content: space-between;
-    padding: 1.75rem 1.5rem 1.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75rem 1.5rem 1.75rem 1.5rem;
 }
 
 .home-page-notes-title {
-    display: flex;
-    width:8rem;
-    height: 3rem;
-    display: flex;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    text-decoration: none;
-    cursor:pointer
+  display: flex;
+  width: 8rem;
+  height: 3rem;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .home-page-notes-title:hover,
 .home-page-notes-options:hover {
-    background-color: #e8e4e4;
+  background-color: #e8e4e4;
 }
 
 .home-page-notes-text {
-    display: flex;
-    align-items: center;
-    color:#383434;
-    font-size: 1.35rem;
-    font-weight: bold;
+  display: flex;
+  align-items: center;
+  color: #383434;
+  font-size: 1.35rem;
+  font-weight: bold;
 }
 
 .home-page-notes-options {
-    width: 3rem;
-    height:auto;
-    cursor: pointer;
-    border-radius: 0.5rem;
+  width: 3rem;
+  height: auto;
+  cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .home-page-notes-options-container {
-    padding:1rem 0rem 1rem 0rem;
-    gap:0.5rem;
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-    background-color: white;
-    bottom: 65%;
-    border: 0.05rem solid rgb(171, 171, 171, 50%);
-    border-radius: 0.35rem;
-    box-shadow: 0 0.25rem 1.5rem 0 rgb(0 0 0 / 10%);
-    position: absolute;
-    right: 1.5rem;
-    opacity: 0;
-    transition: 0.2s;
-    width: 14rem;
-    z-index:3;
+  padding: 1rem 0rem 1rem 0rem;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  background-color: white;
+  bottom: 65%;
+  border: 0.05rem solid rgb(171, 171, 171, 50%);
+  border-radius: 0.35rem;
+  box-shadow: 0 0.25rem 1.5rem 0 rgb(0 0 0 / 10%);
+  position: absolute;
+  right: 1.5rem;
+  opacity: 0;
+  transition: 0.2s;
+  width: 14rem;
+  z-index: 3;
 }
 
 .home-page-notes-options-container.visible {
-    bottom: 60%;
-    opacity: 1;
-    pointer-events: all;
+  bottom: 60%;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .home-page-go-to-notes,
 .home-page-create-new-note {
-    border: none;
-    cursor: pointer;
-    display: flex;
-    font-size: 1.2rem;
-    padding: 0.8rem 1.4rem;
-    width: 100%;
-    color: #383434;
-    text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.4rem;
+  width: 100%;
+  color: #383434;
+  text-decoration: none;
 }
 
 .home-page-go-to-notes:hover,
 .home-page-create-new-note:hover {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 .home-page-scratch-pad {
-    position: relative;
-    background-color: #fff4bc;
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
-    width: 35rem;
-    height:35rem;
-    top: -15rem;
-    padding: 1.75rem 1.5rem 1.75rem 1.5rem;
+  position: relative;
+  background-color: #fff4bc;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  width: 35rem;
+  height: 35rem;
+  top: -15rem;
+  padding: 1.75rem 1.5rem 1.75rem 1.5rem;
 }
 
 .home-page-scratch-pad-header {
-    padding-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .home-page-scratch-pad-text {
-    font-size: 1.35rem;
-    font-weight: bold;
+  font-size: 1.35rem;
+  font-weight: bold;
 }
 
 .home-page-scratch-pad-input {
-    margin: auto;
-    width:100%;
-    height: 28rem;
-    background: none;
-    border: none;
-    cursor: text;
-    resize:none;
+  margin: auto;
+  width: 100%;
+  height: 28rem;
+  background: none;
+  border: none;
+  cursor: text;
+  resize: none;
 }
 
 .home-page-scratch-pad-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .home-page-view-notes {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    background-color: white;
-    width: 100%;
-    height: 81.5%;
-    border-radius: 0.5rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 1rem 1.5rem 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background-color: white;
+  width: 100%;
+
+  border-radius: 0.5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 1rem 1.5rem 1.75rem 1.5rem;
 }
 
 .home-page-notes-list {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    height:25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 25rem;
 }
 
 .home-page-display-note-container {
-    border: 0.2rem solid transparent;
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    text-decoration: none;
-    transition: 0.2s;
-    width: 17.95rem;
+  border: 0.2rem solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  text-decoration: none;
+  transition: 0.2s;
+  width: 17.95rem;
 }
 
 .home-page-display-note-container:hover {
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
 }
 
-.home-page-display-note-container-name { 
-    font-size: 1.4rem;
-    color: #383434;
-    font-weight: bold;
+.home-page-display-note-container-name {
+  font-size: 1.4rem;
+  color: #383434;
+  font-weight: bold;
 }
 
-.home-page-view-all-notes{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    height:25rem;
-    width: 17.95rem;
-    background-color:#f8f8f8;
-    border: 0.2rem solid transparent;
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    padding-top: 7rem;
-    gap: 2rem;
-    font-size: 1.5rem;
-    font-weight: bold;
+.home-page-view-all-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  height: 25rem;
+  width: 17.95rem;
+  background-color: #f8f8f8;
+  border: 0.2rem solid transparent;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  padding-top: 7rem;
+  gap: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.home-page-view-all-notes:hover{
-    background-color: #f2f2f2;
-    box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
+.home-page-view-all-notes:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
 }
 
 .home-page-view-notes-svg {
-    align-items: center;
-    width: 5rem;
-    cursor: pointer;
+  align-items: center;
+  width: 5rem;
+  cursor: pointer;
 }
 
 .home-page-view-notes-text {
-    display:flex;
-    color: #383434;
-    gap: 0.5rem;
+  display: flex;
+  color: #383434;
+  gap: 0.5rem;
 }
 
-.display-note-container-content{
-    color: #686464;
-    height: 15rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.display-note-container-content {
+  color: #686464;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .home-page-view-notes-text-length {
-    padding-top: 0.45rem;
-    color: #686464;
-    font-weight: 400;
-    font-size: 1rem;
+  padding-top: 0.45rem;
+  color: #686464;
+  font-weight: 400;
+  font-size: 1rem;
 }

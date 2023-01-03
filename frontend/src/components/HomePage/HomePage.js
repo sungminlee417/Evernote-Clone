@@ -3,7 +3,6 @@ import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
 import "./HomePage.css";
 import Notes from "../NoteComponents/Notes";
-import home_photo from "../../images/sean-benesh-wK8LMfHtRoM-unsplash.jpg";
 import HomePageHeader from "./HomePageHeader/HomePageHeader";
 import HomePageNotes from "./HomePageNotes";
 const HomePage = () => {
@@ -14,7 +13,6 @@ const HomePage = () => {
         <Route exact path="/">
           <section className="home-page-section-design">
             <HomePageHeader />
-            <img className="home-page-photo" src={home_photo} alt="home"></img>
             <HomePageNotes />
           </section>
         </Route>
