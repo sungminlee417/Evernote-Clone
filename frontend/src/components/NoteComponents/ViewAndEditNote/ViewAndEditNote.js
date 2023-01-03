@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import {
-  deleteNoteThunk,
-  editNoteThunk,
-  loadNotesThunk,
-} from "../../../store/notes";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { editNoteThunk } from "../../../store/notes";
 import "./ViewAndEditNote.css";
-import options from "../../../images/modify.svg";
 import { clearNote, loadNoteThunk } from "../../../store/singleNote";
+import NoteSettings from "../NoteSettings";
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { noteId } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [settingsClicked, setSettingsClicked] = useState(false);
 
   useEffect(() => {
     dispatch(loadNoteThunk(noteId)).then((noteData) => {
@@ -31,78 +25,23 @@ const ViewAndEditNote = () => {
     if (noteId) {
       dispatch(editNoteThunk(noteId, { name: title, content }));
     }
-  }, [title, content]);
-
-  useEffect(() => {
-    if (!settingsClicked) return;
-
-    const settingsContainer = document.querySelector(
-      ".edit-delete-note-settings-container"
-    );
-
-    const closeSettings = () => {
-      settingsContainer.classList.remove("visible");
-      setSettingsClicked(false);
-    };
-
-    document.addEventListener("click", closeSettings);
-
-    return () => document.removeEventListener("click", closeSettings);
-  }, [settingsClicked]);
-
-  const onDelete = () => {
-    dispatch(deleteNoteThunk(noteId)).then(() => {
-      history.push("/notes");
-      dispatch(loadNotesThunk());
-    });
-  };
-
-  const showSettings = () => {
-    const settingsContainer = document.querySelector(
-      ".edit-delete-note-settings-container"
-    );
-    if (settingsClicked) {
-      settingsContainer.classList.remove("visible");
-      setSettingsClicked(false);
-    } else {
-      settingsContainer.classList.add("visible");
-      setSettingsClicked(true);
-    }
-  };
+  }, [dispatch, noteId, title, content]);
 
   return (
-    <section className="edit-delete-note-section">
-      <div className="edit-delete-note-section-header">
+    <section className="view-edit-note-section">
+      <div className="view-edit-note-section-header">
         <div></div>
-        <div className="edit-delete-note-button-settings-container">
-          <button
-            className="edit-delete-note-delete-button"
-            onClick={showSettings}
-          >
-            <img
-              src={options}
-              className="edit-delete-note-delete-button-icon"
-            ></img>
-          </button>
-          <div className="edit-delete-note-settings-container">
-            <button
-              className="edit-delete-note-settings-button"
-              onClick={onDelete}
-            >
-              Delete Note
-            </button>
-          </div>
-        </div>
+        <NoteSettings />
       </div>
-      <div className="edit-note-inputs-container">
+      <div className="view-edit-note-inputs-container">
         <input
-          className="edit-note-title-input"
+          className="view-edit-note-title-input"
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
         <textarea
-          className="edit-note-content-input"
+          className="view-edit-note-content-input"
           placeholder="Start writing..."
           onChange={(e) => setContent(e.target.value)}
           value={content || ""}

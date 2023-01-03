@@ -50,7 +50,9 @@ router.get("/:notebookId", async (req, res) => {
 router.put("/:notebookId", async (req, res) => {
   const { name } = req.body;
   const { notebookId } = req.params;
-  const notebook = await Notebook.findByPk(notebookId);
+  const notebook = await Notebook.findByPk(notebookId, {
+    include: { model: Note },
+  });
   await notebook.update({ name: name });
   res.status(200).json(notebook);
 });

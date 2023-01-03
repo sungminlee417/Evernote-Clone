@@ -97,7 +97,7 @@ const DisplayNotebooks = () => {
                         {notebook.name}
                       </div>
                       <span className="num-notes-in-notebook">
-                        {`(${Object.values(notebook.Notes).length})`}
+                        {`(${Object.values(notebook?.Notes).length})`}
                       </span>
                     </NavLink>
                   </div>

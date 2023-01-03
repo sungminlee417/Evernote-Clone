@@ -9,8 +9,6 @@ import home_photo from "../../images/sean-benesh-wK8LMfHtRoM-unsplash.jpg";
 import HomePageHeader from "./HomePageHeader/HomePageHeader";
 import click_notes from "../../images/green-side-arrow.svg";
 import options from "../../images/modify.svg";
-import DisplayAllNotes from "../NoteComponents/DisplayAllNotes";
-import ViewAndEditNote from "../NoteComponents/ViewAndEditNote";
 import view_notes from "../../images/view-notes.svg";
 import { loadNotesThunk, clearNotes } from "../../store/notes";
 
@@ -60,7 +58,7 @@ const HomePage = () => {
         <Route exact path="/">
           <section className="home-page-section-design">
             <HomePageHeader />
-            <img className="home-page-photo" src={home_photo}></img>
+            <img className="home-page-photo" src={home_photo} alt="home"></img>
             <div className="home-page-notes-subsection">
               <div className="home-page-notes-container">
                 <div className="home-page-notes-header">

@@ -3,14 +3,17 @@ import { Modal } from "../../../context/Modal";
 import EditNotebook from "./EditNotebook/EditNotebook";
 import "./EditNotebookModal.css";
 
-const EditNotebookModal = ({ notebook }) => {
+const EditNotebookModal = ({ notebook, setClicked }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
         className="modify-notebook-buttons modify-notebook-edit"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setClicked(false);
+          setShowModal(true);
+        }}
       >
         Rename Notebook
       </button>

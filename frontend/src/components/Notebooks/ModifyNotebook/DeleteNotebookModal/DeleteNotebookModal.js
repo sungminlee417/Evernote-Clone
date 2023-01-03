@@ -3,7 +3,7 @@ import { Modal } from "../../../context/Modal";
 import DeleteNotebook from "./DeleteNotebook/DeleteNotebook";
 import "./DeleteNotebookModal.css";
 
-const DeleteNotebookModal = ({ notebook }) => {
+const DeleteNotebookModal = ({ notebook, setClicked }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -15,7 +15,10 @@ const DeleteNotebookModal = ({ notebook }) => {
             : "modify-notebook-buttons modify-notebook-delete-disabled"
         }
         disabled={notebook.firstNotebook ? true : false}
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setClicked(false);
+          setShowModal(true);
+        }}
       >
         Delete Notebook
         {notebook.firstNotebook && (

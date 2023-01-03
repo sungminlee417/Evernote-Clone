@@ -6,7 +6,6 @@ const handleValidationErrors = (req, _res, next) => {
   const validationErrors = validationResult(req);
 
   if (!validationErrors.isEmpty()) {
-    console.log(validationErrors);
     const errors = validationErrors.array().map((error) => `${error.msg}`);
 
     const err = Error("Bad request.");
@@ -41,7 +40,6 @@ const checkValidUserLogin = async (req, res, next) => {
     err.errors.credential =
       "There is no account for the username or email you entered.";
   }
-  console.log(err.errors);
 
   if (Object.values(err.errors).length) {
     return next(err);
@@ -62,7 +60,6 @@ const checkDuplicateCredential = async (req, _res, next) => {
   }
   err.errors = errors;
   const { username, email } = req.body;
-  console.log(username);
   const userName = await User.findOne({
     where: {
       username: username,

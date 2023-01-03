@@ -12,18 +12,9 @@ const ModifyNotebook = ({ notebook }) => {
   const history = useHistory();
   const [clicked, setClicked] = useState(false);
 
-  const onClick = () => {
-    const settingsContainer = document.querySelector(
-      `.modify-notebook-container-${notebook.id}`
-    );
-    if (clicked) {
-      settingsContainer.classList.remove("visible");
-      setClicked(false);
-    } else {
-      settingsContainer.classList.add("visible");
-      setClicked(true);
-    }
-  };
+  const settingsContainer = document.querySelector(
+    `.modify-notebook-container-${notebook.id}`
+  );
 
   const addNote = async () => {
     await dispatch(createNoteByNotebookId(notebook.id)).then((note) => {
@@ -36,11 +27,28 @@ const ModifyNotebook = ({ notebook }) => {
       e.stopPropagation();
     }
   };
+
+  const onClick = () => {
+    if (clicked) {
+      settingsContainer.classList.remove("visible");
+      setClicked(false);
+    } else {
+      settingsContainer.classList.add("visible");
+      setClicked(true);
+    }
+  };
+
   useEffect(() => {
-    if (!clicked) return;
+    if (!clicked && settingsContainer) {
+      settingsContainer.classList.remove("visible");
+      return;
+    }
+
     document.addEventListener("click", onClick);
+
     return () => document.removeEventListener("click", onClick);
-  });
+  }, [clicked, onClick, settingsContainer]);
+
   return (
     <div
       className={`modify-notebook-${notebook.id}`}
@@ -67,8 +75,8 @@ const ModifyNotebook = ({ notebook }) => {
         >
           Add New Note
         </button>
-        <EditNotebookModal notebook={notebook} />
-        <DeleteNotebookModal notebook={notebook} />
+        <EditNotebookModal notebook={notebook} setClicked={setClicked} />
+        <DeleteNotebookModal notebook={notebook} setClicked={setClicked} />
       </div>
     </div>
   );

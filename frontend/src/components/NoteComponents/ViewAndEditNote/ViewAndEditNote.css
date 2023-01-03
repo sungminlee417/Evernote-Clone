@@ -1,65 +1,18 @@
-.edit-delete-note-section {
+.view-edit-note-section {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   height: 100%;
 }
 
-.edit-delete-note-section-header {
+.view-edit-note-section-header {
   display: flex;
   justify-content: space-between;
   padding: 3rem 2rem 4.2rem 2rem;
+  height: 10rem;
 }
 
-.edit-delete-note-button-settings-container {
-  position: relative;
-}
-
-.edit-delete-note-delete-button {
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  font-size: 1.6rem;
-}
-
-.edit-delete-note-delete-button-icon {
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.edit-delete-note-delete-button-icon:hover {
-  background-color: #e8e4e4;
-}
-
-.edit-delete-note-settings-container {
-  bottom: 0rem;
-  border-radius: 0.8rem;
-  box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  opacity: 0;
-  transition: 0.2s;
-  width: 14rem;
-}
-
-.edit-delete-note-settings-container.visible {
-  bottom: -4rem;
-  opacity: 1;
-  pointer-events: all;
-}
-
-.edit-delete-note-settings-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 1rem 2rem;
-  width: 100%;
-}
-
-.edit-note-inputs-container {
+.view-edit-note-inputs-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -68,7 +21,7 @@
   border-top: 0.1rem solid #e8e4e4;
 }
 
-.edit-note-title-input {
+.view-edit-note-title-input {
   border: none;
   cursor: text;
   font-size: 3.4rem;
@@ -77,17 +30,17 @@
   color: #383434;
 }
 
-.edit-note-title-input:focus {
+.view-edit-note-title-input:focus {
   outline: none;
 }
 
-.edit-note-content-input {
+.view-edit-note-content-input {
   border: none;
   cursor: text;
   flex-grow: 1;
   overflow-y: scroll;
 }
 
-.edit-note-content-input:focus {
+.view-edit-note-content-input:focus {
   outline: none;
 }
