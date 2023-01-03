@@ -22,11 +22,6 @@ const DisplayAllNotes = () => {
     return () => dispatch(clearNotes());
   }, [dispatch]);
 
-  const convertDate = (dateTime) => {
-    const date = new Date(dateTime);
-    return date.toDateString();
-  };
-
   return (
     <section className="notes-section">
       <div className="list-notes">
