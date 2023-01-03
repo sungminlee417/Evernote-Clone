@@ -1,16 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
-import { createNote } from "../../store/notes";
+import {
+  clearNotes,
+  createNote,
+  loadNotesByNotebookIdThunk,
+} from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
 import DisplayTags from "../Tags/DisplayTags";
 import CreateTagModal from "../Tags/CreateTagModal/CreateTagModal";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
+  const location = useLocation();
   const [clicked, setClicked] = useState(false);
+  const { noteId, notebookId } = useParams();
   const [tagClicked, setTagClicked] = useState(false);
   const dispatch = useDispatch();
   // const onClick = () => {
@@ -51,6 +58,14 @@ const Navigation = () => {
 
   const newNote = () => {
     dispatch(createNote()).then(() => {
+      if (notebookId) {
+        dispatch(loadNotesByNotebookIdThunk(notebookId));
+      } else if (noteId) {
+        dispatch(loadNotesThunk());
+        history.push("/notes");
+      } else if (location.pathname === "/notebooks") {
+        history.push("/notebooks");
+      }
       dispatch(loadNotesThunk());
     });
   };

@@ -1,14 +1,15 @@
 .note-settings-container {
-  /* position: relative; */
+  position: relative;
 }
 
-.note-settings-button {
-  /* align-items: center; */
-  /* background-color: transparent; */
-  /* border: none; */
-  /* cursor: pointer; */
-  /* display: flex; */
-  /* font-size: 1.6rem; */
+.note-settings-container-button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  height: 100%;
 }
 
 .note-settings-delete-button-icon {
@@ -20,10 +21,12 @@
   background-color: #e8e4e4;
 }
 
-.note-settings-container {
-  bottom: 0rem;
+.note-settings {
+  background-color: white;
   border-radius: 0.8rem;
+  bottom: 0;
   box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
+  padding: 1rem 0;
   pointer-events: none;
   position: absolute;
   right: 0;
@@ -32,16 +35,21 @@
   width: 14rem;
 }
 
-.note-settings-container.visible {
-  bottom: -4rem;
+.note-settings.visible {
+  bottom: -8rem;
   opacity: 1;
   pointer-events: all;
 }
 
 .note-settings-button {
+  text-align: left;
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 1rem 2rem;
   width: 100%;
+}
+
+.note-settings-button:hover {
+  background-color: #f4f4f4;
 }

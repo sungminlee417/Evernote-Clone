@@ -1,0 +1,59 @@
+.move-note-container {
+  background-color: white;
+  width: 75rem;
+}
+
+.move-note-container > header {
+  display: flex;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.move-note-container > header > button {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+}
+
+.move-note-container > header > button > * {
+  cursor: pointer;
+}
+
+.move-note-container-divider {
+  background-color: #d8d8d8;
+  height: 0.1rem;
+  width: 98%;
+}
+
+.move-note-notebooks-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 1.3rem;
+}
+
+.move-note-notebooks-notebook-container {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem;
+}
+
+.move-note-notebooks-notebook-container > * {
+  cursor: pointer;
+}
+
+.move-note-notebooks-notebook-left {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.move-note-notebooks-notebook-current {
+  opacity: 1;
+}
+
+.move-note-notebooks-notebook-not-current {
+  opacity: 0;
+}

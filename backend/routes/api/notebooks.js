@@ -25,13 +25,6 @@ router.get("/", async (req, res) => {
   res.json(notebooks);
 });
 
-router.get("/:notebookId", async (req, res) => {
-  const user = req.user;
-  const notebooks = req.query.name
-  res.json(notebooks);
-});
-
-
 // POST NEW NOTEBOOK
 router.post("/", validateNotebook, async (req, res) => {
   const user = req.user;
@@ -40,7 +33,9 @@ router.post("/", validateNotebook, async (req, res) => {
     name,
     userId: user.id,
   });
-  const notebookData = await Notebook.findByPk(notebook.id, {include: { model: Note }})
+  const notebookData = await Notebook.findByPk(notebook.id, {
+    include: { model: Note },
+  });
   res.status(201).json(notebookData);
 });
 
@@ -51,6 +46,8 @@ router.get("/:notebookId", async (req, res) => {
   const notebook = await Notebook.findOne({
     where: { userId: user.id, id: notebookId },
   });
+  console.log("hi");
+  console.log(notebook);
   res.json(notebook);
 });
 
@@ -58,7 +55,9 @@ router.get("/:notebookId", async (req, res) => {
 router.put("/:notebookId", async (req, res) => {
   const { name } = req.body;
   const { notebookId } = req.params;
-  const notebook = await Notebook.findByPk(notebookId, {include: { model: Note }});
+  const notebook = await Notebook.findByPk(notebookId, {
+    include: { model: Note },
+  });
   await notebook.update({ name: name });
   res.status(200).json(notebook);
 });

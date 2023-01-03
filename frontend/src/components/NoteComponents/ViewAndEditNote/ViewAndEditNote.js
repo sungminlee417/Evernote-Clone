@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editNoteThunk } from "../../../store/notes";
 import "./ViewAndEditNote.css";
@@ -8,6 +8,7 @@ import NoteSettings from "../NoteSettings";
 
 const ViewAndEditNote = () => {
   const dispatch = useDispatch();
+  const note = useSelector((state) => state.singleNote);
   const { noteId } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -31,7 +32,7 @@ const ViewAndEditNote = () => {
     <section className="view-edit-note-section">
       <div className="view-edit-note-section-header">
         <div></div>
-        <NoteSettings />
+        <NoteSettings note={note} />
       </div>
       <div className="view-edit-note-inputs-container">
         <input

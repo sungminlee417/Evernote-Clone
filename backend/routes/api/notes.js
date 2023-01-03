@@ -36,13 +36,17 @@ router.post("/", async (req, res) => {
 
 // UPDATE NOTE
 router.put("/:noteId", async (req, res) => {
-  const { name, content } = req.body;
+  const { name, content, notebookId } = req.body;
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId);
-  if (!name) {
-    await note.update({ name: "Untitled", content: content });
-  } else {
-    await note.update({ name: name, content: content });
+  if (name && content) {
+    if (!name) {
+      await note.update({ name: "Untitled", content: content });
+    } else {
+      await note.update({ name: name, content: content });
+    }
+  } else if (notebookId) {
+    await note.update({ notebookId: notebookId });
   }
   res.json(note);
 });

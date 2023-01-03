@@ -5,15 +5,16 @@ import singleNotebookReducer from "./singleNotebook";
 import notebookSearchReducer from "./notebookSearch";
 import notesReducer from "./notes";
 import tagsReducer from "./tags";
-
 import sessionReducer from "./session";
 import singleNoteReducer from "./singleNote";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   notebooks: notebooksReducer,
-  notebookSearch: notebookSearchReducer,
   notes: notesReducer,
+  notebookSearch: notebookSearchReducer,
+  singleNote: singleNoteReducer,
+  singleNotebook: singleNotebookReducer,
   tags: tagsReducer,
 });
 

@@ -17,8 +17,10 @@ export const clearNotebook = () => {
 
 export const loadNotebookThunk = (notebookId) => async (dispatch) => {
   const response = await csrfFetch(`/api/notebooks/${notebookId}`);
-  const notebook = await response.json();
-  dispatch(loadNotebook(notebook));
+  if (response.ok) {
+    const notebook = await response.json();
+    dispatch(loadNotebook(notebook));
+  }
 };
 
 const initialState = {};

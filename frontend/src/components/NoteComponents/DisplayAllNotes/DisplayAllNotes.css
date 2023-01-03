@@ -39,9 +39,9 @@
 .notes-list {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   overflow-y: scroll;
   scrollbar-width: thin;
-  height: 100%;
 }
 
 .display-note-container {

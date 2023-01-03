@@ -8,15 +8,15 @@
 .view-edit-note-section-header {
   display: flex;
   justify-content: space-between;
-  padding: 3rem 2rem 4.2rem 2rem;
-  height: 10rem;
+  padding: 2rem;
+  height: 9.6rem;
 }
 
 .view-edit-note-inputs-container {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 1.5rem;
-  height: 100%;
   padding: 4rem;
   border-top: 0.1rem solid #e8e4e4;
 }
@@ -39,6 +39,7 @@
   cursor: text;
   flex-grow: 1;
   overflow-y: scroll;
+  resize: none;
 }
 
 .view-edit-note-content-input:focus {

@@ -4,19 +4,17 @@ import { useParams, useHistory } from "react-router-dom";
 import { deleteNoteThunk } from "../../../store/notes";
 import options from "../../../images/modify.svg";
 import "./NoteSettings.css";
+import MoveNoteModal from "./MoveNoteModal";
 
-const NoteSettings = () => {
+const NoteSettings = ({ note }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { notebookId, noteId } = useParams();
+  const { notebookId } = useParams();
   const [settingsClicked, setSettingsClicked] = useState(false);
+  const settingsContainer = document.querySelector(".note-settings");
 
   useEffect(() => {
     if (!settingsClicked) return;
-
-    const settingsContainer = document.querySelector(
-      ".note-settings-container"
-    );
 
     const closeSettings = () => {
       settingsContainer.classList.remove("visible");
@@ -29,7 +27,7 @@ const NoteSettings = () => {
   }, [settingsClicked]);
 
   const onDelete = () => {
-    dispatch(deleteNoteThunk(noteId)).then(() => {
+    dispatch(deleteNoteThunk(note.id)).then(() => {
       if (notebookId) {
         history.push(`/notebooks/${notebookId}`);
       } else {
@@ -39,9 +37,6 @@ const NoteSettings = () => {
   };
 
   const showSettings = () => {
-    const settingsContainer = document.querySelector(
-      ".note-settings-container"
-    );
     if (settingsClicked) {
       settingsContainer.classList.remove("visible");
       setSettingsClicked(false);
@@ -53,14 +48,15 @@ const NoteSettings = () => {
 
   return (
     <div className="note-settings-container">
-      <button className="note-settings-button" onClick={showSettings}>
+      <button className="note-settings-container-button" onClick={showSettings}>
         <img
           src={options}
           className="note-settings-delete-button-icon"
           alt="delete icon"
         />
       </button>
-      <div className="note-settings-container">
+      <div className="note-settings">
+        <MoveNoteModal note={note} />
         <button className="note-settings-button" onClick={onDelete}>
           Delete Note
         </button>

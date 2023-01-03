@@ -12,10 +12,6 @@ const ModifyNotebook = ({ notebook }) => {
   const history = useHistory();
   const [clicked, setClicked] = useState(false);
 
-  const settingsContainer = document.querySelector(
-    `.modify-notebook-container-${notebook.id}`
-  );
-
   const addNote = async () => {
     await dispatch(createNoteByNotebookId(notebook.id)).then((note) => {
       history.push(`/notebooks/${notebook.id}/${note.id}`);
@@ -29,16 +25,22 @@ const ModifyNotebook = ({ notebook }) => {
   };
 
   const onClick = () => {
-    if (clicked) {
+    const settingsContainer = document.querySelector(
+      `.modify-notebook-container-${notebook.id}`
+    );
+    if (clicked && settingsContainer) {
       settingsContainer.classList.remove("visible");
       setClicked(false);
-    } else {
+    } else if (settingsContainer) {
       settingsContainer.classList.add("visible");
       setClicked(true);
     }
   };
 
   useEffect(() => {
+    const settingsContainer = document.querySelector(
+      `.modify-notebook-container-${notebook.id}`
+    );
     if (!clicked && settingsContainer) {
       settingsContainer.classList.remove("visible");
       return;
@@ -47,7 +49,7 @@ const ModifyNotebook = ({ notebook }) => {
     document.addEventListener("click", onClick);
 
     return () => document.removeEventListener("click", onClick);
-  }, [clicked, onClick, settingsContainer]);
+  }, [clicked, onClick]);
 
   return (
     <div
