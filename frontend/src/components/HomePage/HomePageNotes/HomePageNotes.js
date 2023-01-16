@@ -5,7 +5,7 @@ import "./HomePageNotes.css";
 import click_notes from "../../../images/green-side-arrow.svg";
 import options from "../../../images/modify.svg";
 import view_notes from "../../../images/view-notes.svg";
-import { loadNotesThunk, clearNotes } from "../../../store/notes";
+import { loadNotesThunk, createNote, clearNotes } from "../../../store/notes";
 
 const HomePageNotes = () => {
   const dispatch = useDispatch();
@@ -46,6 +46,12 @@ const HomePageNotes = () => {
     }
   };
 
+  const newNote = () => {
+    dispatch(createNote()).then(() => {
+      dispatch(loadNotesThunk());
+    });
+  };
+
   useEffect(() => {
     dispatch(loadNotesThunk());
 
@@ -74,7 +80,7 @@ const HomePageNotes = () => {
             <NavLink to="/notes" className="home-page-go-to-notes">
               Go to Notes
             </NavLink>
-            <div className="home-page-create-new-note">Create new note</div>
+            <div className="home-page-create-new-note" onClick={newNote}>Create new note</div>
           </div>
         </div>
         <div className="home-page-view-notes">

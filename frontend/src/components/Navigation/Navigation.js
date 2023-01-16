@@ -91,10 +91,10 @@ const Navigation = () => {
         <ManageAccount />
       </header>
       <div className="nav-bar-button-search">
-        <div className="nav-bar-search">
+        {/* <div className="nav-bar-search">
           <i className="fa-solid fa-magnifying-glass nav-bar-magnifying-glass"></i>
           <input placeholder="Search" className="nav-bar-search-input" />
-        </div>
+        </div> */}
         <div className="nav-bar-new-button-container" onClick={newNote}>
           <button className="nav-bar-new-button">
             <div className="nav-bar-new-button-new">

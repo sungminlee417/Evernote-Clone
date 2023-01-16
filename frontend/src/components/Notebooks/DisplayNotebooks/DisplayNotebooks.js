@@ -66,13 +66,13 @@ const DisplayNotebooks = () => {
     <div className="DisplayNotebooksPage">
       <div className="notebook-header">
         <div className="notebook-title-page">Notebooks</div>
-        <input
+        {/* <input
           className="search-for-notebooks"
           type="text"
           placeholder="Find Notebooks..."
           onChange={onChangeInput}
           value={input} 
-        />
+        /> */}
       </div>
       <div className="second-notebook-header">
         <div id="second-header-text">

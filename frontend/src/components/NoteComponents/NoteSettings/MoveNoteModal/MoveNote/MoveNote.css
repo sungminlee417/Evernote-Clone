@@ -1,5 +1,6 @@
 .move-note-container {
   background-color: white;
+  color: #383434;
   width: 75rem;
 }
 
@@ -7,7 +8,7 @@
   display: flex;
   font-size: 1.8rem;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 2.5rem;
 }
 
 .move-note-container > header > button {
@@ -21,9 +22,10 @@
 }
 
 .move-note-container-divider {
-  background-color: #d8d8d8;
-  height: 0.1rem;
-  width: 98%;
+  border-top: 0.05rem solid rgb(171, 171, 171);
+
+  margin-left: 2.5rem;
+  margin-right: 2.5rem
 }
 
 .move-note-notebooks-container {
@@ -44,6 +46,9 @@
   cursor: pointer;
 }
 
+.move-note-notebooks-notebook-container:hover{
+  background-color: #f8f4f4;
+}
 .move-note-notebooks-notebook-left {
   align-items: center;
   display: flex;
@@ -57,3 +62,53 @@
 .move-note-notebooks-notebook-not-current {
   opacity: 0;
 }
+
+.current-notebook-selected {
+  color: #10a4f4;
+}
+.move-note-notebooks-notebook-right {
+  color: #a8a4a4;
+}
+.move-note-buttons {
+  padding: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: end;
+}
+
+.move-note-cancel-button,
+.move-note-done-button {
+  border-radius: 0.6rem;
+  height: 3.75rem;
+  outline: none;
+  cursor: pointer;
+}
+.move-note-cancel-button {
+  border: 0.05rem solid #787474;
+  border-width: thin;
+  width: 7.5rem;
+  font-size: 1.5rem;
+  color: #787474;
+  background-color: transparent;
+}
+
+.move-note-cancel-button:hover {
+  border: 0.05rem solid #504c4c;
+  color: #504c4c;
+  background-color: #f8f4f4;
+}
+
+.move-note-done-button {
+  border: 0.05rem solid #08a42c;
+  width:6rem;
+  border-width: thin;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #08a42c;
+}
+
+.move-note-done-button:hover {
+  border: 0.05rem solid #088c24;
+  background-color: #088c24;
+}
+

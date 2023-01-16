@@ -48,9 +48,15 @@ const MoveNote = ({ note, onClose }) => {
     <section className="move-note-container">
       <header>
         <div>Move note to...</div>
-        <button onClick={onClose}>
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <button
+            onClick={() => {
+              onClose();
+            }}
+            className="modal-close-button"
+          >
+            <span className="modal-line-one"></span>
+            <span className="modal-line-two"></span>
+          </button>
       </header>
       <div className="move-note-container-divider"></div>
       <div className="move-note-notebooks-container">
@@ -70,24 +76,25 @@ const MoveNote = ({ note, onClose }) => {
                       : "move-note-notebooks-notebook-not-current"
                   }
                 >
-                  <i class="fa-solid fa-check"></i>
+                  <i class="fa-solid fa-check current-notebook-selected"></i>
                 </div>
-                <i class="fa-solid fa-book"></i>
+                <i class="fa-solid fa-book indiv-notebook-link-icon"></i>
                 <div>{notebook.name}</div>
+                {note.notebookId === notebook.id && (
+                  <div className="move-note-notebooks-notebook-right">
+                    (current)
+                  </div>
+                )}
               </div>
-              {note.notebookId === notebook.id && (
-                <div className="move-note-notebooks-notebook-right">
-                  (current)
-                </div>
-              )}
+              
             </div>
           );
         })}
       </div>
       <div className="move-note-container-divider"></div>
-      <div>
-        <button onClick={onClose}>Cancel</button>
-        <button onClick={onSubmit}>Done</button>
+      <div className="move-note-buttons">
+        <button className="move-note-cancel-button" onClick={onClose}>Cancel</button>
+        <button className="move-note-done-button" onClick={onSubmit}>Done</button>
       </div>
     </section>
   );
