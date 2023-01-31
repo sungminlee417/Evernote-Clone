@@ -12,13 +12,25 @@ import { useDispatch, useSelector } from "react-redux";
 const AddTag = ({note, onClose }) => {
   const dispatch = useDispatch();
   const tags = Object.values(useSelector((state) => state.tags));
-  const [checkedTags, setCheckedTags] = useState([]);
+  const [checkedTags, setCheckedTags] = useState({});
+  const noteTags = {}
+  note.Tags.forEach(tag => { 
+    noteTags[tag.id] = tag
+  })
   const handleChange = (tag) => {
     setCheckedTags((previousTags) => {
-      const myArray = [...previousTags]
-      myArray.push(tag.id) 
-      return myArray
+      const myDict = {...previousTags}
+      myDict[tag.id] = tag
+      return myDict
     })
+  }
+
+  const checked = (note, tagId) => {
+    note.Tag.forEach(tag => {
+      if(tag.id = tagId) return true;
+    }) 
+    console.log("check")
+    return false;
   }
 
   useEffect(() => {
@@ -27,9 +39,11 @@ const AddTag = ({note, onClose }) => {
     return () => dispatch(clearTags());
   }, [dispatch]);
   const onSubmit = () => {
+    console.log(checkedTags)
     dispatch(associatingTagToNoteThunk(note.id, checkedTags)).then(() =>{
       onClose();
     });
+    
   }
 
   return (
@@ -54,8 +68,11 @@ const AddTag = ({note, onClose }) => {
         {tags.map((tag,i) => {
           return(
             <div className="select-tag">
-              <input type="checkbox" value="name" onChange={() => handleChange(tag)} defaultChecked={tag.id in checkedTags}/>
-              <label for="name">{tag.name}</label>
+              <input type="checkbox" 
+                     id="name" 
+                     onChange={() => handleChange(tag)} 
+                     defaultChecked={tag.id in noteTags}/>
+              <label htmlFor="name">{tag.name}</label>
             </div>
           )
         })}

@@ -1,4 +1,4 @@
-const { Note, Notebook, NoteTag } = require("../../db/models");
+const { Note, Notebook, NoteTag, Tag } = require("../../db/models");
 const express = require("express");
 const notetag = require("../../db/models/notetag");
 const router = express.Router();
@@ -8,6 +8,7 @@ router.get("/", async (req, res) => {
   const user = req.user;
   const notes = await Note.findAll({
     where: { userId: user.id },
+    include: Tag
   });
   res.json(notes);
 });
@@ -15,7 +16,9 @@ router.get("/", async (req, res) => {
 // GET SINGLE NOTE
 router.get("/:noteId", async (req, res) => {
   const { noteId } = req.params;
-  const note = await Note.findByPk(noteId);
+  const note = await Note.findByPk(noteId, {
+    include: Tag
+  });
   res.json(note);
 });
 
@@ -32,13 +35,32 @@ router.post("/", async (req, res) => {
     userId: user.id,
     notebookId: notebook.id,
   });
-  res.status(201).json(note);
+  const noteData = await Note.findByPk(note.id, {
+    include: Tag,
+  });
+  res.status(201).json(noteData);
 });
 
 router.post("/:noteId/tags", async(req,res) => {
   const { tags } = req.body;
   const { noteId } = req.params;
-  tags.forEach( async(tagId) => {
+  console.log(noteId)
+  const noteTags = await NoteTag.findAll({
+    where: {noteId: noteId}
+  })
+  console.log(tags)
+  noteTags.forEach(async(noteTag) => {
+    console.log(noteTag.tagId)
+    if(!(noteTag.tagId in tags)) {
+      console.log(noteTag)
+      // await noteTag.destroy()
+      console.log("anything")
+    } 
+    else {
+      delete tags[noteTag.tagId]
+    }
+  })
+  Object.keys(tags).forEach( async(tagId) => {
     await NoteTag.create({
       noteId: noteId,
       tagId: tagId
@@ -51,7 +73,9 @@ router.post("/:noteId/tags", async(req,res) => {
 router.put("/:noteId", async (req, res) => {
   const { name, content, notebookId } = req.body;
   const { noteId } = req.params;
-  const note = await Note.findByPk(noteId);
+  const note = await Note.findByPk(noteId, {
+    include: Tag,
+  });
   if (name) {
     if (!name) {
       await note.update({ name: "Untitled", content: content });
