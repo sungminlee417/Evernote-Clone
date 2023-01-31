@@ -46,8 +46,6 @@ router.get("/:notebookId", async (req, res) => {
   const notebook = await Notebook.findOne({
     where: { userId: user.id, id: notebookId },
   });
-  console.log("hi");
-  console.log(notebook);
   res.json(notebook);
 });
 

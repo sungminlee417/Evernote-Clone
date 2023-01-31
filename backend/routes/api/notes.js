@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   const user = req.user;
   const notes = await Note.findAll({
     where: { userId: user.id },
-    include: Tag
+    include: Tag,
   });
   res.json(notes);
 });
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:noteId", async (req, res) => {
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId, {
-    include: Tag
+    include: Tag,
   });
   res.json(note);
 });
@@ -41,32 +41,31 @@ router.post("/", async (req, res) => {
   res.status(201).json(noteData);
 });
 
-router.post("/:noteId/tags", async(req,res) => {
+router.post("/:noteId/tags", async (req, res) => {
   const { tags } = req.body;
+  const tagData = { ...tags };
   const { noteId } = req.params;
-  console.log(noteId)
+  const note = await Note.findByPk(noteId);
   const noteTags = await NoteTag.findAll({
-    where: {noteId: noteId}
-  })
-  console.log(tags)
-  noteTags.forEach(async(noteTag) => {
-    console.log(noteTag.tagId)
-    if(!(noteTag.tagId in tags)) {
-      console.log(noteTag)
-      // await noteTag.destroy()
-      console.log("anything")
-    } 
-    else {
-      delete tags[noteTag.tagId]
+    where: { noteId: note.id },
+  });
+
+  noteTags.forEach(async (noteTag) => {
+    if (!(noteTag.tagId in tagData)) {
+      const tag = await Tag.findByPk(noteTag.tagId);
+      await note.removeTag(tag);
+    } else {
+      delete tagData[noteTag.tagId];
     }
-  })
-  Object.keys(tags).forEach( async(tagId) => {
+  });
+
+  Object.keys(tagData).forEach(async (tagId) => {
     await NoteTag.create({
       noteId: noteId,
-      tagId: tagId
-    })
-  })
-  res.status(201).json({message: "successful"});
+      tagId: tagId,
+    });
+  });
+  res.status(201).json({ message: "successful" });
 });
 
 // UPDATE NOTE
