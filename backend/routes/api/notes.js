@@ -1,5 +1,6 @@
-const { Note, Notebook } = require("../../db/models");
+const { Note, Notebook, NoteTag } = require("../../db/models");
 const express = require("express");
+const notetag = require("../../db/models/notetag");
 const router = express.Router();
 
 // GET ALL USER'S NOTES
@@ -34,12 +35,24 @@ router.post("/", async (req, res) => {
   res.status(201).json(note);
 });
 
+router.post("/:noteId/tags", async(req,res) => {
+  const { tags } = req.body;
+  const { noteId } = req.params;
+  tags.forEach( async(tagId) => {
+    await NoteTag.create({
+      noteId: noteId,
+      tagId: tagId
+    })
+  })
+  res.status(201).json({message: "successful"});
+});
+
 // UPDATE NOTE
 router.put("/:noteId", async (req, res) => {
   const { name, content, notebookId } = req.body;
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId);
-  if (name && content) {
+  if (name) {
     if (!name) {
       await note.update({ name: "Untitled", content: content });
     } else {

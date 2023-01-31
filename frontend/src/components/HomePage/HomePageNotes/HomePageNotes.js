@@ -95,7 +95,7 @@ const HomePageNotes = () => {
                   <div className="home-page-display-note-container-name">
                     {note?.name}
                   </div>
-                  <div className="display-note-container-content">
+                  <div className="home-page-display-note-container-content">
                     {note?.content}
                   </div>
                   <div className="display-note-container-created-at">

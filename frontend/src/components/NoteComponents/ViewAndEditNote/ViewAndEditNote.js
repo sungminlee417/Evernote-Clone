@@ -13,6 +13,7 @@ const ViewAndEditNote = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+
   useEffect(() => {
     dispatch(loadNoteThunk(noteId)).then((noteData) => {
       setTitle(noteData.name);

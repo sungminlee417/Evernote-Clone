@@ -1,37 +1,52 @@
-.move-note-container {
+.add-tag-container {
   background-color: white;
   border-radius: 0.5rem;
   border: 0.125rem solid #d8d4d4;
+  padding: 2.5rem;
   box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
   color: #383434;
-  width: 75rem;
+  width: 70rem;
 }
 
-.move-note-container > header {
+.add-tag-container > header {
   display: flex;
   font-size: 1.8rem;
   justify-content: space-between;
-  padding: 2.5rem;
 }
 
-.move-note-container > header > button {
+.add-tag-container > header > button {
   background-color: transparent;
   border: none;
   font-size: 2rem;
 }
 
-.move-note-container > header > button > * {
+.add-tag-container > header > button > * {
   cursor: pointer;
 }
-.move-note-container-header {
+
+.add-tag-header {
   font-weight: 600;
+  margin-bottom: 2rem;
 }
 
-.move-note-container-divider {
-  border-top: 0.05rem solid rgb(171, 171, 171);
+.add-tag-subheader{
+  color:#787474;
+  font-size: 1.5rem;
 
-  margin-left: 2.5rem;
-  margin-right: 2.5rem
+}
+
+.move-tag-container-divider {
+  border-top: 0.05rem solid rgb(171, 171, 171);
+  margin: 1.5rem -2.5rem;
+}
+.add-tag-tags-container {
+  height: 20rem; 
+}
+.select-tag {
+  display: flex;
+  gap: 4rem;
+  font-size: 1.25rem;
+  padding-bottom: 1.5rem;
 }
 
 .move-note-notebooks-container {
@@ -75,21 +90,20 @@
 .move-note-notebooks-notebook-right {
   color: #a8a4a4;
 }
-.move-note-buttons {
-  padding: 2.5rem;
+.move-tag-buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: end;
 }
 
-.move-note-cancel-button,
-.move-note-done-button {
+.move-tag-cancel-button,
+.move-tag-done-button {
   border-radius: 0.6rem;
   height: 3.75rem;
   outline: none;
   cursor: pointer;
 }
-.move-note-cancel-button {
+.move-tag-cancel-button {
   border: 0.05rem solid #787474;
   border-width: thin;
   width: 7.5rem;
@@ -98,13 +112,13 @@
   background-color: transparent;
 }
 
-.move-note-cancel-button:hover {
+.move-tag-cancel-button:hover {
   border: 0.05rem solid #504c4c;
   color: #504c4c;
   background-color: #f8f4f4;
 }
 
-.move-note-done-button {
+.move-tag-done-button {
   border: 0.05rem solid #08a42c;
   width:6rem;
   border-width: thin;

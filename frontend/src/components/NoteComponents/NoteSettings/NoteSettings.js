@@ -4,7 +4,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { deleteNoteThunk } from "../../../store/notes";
 import options from "../../../images/modify.svg";
 import "./NoteSettings.css";
-import MoveNoteModal from "./MoveNoteModal";
+import MoveNoteModal from "./MoveNoteModal"
+import AddTagModal from "./AddTagModal";
 
 const NoteSettings = ({ note }) => {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ const NoteSettings = ({ note }) => {
       </button>
       <div className="note-settings">
         <MoveNoteModal note={note} />
+        <AddTagModal note={note}/>
         <button className="note-settings-button" onClick={onDelete}>
           Delete Note
         </button>

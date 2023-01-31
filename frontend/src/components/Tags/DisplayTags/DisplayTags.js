@@ -6,8 +6,10 @@ import no_tags from "../../../images/no-tags.png";
 import options from "../../../images/modify.svg";
 import DeleteTagModal from "../DeleteTagModal/DeleteTagModal";
 import EditTagModal from "../EditTagModal/EditTagModal";
+import { useHistory } from "react-router-dom";
 const DisplayTags = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const tags = Object.values(useSelector((state) => state.tags));
     const [settingsClicked, setSettingsClicked] = useState(false);
     useEffect(() => {
@@ -61,6 +63,9 @@ const DisplayTags = () => {
           setSettingsClicked(true);
         }
       };
+    const tagNotes = (tagId) => {
+        history.push({pathname:"/notes", search:`tags=${tagId}`})
+    }
 
   return (
     <>
@@ -69,7 +74,7 @@ const DisplayTags = () => {
                 {tags.map((tag) => {
                     return (
                         <li className="individual-tag">
-                            <div>{tag.name}</div>
+                            <div onClick={() => tagNotes(tag.id)}>{tag.name}</div>
                             {/* <div className={`modify-tag-${tag.id}`}> */}
                             <button className="tag-buttons">
                                 <img

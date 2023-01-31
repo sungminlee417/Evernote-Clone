@@ -77,7 +77,7 @@ const DisplayNotebooks = () => {
       <div className="second-notebook-header">
         <div id="second-header-text">
           {" "}
-          {notebooks.length} {notebooks.length > 1 ? "notebooks" : "notebook"}{" "}
+          {notebooks.length} {notebooks.length == 1 ? "notebook" : "notebooks"}{" "}
         </div>
         <div className="second-notebook-header-options">
           <CreateNotebookModal />

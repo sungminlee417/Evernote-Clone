@@ -23,9 +23,10 @@
 
 .note-settings {
   background-color: white;
-  border-radius: 0.8rem;
-  bottom: 0;
-  box-shadow: 0 0.5rem 2.5rem 0 rgb(0 0 0 / 10%);
+  bottom: -7rem;
+  border-radius: 0.25rem;
+  border: 0.125rem solid #d8d4d4;
+  box-shadow: 0rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.3);
   padding: 1rem 0;
   pointer-events: none;
   position: absolute;
@@ -36,7 +37,7 @@
 }
 
 .note-settings.visible {
-  bottom: -8rem;
+  bottom: -12rem;
   opacity: 1;
   pointer-events: all;
 }

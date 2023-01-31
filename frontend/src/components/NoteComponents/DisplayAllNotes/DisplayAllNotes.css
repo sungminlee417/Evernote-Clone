@@ -67,6 +67,13 @@
   font-size: 1.4rem;
   color: #383434;
 }
+.display-note-container-content {
+  color: #686464;
+  height: 3.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .display-note-container-created-at {
   color: #686464;

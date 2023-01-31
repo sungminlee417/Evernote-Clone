@@ -20,18 +20,7 @@ const Navigation = () => {
   const { noteId, notebookId } = useParams();
   const [tagClicked, setTagClicked] = useState(false);
   const dispatch = useDispatch();
-  // const onClick = () => {
-  //   const settingsContainer = document.querySelector(
-  //     ".nav-bar-new-pop-up-container"
-  //   );
-  //   if (clicked) {
-  //     settingsContainer.classList.remove("visible");
-  //     setClicked(false);
-  //   } else {
-  //     settingsContainer.classList.add("visible");
-  //     setClicked(true);
-  //   }
-  // };
+
   const tagOnClick = () => {
     const tagsContainer = document.querySelector(".tags-container");
     const tagsButton = document.querySelector(".nav-bar-link.tags");
@@ -146,12 +135,12 @@ const Navigation = () => {
               <div className="tags-header-title">Tags</div>
               <CreateTagModal />
             </div>
-            <input
+            {/* <input
               className="search-for-tags"
               type="text"
               placeholder="Find tags..."
-            />
-            <DisplayTags />
+            /> */}
+            <DisplayTags/>
           </div>
         </div>
         {/* <div className="nav-bar-links-section-three">

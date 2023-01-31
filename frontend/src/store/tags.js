@@ -4,6 +4,7 @@ const LOAD_TAGS = "tags/LOAD";
 const ADD_TAG = "tags/ADD";
 const EDIT_TAG = "tags/EDIT";
 const DELETE_TAG = "tags/DELETE";
+const CLEAR_TAGS = "tags/CLEAR"
 
 export const loadTags = (tags) => {
   return {
@@ -30,6 +31,12 @@ export const deleteTag = (tagId) => {
   return {
     type: DELETE_TAG,
     tagId,
+  };
+};
+
+export const clearTags = () => {
+  return {
+    type: CLEAR_TAGS,
   };
 };
 
@@ -100,6 +107,8 @@ const tagsReducer = (state = initialState, action) => {
     case DELETE_TAG:
       delete newState[action.tagId];
       return newState;
+    case CLEAR_TAGS:
+      return {}
     default:
       return newState;
   }

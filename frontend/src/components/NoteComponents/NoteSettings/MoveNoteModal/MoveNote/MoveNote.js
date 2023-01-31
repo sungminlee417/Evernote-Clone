@@ -47,7 +47,7 @@ const MoveNote = ({ note, onClose }) => {
   return (
     <section className="move-note-container">
       <header>
-        <div>Move note to...</div>
+        <div className="move-note-container-header">Move note to...</div>
         <button
             onClick={() => {
               onClose();

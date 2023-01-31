@@ -1,4 +1,4 @@
-const { Tag } = require("../../db/models");
+const { Tag, Note } = require("../../db/models");
 const express = require("express");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -53,4 +53,12 @@ router.delete("/:tagId", async (req, res) => {
   });
 });
 
+// GET CURRENT USER'S NOTES ASSOCIATED WITH TAG
+router.get("/:tagId/notes", async (req, res) => {
+  const { tagId } = req.params;
+  const notes = await Note.findAll({
+    where: { tagId: tagId },
+  });
+  res.json(notes);
+});
 module.exports = router;
