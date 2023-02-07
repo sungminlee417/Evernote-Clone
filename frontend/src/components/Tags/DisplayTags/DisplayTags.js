@@ -59,7 +59,9 @@ const DisplayTags = () => {
   };
 
   const handleTagClick = (tag) => {
-    setSelectedTags((prevTags) => [...prevTags, tag]);
+    setSelectedTags((prevTags) => {const previousTags = prevTags;
+    previousTags[tag.id] = tag;
+    return previousTags});
     history.push("/notes");
   };
 

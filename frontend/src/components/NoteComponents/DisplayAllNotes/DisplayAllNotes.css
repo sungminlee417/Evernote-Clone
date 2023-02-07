@@ -148,3 +148,8 @@
   background-color: #0884c4;
   color:white;
 }
+
+.selected-tags {
+  display:flex;
+  gap: 0.5rem;
+}

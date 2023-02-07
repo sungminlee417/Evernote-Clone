@@ -41,7 +41,7 @@ const DisplayAllNotes = () => {
           </div>
         </div>
         <div>
-          {selectedTags.length > 0 && (
+          {Object.values(selectedTags).length > 0 && (
             <div className="display-note-filters">
               <div className="display-note-filters-header">
                 FILTER
@@ -49,11 +49,18 @@ const DisplayAllNotes = () => {
                   Clear
                 </div>
               </div>
-              <div className="display-note-filter-names">
-                <i className="fa-solid fa-tag"></i>
-                name
+              <div>
+              <ul className="selected-tags">
+                {Object.values(selectedTags).map((tag,i) => {
+                  return (
+                  <li className="display-note-filter-names" key={i}>
+                    <i className="fa-solid fa-tag"></i>
+                    <div>{tag.name}</div>
+                  </li>
+                  );
+                })}
+              </ul>
               </div>
-              <div className="display-note-tags"></div>
             </div>
           )}
         </div>
