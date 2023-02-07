@@ -50,18 +50,17 @@ export const loadNotesThunk = () => async (dispatch) => {
   }
 };
 
-export const loadNotesByNotebookIdThunk = (notebookId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/notebooks/${notebookId}/notes`);
-
+export const loadNoteTagThunk = (tagId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags/${tagId}/notes`);
   if (response.ok) {
     const notes = await response.json();
+    console.log(notes)
     dispatch(loadNotes(notes));
-    return notes;
   }
 };
 
-export const loadNotesByTagIdThunk = (tagId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/tags/${tagId}/notes`);
+export const loadNotesByNotebookIdThunk = (notebookId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/notebooks/${notebookId}/notes`);
 
   if (response.ok) {
     const notes = await response.json();

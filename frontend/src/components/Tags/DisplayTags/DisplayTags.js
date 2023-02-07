@@ -6,8 +6,9 @@ import no_tags from "../../../images/no-tags.png";
 import options from "../../../images/modify.svg";
 import DeleteTagModal from "../DeleteTagModal/DeleteTagModal";
 import EditTagModal from "../EditTagModal/EditTagModal";
-import { useHistory } from "react-router-dom";
-const DisplayTags = () => {
+import { NavLink, useHistory } from "react-router-dom";
+import ModifyTag from "../ModifyTag/ModifyTag";
+const DisplayTags = ({tagOnClick}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const tags = Object.values(useSelector((state) => state.tags));
@@ -17,6 +18,7 @@ const DisplayTags = () => {
     }, [dispatch]);
 
     useEffect(() => {
+        dispatch(loadTagsThunk());
         if (!settingsClicked) return;
     
         const settingsContainer = document.querySelector(
@@ -28,16 +30,13 @@ const DisplayTags = () => {
         const modifyButton = document.querySelector(
             ".tag-buttons"
         );
-    
         const closeSettings = () => {
           settingsContainer.classList.remove("visible");
           tagsContainer.classList.remove("visible");
           modifyButton.classList.remove("visible");
           setSettingsClicked(false);
         };
-    
         document.addEventListener("click", closeSettings);
-    
         return () => document.removeEventListener("click", closeSettings);
       }, [settingsClicked]);
     
@@ -71,14 +70,15 @@ const DisplayTags = () => {
     <>
         {tags.length ? (
             <ul>
-                {tags.map((tag) => {
+                {tags.map((tag, i) => {
                     return (
-                        <li className="individual-tag">
-                            <div onClick={() => tagNotes(tag.id)}>{tag.name}</div>
+                        <li className={`individual-tag individual-tag-${i}`}>
+                            <NavLink to={{pathname:"/notes", state:{tag: tag}}}>{tag.name}</NavLink>
                             {/* <div className={`modify-tag-${tag.id}`}> */}
+                            <ModifyTag tag={tag}/>
                             <button className="tag-buttons">
                                 <img
-                                onClick={showSettings}
+                                onClick={() => showSettings(i)}
                                 className="modify-tag-button"
                                 alt="modify_tag"
                                 src={options}

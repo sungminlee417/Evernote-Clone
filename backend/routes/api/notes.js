@@ -41,6 +41,7 @@ router.post("/", async (req, res) => {
   res.status(201).json(noteData);
 });
 
+// ASSOCIATE NOTE WITH TAG
 router.post("/:noteId/tags", async (req, res) => {
   const { tags } = req.body;
   const tagData = { ...tags };
@@ -67,6 +68,16 @@ router.post("/:noteId/tags", async (req, res) => {
   });
   res.status(201).json({ message: "successful" });
 });
+
+// GET ALL TAGS ASSOCIATED WITH A CERTAIN NOTE
+router.get("/:noteId/tags", async(req,res) => {
+  const { noteId } = req.params;
+  const tags = Tag.findAll({
+    where: {noteId: noteId},
+    include: Note,
+  });
+  res.json(tags);
+})
 
 // UPDATE NOTE
 router.put("/:noteId", async (req, res) => {

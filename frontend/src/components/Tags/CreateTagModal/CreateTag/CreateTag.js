@@ -8,6 +8,7 @@ const CreateTag = ({ onClose }) => {
     const [name, setName] = useState("");
     const [errors, setErrors] = useState([]); 
     const tags = Object.values(useSelector((state) => state.tags));
+    const [nameChanged, setNameChanged] = useState(false);
 
     const submit = (e) => {
         e.preventDefault();
@@ -19,6 +20,14 @@ const CreateTag = ({ onClose }) => {
             }
         })
     }
+    // const checkTagExists = () => {
+    //     tags.forEach((tagObj) => {
+    //         if (tagObj.name === name)
+    //           return true
+    //       });
+    //       return false
+    // }
+
     useEffect(() => {
         setErrors("");
         tags.forEach((tagObj) => {
@@ -29,7 +38,9 @@ const CreateTag = ({ onClose }) => {
     
     useEffect(() => {
         const submitButton = document.querySelector(".create-tag-button");
-        if (errors) {
+        if (nameChanged)
+       
+        {if (errors) { 
             submitButton.disabled = "true";
             submitButton.classList.add("disabled")
             submitButton.style.cursor = "not-allowed";
@@ -37,9 +48,10 @@ const CreateTag = ({ onClose }) => {
             submitButton.classList.remove("disabled")
             submitButton.removeAttribute("disabled");
             submitButton.style.cursor = "pointer";
-        }
-        }, [errors]);    
-
+        }}
+        setNameChanged(true)
+        }, [errors]);   
+    
     return (
         <>
           <div className="create-new-tag-modal" onClick={(e) => e.stopPropagation()}>

@@ -46,6 +46,15 @@ export const loadTagsThunk = () => async (dispatch) => {
   dispatch(loadTags(tags));
 };
 
+export const loadTagsByNoteIdThunk = (noteId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/notes/${noteId}/tags`);
+  if (response.ok) {
+    const tags = await response.json();
+    dispatch(loadTags(tags));
+    return tags;
+  }
+};
+
 export const createTag = (name) => async (dispatch) => {
     const response = await csrfFetch("/api/tags", {
       method: "POST",

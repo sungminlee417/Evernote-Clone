@@ -14,8 +14,6 @@ const AddTag = ({ note, onClose }) => {
 
   useEffect(() => {
     dispatch(loadTagsThunk());
-
-    return () => dispatch(clearTags());
   }, [dispatch]);
 
   note.Tags.forEach((tag) => {

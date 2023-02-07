@@ -59,12 +59,6 @@ const Navigation = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!clicked) return;
-  //   document.addEventListener("click", onClick);
-  //   return () => document.removeEventListener("click", onClick);
-  // }, [clicked]);
-
   useEffect(() => {
     if (!tagClicked) return;
     document.addEventListener("click", tagOnClick);
@@ -140,7 +134,7 @@ const Navigation = () => {
               type="text"
               placeholder="Find tags..."
             /> */}
-            <DisplayTags/>
+            <DisplayTags tagOnClick={tagOnClick}/>
           </div>
         </div>
         {/* <div className="nav-bar-links-section-three">

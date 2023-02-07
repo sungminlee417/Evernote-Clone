@@ -1,0 +1,16 @@
+.tag-buttons {
+    height: 2.25rem;
+    position: relative;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    opacity:0;
+}
+.tag-buttons.visible {
+    opacity:1;
+    cursor:pointer;
+}
+.modify-tag-button{
+    cursor:pointer;
+}

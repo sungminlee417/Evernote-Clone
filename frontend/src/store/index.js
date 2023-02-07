@@ -5,6 +5,7 @@ import singleNotebookReducer from "./singleNotebook";
 import notebookSearchReducer from "./notebookSearch";
 import notesReducer from "./notes";
 import tagsReducer from "./tags";
+import singleTagReducer from "./singleTag";
 import sessionReducer from "./session";
 import singleNoteReducer from "./singleNote";
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   singleNote: singleNoteReducer,
   singleNotebook: singleNotebookReducer,
   tags: tagsReducer,
+  singleTag: singleTagReducer,
 });
 
 let enhancer;

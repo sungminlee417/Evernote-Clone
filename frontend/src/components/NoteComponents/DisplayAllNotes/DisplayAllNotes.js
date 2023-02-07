@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 import { loadNotesThunk, clearNotes } from "../../../store/notes";
@@ -9,17 +9,26 @@ const DisplayAllNotes = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const notes = Object.values(useSelector((state) => state.notes));
-
+  const [tags, setTags] = useState([]);
+  console.log(tags)
+  console.log(location.state)
   const convertDate = (date) => {
     const dateTime = new Date(date);
     const formatDate = dateTime.toDateString();
     return formatDate.slice(4);
   };
-
-
+  const removeTags = ()=> {
+    setTags([]);
+  }
   useEffect(() => {
     dispatch(loadNotesThunk());
-
+    if (location.state) {
+      if (location.state.tag) {
+        const { tag } = location.state;
+        setTags([tag]);
+        dispatch(loadNotesThunk());
+      }
+    }
     return () => dispatch(clearNotes());
   }, [dispatch]);
 
@@ -34,12 +43,24 @@ const DisplayAllNotes = () => {
 
           <div className="list-notes-header-sub"> {notes.length} {notes.length == 1 ? "note" : "notes"}{" "}</div>
         </div>
-        {/* {location.search.includes('=') ? (
-          <div></div>
-        ) :(
-          
-          
-        )} */}
+        <div> 
+          {tags.length > 0 &&
+            <div className="display-note-filters">
+              <div className="display-note-filters-header">
+                FILTER
+                <div className="clear-filters" onClick={removeTags}>
+                  Clear
+                </div>
+              </div>
+              <div className="display-note-filter-names">
+                <i className="fa-solid fa-tag"></i>
+                name
+              </div>
+              <div className="display-note-tags">
+              </div>
+            </div>
+          }          
+        </div>
         {notes.length > 0 ? (
           <div className="notes-list">
             {notes.reverse().map((note, i) => {

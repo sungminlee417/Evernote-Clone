@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
   res.json(tags);
 });
 
+
 // POST NEW TAG
 router.post("/", validateTag, async (req, res) => {
   const user = req.user;
@@ -31,6 +32,16 @@ router.post("/", validateTag, async (req, res) => {
   });
   res.status(201).json(tag);
 });
+
+// GET A USER'S TAG
+router.get("/:tagId", async(req,res) => {
+  const user = req.user;
+  const { tagId } = req.params;
+  const tag = await Tag.findOne({
+    where: { userId: user.id, id: tagId },
+  });
+  res.json(tag);
+})
 
 // UPDATE TAG
 router.put("/:tagId", async (req, res) => {
@@ -56,9 +67,8 @@ router.delete("/:tagId", async (req, res) => {
 // GET CURRENT USER'S NOTES ASSOCIATED WITH TAG
 router.get("/:tagId/notes", async (req, res) => {
   const { tagId } = req.params;
-  const notes = await Note.findAll({
-    where: { tagId: tagId },
-  });
+  const tag = await Tag.findByPk(tagId)
+  const notes = await tag.getNotes()
   res.json(notes);
 });
 module.exports = router;

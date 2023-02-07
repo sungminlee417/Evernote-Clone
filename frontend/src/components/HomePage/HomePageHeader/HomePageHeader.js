@@ -5,7 +5,10 @@ const HomePageHeader = () => {
   return (
     <section className="home-page-header">
       <div className="home-page-greeting">
-        Good {time > 11 ? "afternoon" : "morning"}!
+        Good 
+        {(time > 11 && time < 18) ? " afternoon" 
+        : (time > 18 && time < 24) ? " evening" 
+        : " morning"}!
       </div>
       <div className="header-date">{today}</div>
     </section>
