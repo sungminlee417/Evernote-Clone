@@ -13,6 +13,7 @@ import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 
 import * as sessionActions from "./store/session";
+import { TagProvider } from "./components/context/TagContext";
 
 const store = configureStore();
 
@@ -32,9 +33,11 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      <ModalProvider>
-        <App />
-      </ModalProvider>
+        <ModalProvider>
+          <TagProvider>
+            <App />
+          </TagProvider>
+        </ModalProvider>
       </BrowserRouter>
     </Provider>
   );

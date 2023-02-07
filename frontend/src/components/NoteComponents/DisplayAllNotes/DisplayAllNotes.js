@@ -1,34 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 import { loadNotesThunk, clearNotes } from "../../../store/notes";
 import noNotes from "../../../images/svgexport-28.svg";
 import "./DisplayAllNotes.css";
+import { TagContext } from "../../context/TagContext";
 
 const DisplayAllNotes = () => {
+  const { selectedTags, setSelectedTags } = useContext(TagContext);
   const dispatch = useDispatch();
-  const location = useLocation();
   const notes = Object.values(useSelector((state) => state.notes));
-  const [tags, setTags] = useState([]);
-  console.log(tags)
-  console.log(location.state)
   const convertDate = (date) => {
     const dateTime = new Date(date);
     const formatDate = dateTime.toDateString();
     return formatDate.slice(4);
   };
-  const removeTags = ()=> {
-    setTags([]);
-  }
+
+  const removeTags = () => {
+    setSelectedTags([]);
+  };
+
   useEffect(() => {
     dispatch(loadNotesThunk());
-    if (location.state) {
-      if (location.state.tag) {
-        const { tag } = location.state;
-        setTags([tag]);
-        dispatch(loadNotesThunk());
-      }
-    }
+
     return () => dispatch(clearNotes());
   }, [dispatch]);
 
@@ -41,10 +35,13 @@ const DisplayAllNotes = () => {
             <span>Notes</span>
           </div>
 
-          <div className="list-notes-header-sub"> {notes.length} {notes.length == 1 ? "note" : "notes"}{" "}</div>
+          <div className="list-notes-header-sub">
+            {" "}
+            {notes.length} {notes.length == 1 ? "note" : "notes"}{" "}
+          </div>
         </div>
-        <div> 
-          {tags.length > 0 &&
+        <div>
+          {selectedTags.length > 0 && (
             <div className="display-note-filters">
               <div className="display-note-filters-header">
                 FILTER
@@ -56,10 +53,9 @@ const DisplayAllNotes = () => {
                 <i className="fa-solid fa-tag"></i>
                 name
               </div>
-              <div className="display-note-tags">
-              </div>
+              <div className="display-note-tags"></div>
             </div>
-          }          
+          )}
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">

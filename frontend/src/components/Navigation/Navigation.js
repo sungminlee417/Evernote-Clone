@@ -1,7 +1,7 @@
 import { NavLink, useHistory, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
 import {
   clearNotes,
@@ -11,8 +11,10 @@ import {
 import { loadNotesThunk } from "../../store/notes";
 import DisplayTags from "../Tags/DisplayTags";
 import CreateTagModal from "../Tags/CreateTagModal/CreateTagModal";
+import { TagContext } from "../context/TagContext";
 
 const Navigation = () => {
+  const { setSelectedTags } = useContext(TagContext);
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const location = useLocation();
@@ -113,7 +115,11 @@ const Navigation = () => {
           <NavLink exact to="/" className="nav-bar-link">
             <i className="fa-solid fa-house nav-bar-link-icon"></i> Home
           </NavLink>
-          <NavLink to={`/notes`} className="nav-bar-link">
+          <NavLink
+            to={`/notes`}
+            className="nav-bar-link"
+            onClick={() => setSelectedTags([])}
+          >
             <i className="fa-solid fa-note-sticky nav-bar-link-icon"></i> Notes
           </NavLink>
         </div>
@@ -134,7 +140,7 @@ const Navigation = () => {
               type="text"
               placeholder="Find tags..."
             /> */}
-            <DisplayTags tagOnClick={tagOnClick}/>
+            <DisplayTags tagOnClick={tagOnClick} />
           </div>
         </div>
         {/* <div className="nav-bar-links-section-three">
