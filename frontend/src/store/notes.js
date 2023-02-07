@@ -40,8 +40,16 @@ export const clearNotes = () => {
   };
 };
 
-export const loadNotesThunk = () => async (dispatch) => {
-  const response = await csrfFetch("/api/notes");
+export const loadNotesThunk = (tags) => async (dispatch) => {
+  let response;
+
+  if (Object.values(tags).length) {
+    const tagIds = Object.values(tags).map((tag) => tag.id);
+    const tagIdString = tagIds.join("+");
+    response = await csrfFetch(`/api/notes/?tags=${tagIdString}`);
+  } else {
+    response = await csrfFetch(`/api/notes`);
+  }
 
   if (response.ok) {
     const notes = await response.json();
@@ -54,7 +62,6 @@ export const loadNoteTagThunk = (tagId) => async (dispatch) => {
   const response = await csrfFetch(`/api/tags/${tagId}/notes`);
   if (response.ok) {
     const notes = await response.json();
-    console.log(notes)
     dispatch(loadNotes(notes));
   }
 };
@@ -91,11 +98,9 @@ export const associatingTagToNoteThunk = (noteId, tags) => async (dispatch) => {
     header: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({tags}),
+    body: JSON.stringify({ tags }),
   });
-  
-
-}
+};
 
 export const editNoteThunk = (noteId, payload) => async (dispatch) => {
   const response = await csrfFetch(`/api/notes/${noteId}`, {

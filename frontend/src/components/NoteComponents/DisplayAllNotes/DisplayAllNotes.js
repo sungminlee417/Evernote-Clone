@@ -17,14 +17,14 @@ const DisplayAllNotes = () => {
   };
 
   const removeTags = () => {
-    setSelectedTags([]);
+    setSelectedTags({});
   };
 
   useEffect(() => {
-    dispatch(loadNotesThunk());
+    dispatch(loadNotesThunk(selectedTags));
 
     return () => dispatch(clearNotes());
-  }, [dispatch]);
+  }, [dispatch, Object.values(selectedTags).length]);
 
   return (
     <section className="notes-section">
@@ -50,16 +50,16 @@ const DisplayAllNotes = () => {
                 </div>
               </div>
               <div>
-              <ul className="selected-tags">
-                {Object.values(selectedTags).map((tag,i) => {
-                  return (
-                  <li className="display-note-filter-names" key={i}>
-                    <i className="fa-solid fa-tag"></i>
-                    <div>{tag.name}</div>
-                  </li>
-                  );
-                })}
-              </ul>
+                <ul className="selected-tags">
+                  {Object.values(selectedTags).map((tag, i) => {
+                    return (
+                      <li className="display-note-filter-names" key={i}>
+                        <i className="fa-solid fa-tag"></i>
+                        <div>{tag.name}</div>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
           )}

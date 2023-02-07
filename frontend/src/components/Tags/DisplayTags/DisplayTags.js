@@ -43,8 +43,10 @@ const DisplayTags = () => {
     const settingsContainer = document.querySelector(
       ".tags-settings-container"
     );
+
     const tagsContainer = document.querySelector(".individual-tag");
     const modifyButton = document.querySelector(".tag-buttons");
+
     if (settingsClicked) {
       settingsContainer.classList.remove("visible");
       tagsContainer.classList.remove("visible");
@@ -59,9 +61,11 @@ const DisplayTags = () => {
   };
 
   const handleTagClick = (tag) => {
-    setSelectedTags((prevTags) => {const previousTags = prevTags;
-    previousTags[tag.id] = tag;
-    return previousTags});
+    setSelectedTags((prevTags) => {
+      const previousTags = prevTags;
+      previousTags[tag.id] = tag;
+      return previousTags;
+    });
     history.push("/notes");
   };
 
@@ -69,9 +73,9 @@ const DisplayTags = () => {
     <>
       {tags.length ? (
         <ul>
-          {tags.map((tag) => {
+          {tags.map((tag, i) => {
             return (
-              <li className="individual-tag">
+              <li className="individual-tag" key={i}>
                 <div onClick={() => handleTagClick(tag)}>{tag.name}</div>
                 {/* <div className={`modify-tag-${tag.id}`}> */}
                 <button className="tag-buttons">

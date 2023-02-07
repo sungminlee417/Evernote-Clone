@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Note, Notebook, NoteTag, Tag } = require("../../db/models");
 const express = require("express");
 const notetag = require("../../db/models/notetag");
@@ -6,11 +7,26 @@ const router = express.Router();
 // GET ALL USER'S NOTES
 router.get("/", async (req, res) => {
   const user = req.user;
-  const notes = await Note.findAll({
-    where: { userId: user.id },
-    include: Tag,
-  });
-  res.json(notes);
+  const { tags } = req.query;
+  let notes = [];
+  if (tags) {
+    const tagsIdArr = tags.split(" ");
+    const numsTagsIdArr = tagsIdArr.map(Number);
+    for (let i = 0; i < numsTagsIdArr.length; i++) {
+      const tagId = numsTagsIdArr[i];
+      const tag = await Tag.findByPk(tagId, {
+        include: { model: Note },
+      });
+      notes.push(...tag.Notes);
+    }
+    res.json(notes);
+  } else {
+    notes = await Note.findAll({
+      where: { userId: user.id },
+      include: { model: Tag },
+    });
+    res.json(notes);
+  }
 });
 
 // GET SINGLE NOTE
@@ -70,14 +86,14 @@ router.post("/:noteId/tags", async (req, res) => {
 });
 
 // GET ALL TAGS ASSOCIATED WITH A CERTAIN NOTE
-router.get("/:noteId/tags", async(req,res) => {
+router.get("/:noteId/tags", async (req, res) => {
   const { noteId } = req.params;
   const tags = Tag.findAll({
-    where: {noteId: noteId},
+    where: { noteId: noteId },
     include: Note,
   });
   res.json(tags);
-})
+});
 
 // UPDATE NOTE
 router.put("/:noteId", async (req, res) => {
