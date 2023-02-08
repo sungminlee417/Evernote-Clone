@@ -1,16 +1,13 @@
-const { Op } = require("sequelize");
 const { Note, Notebook, NoteTag, Tag } = require("../../db/models");
 const express = require("express");
-const notetag = require("../../db/models/notetag");
 const router = express.Router();
 
 // GET ALL USER'S NOTES
 router.get("/", async (req, res) => {
   const user = req.user;
   const { tags } = req.query;
-  console.log(tags);
   let notes = [];
-  if (tags) {
+  if (tags !== undefined) {
     const tagsIdArr = tags.split(" ");
     const numsTagsIdArr = tagsIdArr.map(Number);
     for (let i = 0; i < numsTagsIdArr.length; i++) {
