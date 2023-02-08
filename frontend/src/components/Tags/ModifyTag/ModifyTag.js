@@ -12,7 +12,6 @@ const ModifyTag = ({ tag, tagOnClick, preSettingsTag, setPreSettingsTag }) => {
   const [settingsClicked, setSettingsClicked] = useState(false);
 
   const showSettings = () => {
-    console.log(preSettingsTag, tag.id);
     if (preSettingsTag !== null) {
       const preSettingsContainer = document.querySelector(
         `.tags-settings-container-${preSettingsTag}`
@@ -32,7 +31,6 @@ const ModifyTag = ({ tag, tagOnClick, preSettingsTag, setPreSettingsTag }) => {
     if (settingsClicked && tag.id === preSettingsTag) {
       settingsContainer.classList.remove("visible");
       tagsContainer.classList.remove("visible");
-      console.log("hi");
       setSettingsClicked(false);
     } else {
       settingsContainer.classList.add("visible");
@@ -41,7 +39,6 @@ const ModifyTag = ({ tag, tagOnClick, preSettingsTag, setPreSettingsTag }) => {
     }
 
     setPreSettingsTag(tag.id);
-    console.log(preSettingsTag, tag.id);
   };
 
   useEffect(() => {

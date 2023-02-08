@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
       firstNotebook: true,
     },
   });
+  console.log(notebook);
   const note = await Note.create({
     userId: user.id,
     notebookId: notebook.id,
