@@ -43,7 +43,7 @@ export const clearNotes = () => {
 export const loadNotesThunk = (tags) => async (dispatch) => {
   let response;
 
-  if (Object.values(tags).length) {
+  if (tags && Object.values(tags).length) {
     const tagIds = Object.values(tags).map((tag) => tag.id);
     const tagIdString = tagIds.join("+");
     response = await csrfFetch(`/api/notes/?tags=${tagIdString}`);

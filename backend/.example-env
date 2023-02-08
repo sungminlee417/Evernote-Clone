@@ -1,0 +1,4 @@
+PORT=<<port number>>
+DB_FILE=db/dev.db
+JWT_SECRET=<<secret>>
+JWT_EXPIRES_IN=604800
