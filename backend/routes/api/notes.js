@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
   } else {
     notes = await Note.findAll({
       where: { userId: user.id },
-      include: { model: Tag },
+      // include: { model: Tag },
     });
     res.json(notes);
   }
@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
 router.get("/:noteId", async (req, res) => {
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId, {
-    include: Tag,
+    // include: Tag,
   });
   res.json(note);
 });
@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
     notebookId: notebook.id,
   });
   const noteData = await Note.findByPk(note.id, {
-    include: Tag,
+    // include: Tag,
   });
   res.status(201).json(noteData);
 });
@@ -99,7 +99,7 @@ router.put("/:noteId", async (req, res) => {
   const { name, content, notebookId } = req.body;
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId, {
-    include: Tag,
+    // include: Tag,
   });
   if (name) {
     if (!name) {
