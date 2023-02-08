@@ -8,7 +8,7 @@ import DeleteTagModal from "../DeleteTagModal/DeleteTagModal";
 import EditTagModal from "../EditTagModal/EditTagModal";
 import { useHistory, NavLink } from "react-router-dom";
 import { TagContext } from "../../context/TagContext";
-const DisplayTags = () => {
+const DisplayTags = ({tagOnClick}) => {
   const { setSelectedTags } = useContext(TagContext);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -76,7 +76,7 @@ const DisplayTags = () => {
           {tags.map((tag, i) => {
             return (
               <li className="individual-tag" key={i}>
-                <div onClick={() => handleTagClick(tag)}>{tag.name}</div>
+                <div onClick={() => {handleTagClick(tag); tagOnClick()}}>{tag.name}</div>
                 {/* <div className={`modify-tag-${tag.id}`}> */}
                 <button className="tag-buttons">
                   <img
