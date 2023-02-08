@@ -20,6 +20,15 @@ const DisplayAllNotes = () => {
     setSelectedTags({});
   };
 
+  const removeTag = (tag) => {
+    setSelectedTags((tags) => {
+      const prevTags = {...tags};
+      delete prevTags[tag.id];
+      return prevTags; 
+    })
+  }
+
+
   useEffect(() => {
     dispatch(loadNotesThunk(selectedTags));
 
@@ -56,6 +65,7 @@ const DisplayAllNotes = () => {
                       <li className="display-note-filter-names" key={i}>
                         <i className="fa-solid fa-tag"></i>
                         <div>{tag.name}</div>
+                        <i class="fa-solid fa-xmark clear-single-filter" onClick={() => removeTag(tag)}></i>
                       </li>
                     );
                   })}

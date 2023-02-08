@@ -151,5 +151,21 @@
 
 .selected-tags {
   display:flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.clear-single-filter {
+  display:flex;
+  justify-content: center;
+  padding: 0.4rem;
+  width:2rem;
+  border-radius: 1rem;
+  background-color: #085c8c;
+  cursor: pointer;
+}
+
+.clear-single-filter:hover {
+  color: #c0dcec;
+  background-color: #08649c;
 }
