@@ -1,75 +1,94 @@
 import "./ModifyTag.css"
-import { useDispatch } from "react-redux";
-import { loadTagsThunk } from "../../../store/tags";
-import  { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import options from "../../../images/modify.svg";
 import DeleteTagModal from "../DeleteTagModal/DeleteTagModal";
 import EditTagModal from "../EditTagModal/EditTagModal";
+import { useHistory } from "react-router-dom";
+import { TagContext } from "../../context/TagContext";
 
-const ModifyTag = ({tag}) => {
-
-    const dispatch = useDispatch();
+const ModifyTag = ( {tag, tagOnClick, preSettingsTag, setPreSettingsTag} ) => {
+    const { setSelectedTags } = useContext(TagContext);
+    const history = useHistory();
     const [settingsClicked, setSettingsClicked] = useState(false);
-    useEffect(() => {
-        dispatch(loadTagsThunk());
-        if (!settingsClicked) return;
-    
+
+    const showSettings = () => {
+        if (preSettingsTag !== null && preSettingsTag !== tag.id) {
+            const preSettingsContainer = document.querySelector(
+            `.tags-settings-container-${preSettingsTag}`);
+            const preTagsContainer = document.querySelector(`.individual-tag-${preSettingsTag}`);
+            const preModifyButton = document.querySelector(`.tag-buttons-${preSettingsTag}`);
+            preSettingsContainer.classList.remove("visible");
+            preTagsContainer.classList.remove("visible");
+            preModifyButton.classList.remove("visible");
+        }
+
         const settingsContainer = document.querySelector(
-          ".tags-settings-container"
+            `.tags-settings-container-${tag.id}`
         );
-        const tagsContainer = document.querySelector(
-            ".individual-tag"
+        const tagsContainer = document.querySelector(`.individual-tag-${tag.id}`);
+        const modifyButton = document.querySelector(`.tag-buttons-${tag.id}`);
+
+        if (settingsClicked) {
+        settingsContainer.classList.remove("visible");
+        tagsContainer.classList.remove("visible");
+        modifyButton.classList.remove("visible");
+        setSettingsClicked(false);
+        } else {
+        settingsContainer.classList.add("visible");
+        tagsContainer.classList.add("visible");
+        modifyButton.classList.add("visible");
+        setSettingsClicked(true);
+        }
+
+        setPreSettingsTag(tag.id);
+    };
+
+    useEffect(() => {
+        if (!settingsClicked) return;
+
+        const settingsContainer = document.querySelector(
+            `.tags-settings-container-${tag.id}`
         );
-        const modifyButton = document.querySelector(
-            ".tag-buttons"
-        );
+        const tagsContainer = document.querySelector(`.individual-tag-${tag.id}`);
+        const modifyButton = document.querySelector(`.tag-buttons-${tag.id}`);
+
         const closeSettings = () => {
-          settingsContainer.classList.remove("visible");
-          tagsContainer.classList.remove("visible");
-          modifyButton.classList.remove("visible");
-          setSettingsClicked(false);
+        settingsContainer.classList.remove("visible");
+        tagsContainer.classList.remove("visible");
+        modifyButton.classList.remove("visible");
+        setSettingsClicked(false);
         };
+
         document.addEventListener("click", closeSettings);
+
         return () => document.removeEventListener("click", closeSettings);
     }, [settingsClicked]);
     
-    const showSettings = () => {
-        const settingsContainer = document.querySelector(
-            ".tags-settings-container"
-        );
-        const tagsContainer = document.querySelector(
-            ".individual-tag"
-        );
-        const modifyButton = document.querySelector(
-            ".tag-buttons"
-        );
-        if (settingsClicked) {
-            settingsContainer.classList.remove("visible");
-            tagsContainer.classList.remove("visible");
-            modifyButton.classList.remove("visible");
-            setSettingsClicked(false);
-        } else {
-            settingsContainer.classList.add("visible");
-            tagsContainer.classList.add("visible");
-            modifyButton.classList.add("visible");
-            setSettingsClicked(true);
-        }
+    const handleTagClick = (tag) => {
+        setSelectedTags((prevTags) => {
+        const previousTags = prevTags;
+        previousTags[tag.id] = tag;
+        return previousTags;
+        });
+        history.push("/notes");
     };
 
-    <div>
-        <button className="tag-buttons">
-            <img
-            onClick={() => showSettings()}
-            className="modify-tag-button"
-            alt="modify_tag"
-            src={options}
-            />
-        </button>
-        <div className="tags-settings-container">
-            <EditTagModal tag={tag}/>
-            <DeleteTagModal tag={tag} />
+    return(
+        <div className={`individual-tag individual-tag-${tag.id}`}>
+            <div onClick={() => {handleTagClick(tag); tagOnClick()}}>{tag.name}</div>
+            <button className={`tag-buttons .tag-buttons-${tag.id}`} onClick={showSettings}>
+                <img
+                    className="modify-tag-button"
+                    alt="modify_tag"
+                    src={options}
+                />
+            </button>
+            <div className={`tags-settings-container tags-settings-container-${tag.id}`}>
+                <EditTagModal tag={tag} setSettingsClicked={setSettingsClicked}/>
+                <DeleteTagModal tag={tag} setSettingsClicked={setSettingsClicked} />
+            </div>
         </div>
-    </div>
+    );
 }
 
 export default ModifyTag;

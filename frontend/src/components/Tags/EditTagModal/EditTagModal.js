@@ -3,15 +3,17 @@ import { Modal } from "../../context/Modal";
 import EditTag from "./EditTag/EditTag";
 import "./EditTagModal.css";
 
-const EditTagModal = ({ tag }) => {
+const EditTagModal = ({ tag, setSettingsClicked }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
         className="modify-tag-buttons modify-tag-edit"
-        onClick={() => setShowModal(true)}
-      >
+        onClick={() => 
+          {setSettingsClicked(false);
+          setShowModal(true);
+        }}>
         Rename Tag...
       </button>
       {showModal && (

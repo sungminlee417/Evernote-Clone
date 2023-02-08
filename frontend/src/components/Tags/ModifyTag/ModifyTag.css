@@ -1,3 +1,41 @@
+.individual-tag {
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    color: #383434;
+}
+
+.individual-tag:hover,
+.individual-tag.visible {
+    background-color: #e8e4e4;
+}
+
+.individual-tag:hover>*:not(:last-child),
+.tag-buttons.visible {
+    opacity:1;
+    cursor:pointer;
+}
+
+.no-tags-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    padding: 1.5rem;
+}
+.no-tag-image {
+    padding-top: 8.5rem;
+    padding-bottom: 5rem;
+    width: 20rem;
+    height:auto;
+}
 .tag-buttons {
     height: 2.25rem;
     position: relative;
@@ -7,10 +45,42 @@
     border-radius: 0.5rem;
     opacity:0;
 }
-.tag-buttons.visible {
-    opacity:1;
-    cursor:pointer;
-}
+
 .modify-tag-button{
     cursor:pointer;
+}
+.no-tags-section-header {
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+}
+.no-tags-section-subheader {
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.tags-settings-container {
+    padding:1rem 0rem 1rem 0rem;
+    gap:0.5rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    background-color: white;
+    bottom: -275%;
+    border: 0.05rem solid rgb(171, 171, 171, 50%);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.25rem 1.5rem 0 rgb(0 0 0 / 10%);
+    position: absolute;
+    right: 1.01rem;
+    opacity: 0;
+    transition: 0.2s;
+    width: 14rem;
+    z-index:3;
+}
+  
+.tags-settings-container.visible {
+    bottom: -315%;
+    opacity: 1;
+    pointer-events: all;
 }

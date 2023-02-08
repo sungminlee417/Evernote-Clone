@@ -3,14 +3,16 @@ import { Modal } from "../../context/Modal";
 import DeleteTag from "./DeleteTag/DeleteTag";
 import "./DeleteTagModal.css"
 
-const DeleteTagModal = ({ tag }) => {
+const DeleteTagModal = ({ tag, setSettingsClicked }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
         className="modify-tag-buttons modify-tag-delete" 
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setSettingsClicked(false);
+          setShowModal(true);}}
       >
         Delete Tag...
       </button>

@@ -1,3 +1,7 @@
+.display-individual-tag {
+    list-style: none;
+}
+/*
 .individual-tag {
     position:relative;
     display:flex;
@@ -83,4 +87,4 @@
     bottom: -315%;
     opacity: 1;
     pointer-events: all;
-}
+} */
