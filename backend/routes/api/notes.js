@@ -19,11 +19,11 @@ router.get("/", async (req, res) => {
     }
     res.json(notes);
   } else {
-    console.log("WORKING???");
     notes = await Note.findAll({
       where: { userId: user.id },
-      include: { model: Tag },
+      include: Tag,
     });
+    console.log("WORKING", notes);
     res.json(notes);
   }
 });
