@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const user = req.user;
   const { tags } = req.query;
+  console.log(tags);
   let notes = [];
   if (tags) {
     const tagsIdArr = tags.split(" ");
