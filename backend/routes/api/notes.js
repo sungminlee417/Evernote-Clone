@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   const user = req.user;
   const { tags } = req.query;
   let notes = [];
-  if (tags !== undefined) {
+  if (tags) {
     const tagsIdArr = tags.split(" ");
     const numsTagsIdArr = tagsIdArr.map(Number);
     for (let i = 0; i < numsTagsIdArr.length; i++) {
@@ -21,9 +21,8 @@ router.get("/", async (req, res) => {
   } else {
     notes = await Note.findAll({
       where: { userId: user.id },
-      include: Tag,
+      include: { model: Tag },
     });
-    console.log("WORKING", notes);
     res.json(notes);
   }
 });
