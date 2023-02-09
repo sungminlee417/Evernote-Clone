@@ -26,9 +26,9 @@ router.get("/", async (req, res) => {
     // for (let i = 0; i < notes.length; i++) {
     //   const note = notes[i];
     //   let tags = [];
-    const noteTags = await NoteTag.findAll({
-      where: { noteId: 4 },
-    });
+    // const noteTags = await NoteTag.findAll({
+    //   where: { noteId: 4 },
+    // });
 
     //   for (let j = 0; j < noteTags.length; j++) {
     //     const noteTag = noteTags[j];
