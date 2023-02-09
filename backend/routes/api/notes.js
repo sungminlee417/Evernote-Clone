@@ -24,20 +24,20 @@ router.get("/", async (req, res) => {
       include: Tag,
     });
 
-    for (let i = 0; i < notes.length; i++) {
-      const note = notes[i];
-      let tags = [];
-      const noteTags = await NoteTag.findAll({
-        where: { noteId: note.id },
-      });
+    // for (let i = 0; i < notes.length; i++) {
+    //   const note = notes[i];
+    //   let tags = [];
+    const noteTags = await NoteTag.findAll({
+      where: { noteId: 4 },
+    });
 
-      for (let j = 0; j < noteTags.length; j++) {
-        const noteTag = noteTags[j];
-        const tag = await Tag.findByPk(noteTag.tagId);
-        tags.push(tag);
-      }
-      note.dataValues["Tags"] = tags;
-    }
+    //   for (let j = 0; j < noteTags.length; j++) {
+    //     const noteTag = noteTags[j];
+    //     const tag = await Tag.findByPk(noteTag.tagId);
+    //     tags.push(tag);
+    //   }
+    //   note.dataValues["Tags"] = tags;
+    // }
 
     res.json(notes);
   }
