@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
   } else {
     notes = await Note.findAll({
       where: { userId: user.id },
-      include: Tag,
     });
 
     // for (let i = 0; i < notes.length; i++) {
@@ -124,7 +123,7 @@ router.get("/:noteId/tags", async (req, res) => {
   const { noteId } = req.params;
   const tags = Tag.findAll({
     where: { noteId: noteId },
-    include: Note,
+    Note,
   });
   res.json(tags);
 });
