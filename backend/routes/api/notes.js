@@ -21,21 +21,8 @@ router.get("/", async (req, res) => {
   } else {
     notes = await Note.findAll({
       where: { userId: user.id },
+      include: [{ model: Tag }],
     });
-
-    // for (let i = 0; i < notes.length; i++) {
-    //   const note = notes[i];
-    //   let tags = [];
-    const noteTags = await NoteTag.findByPk(1);
-
-    //   for (let j = 0; j < noteTags.length; j++) {
-    //     const noteTag = noteTags[j];
-    //     const tag = await Tag.findByPk(noteTag.tagId);
-    //     tags.push(tag);
-    //   }
-    //   note.dataValues["Tags"] = tags;
-    // }
-
     res.json(notes);
   }
 });
@@ -43,18 +30,9 @@ router.get("/", async (req, res) => {
 // GET SINGLE NOTE
 router.get("/:noteId", async (req, res) => {
   const { noteId } = req.params;
-  const note = await Note.findByPk(noteId);
-  let tags = [];
-  const noteTags = await NoteTag.findAll({
-    where: { noteId: noteId },
+  const note = await Note.findByPk(noteId, {
+    include: Tag,
   });
-
-  for (let j = 0; j < noteTags.length; j++) {
-    const noteTag = noteTags[j];
-    const tag = await Tag.findByPk(noteTag.tagId);
-    tags.push(tag);
-  }
-  note.dataValues["Tags"] = tags;
   res.json(note);
 });
 
@@ -67,24 +45,13 @@ router.post("/", async (req, res) => {
       firstNotebook: true,
     },
   });
-  console.log(notebook);
   const note = await Note.create({
     userId: user.id,
     notebookId: notebook.id,
   });
-  const noteData = await Note.findByPk(note.id);
-
-  let tags = [];
-  const noteTags = await NoteTag.findAll({
-    where: { noteId: noteData.id },
+  const noteData = await Note.findByPk(note.id, {
+    include: Tag,
   });
-  for (let j = 0; j < noteTags.length; j++) {
-    const noteTag = noteTags[j];
-    const tag = await Tag.findByPk(noteTag.tagId);
-    tags.push(tag);
-  }
-  note.dataValues["Tags"] = tags;
-
   res.status(201).json(noteData);
 });
 
@@ -121,7 +88,7 @@ router.get("/:noteId/tags", async (req, res) => {
   const { noteId } = req.params;
   const tags = Tag.findAll({
     where: { noteId: noteId },
-    Note,
+    include: Note,
   });
   res.json(tags);
 });
@@ -130,19 +97,9 @@ router.get("/:noteId/tags", async (req, res) => {
 router.put("/:noteId", async (req, res) => {
   const { name, content, notebookId } = req.body;
   const { noteId } = req.params;
-  const note = await Note.findByPk(noteId);
-
-  let tags = [];
-  const noteTags = await NoteTag.findAll({
-    where: { noteId: note.id },
+  const note = await Note.findByPk(noteId, {
+    include: Tag,
   });
-  for (let j = 0; j < noteTags.length; j++) {
-    const noteTag = noteTags[j];
-    const tag = await Tag.findByPk(noteTag.tagId);
-    tags.push(tag);
-  }
-  note.dataValues["Tags"] = tags;
-
   if (name) {
     if (!name) {
       await note.update({ name: "Untitled", content: content });
