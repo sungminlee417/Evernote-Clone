@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useHistory } from "react-router-dom";
 import { loadNotesByNotebookIdThunk, clearNotes } from "../../../store/notes";
 import noNotes from "../../../images/svgexport-28.svg";
 import {
@@ -11,13 +11,20 @@ import "./DisplayNotebookNotes.css";
 
 const DisplayNotebookNotes = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { notebookId } = useParams();
   const notebook = useSelector((state) => state.singleNotebook);
   const notes = Object.values(useSelector((state) => state.notes));
 
   useEffect(() => {
     dispatch(loadNotebookThunk(notebookId)).then(() => {
-      dispatch(loadNotesByNotebookIdThunk(notebookId));
+      dispatch(loadNotesByNotebookIdThunk(notebookId)).then((notes) => {
+        if (Object.values(notes).length) {
+          history.push(
+            `/notebooks/${notebookId}/${notes[notes.length - 1].id}`
+          );
+        }
+      });
     });
 
     return () => {
@@ -43,7 +50,7 @@ const DisplayNotebookNotes = () => {
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">
-            {notes.map((note, i) => {
+            {notes.reverse().map((note, i) => {
               return (
                 <NavLink
                   className="display-note-container"

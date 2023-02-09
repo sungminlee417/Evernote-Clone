@@ -3,11 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useContext, useEffect, useState } from "react";
 import ManageAccount from "./ManageAccount";
-import {
-  clearNotes,
-  createNote,
-  loadNotesByNotebookIdThunk,
-} from "../../store/notes";
+import { createNote } from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
 import DisplayTags from "../Tags/DisplayTags";
 import CreateTagModal from "../Tags/CreateTagModal/CreateTagModal";
@@ -18,8 +14,7 @@ const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const location = useLocation();
-  const [clicked, setClicked] = useState(false);
-  const { noteId, notebookId } = useParams();
+  const { notebookId } = useParams();
   const [tagClicked, setTagClicked] = useState(false);
   const dispatch = useDispatch();
 
@@ -36,11 +31,7 @@ const Navigation = () => {
       setTagClicked(true);
     }
   };
-  const parentFunction = (e) => {
-    if (clicked) {
-      e.stopPropagation();
-    }
-  };
+
   const tagParentFunction = (e) => {
     if (tagClicked) {
       e.stopPropagation();
@@ -48,18 +39,15 @@ const Navigation = () => {
   };
 
   const newNote = () => {
-    dispatch(createNote()).then(() => {
-      if (notebookId) {
-        dispatch(loadNotesByNotebookIdThunk(notebookId));
-      } else if (noteId) {
-        dispatch(loadNotesThunk());
-        history.push("/notes");
-      } else if (location.pathname === "/notebooks") {
-        history.push("/notebooks");
-      }
+    dispatch(createNote()).then((note) => {
+      history.push(`/notes/${note.id}`);
       dispatch(loadNotesThunk());
     });
   };
+
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!tagClicked) return;

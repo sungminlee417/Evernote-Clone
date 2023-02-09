@@ -14,6 +14,7 @@ import { restoreCSRF, csrfFetch } from "./store/csrf";
 
 import * as sessionActions from "./store/session";
 import { TagProvider } from "./components/context/TagContext";
+import { CurrentNotebookProvider } from "./components/context/CurrentNotebook";
 
 const store = configureStore();
 

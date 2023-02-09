@@ -82,6 +82,7 @@ export const createNote = () => async (dispatch) => {
   });
   const note = await response.json();
   dispatch(addNote(note));
+  return note;
 };
 
 export const createNoteByNotebookId = (notebookId) => async (dispatch) => {

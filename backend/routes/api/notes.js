@@ -116,6 +116,8 @@ router.put("/:noteId", async (req, res) => {
 router.delete("/:noteId", async (req, res) => {
   const { noteId } = req.params;
   const note = await Note.findByPk(noteId);
+  const noteTag = await NoteTag.findOne({ where: { noteId: noteId } });
+  await noteTag.destroy();
   await note.destroy();
   res.status(204).json({
     message: "Note successfully deleted.",

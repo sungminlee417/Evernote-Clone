@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { loadNotesThunk, clearNotes } from "../../../store/notes";
 import noNotes from "../../../images/svgexport-28.svg";
 import "./DisplayAllNotes.css";
@@ -9,6 +9,7 @@ import { TagContext } from "../../context/TagContext";
 const DisplayAllNotes = () => {
   const { selectedTags, setSelectedTags } = useContext(TagContext);
   const dispatch = useDispatch();
+  const history = useHistory();
   const notes = Object.values(useSelector((state) => state.notes));
   const convertDate = (date) => {
     const dateTime = new Date(date);
@@ -22,15 +23,18 @@ const DisplayAllNotes = () => {
 
   const removeTag = (tag) => {
     setSelectedTags((tags) => {
-      const prevTags = {...tags};
+      const prevTags = { ...tags };
       delete prevTags[tag.id];
-      return prevTags; 
-    })
-  }
-
+      return prevTags;
+    });
+  };
 
   useEffect(() => {
-    dispatch(loadNotesThunk(selectedTags));
+    dispatch(loadNotesThunk(selectedTags)).then((notes) => {
+      if (Object.values(notes).length) {
+        history.push(`/notes/${notes[notes.length - 1].id}`);
+      }
+    });
 
     return () => dispatch(clearNotes());
   }, [dispatch, Object.values(selectedTags).length]);
@@ -65,7 +69,10 @@ const DisplayAllNotes = () => {
                       <li className="display-note-filter-names" key={i}>
                         <i className="fa-solid fa-tag"></i>
                         <div>{tag.name}</div>
-                        <i class="fa-solid fa-xmark clear-single-filter" onClick={() => removeTag(tag)}></i>
+                        <i
+                          class="fa-solid fa-xmark clear-single-filter"
+                          onClick={() => removeTag(tag)}
+                        ></i>
                       </li>
                     );
                   })}

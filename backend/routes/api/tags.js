@@ -1,4 +1,4 @@
-const { Tag, Note } = require("../../db/models");
+const { Tag, NoteTag } = require("../../db/models");
 const express = require("express");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -9,7 +9,7 @@ const validateTag = [
     .exists({ checkFalsy: true })
     .isLength({ min: 1 })
     .withMessage("Tag name field must have min length 1"),
-    handleValidationErrors,
+  handleValidationErrors,
 ];
 
 // GET ALL CURRENT USER'S TAGS
@@ -20,7 +20,6 @@ router.get("/", async (req, res) => {
   });
   res.json(tags);
 });
-
 
 // POST NEW TAG
 router.post("/", validateTag, async (req, res) => {
@@ -34,14 +33,14 @@ router.post("/", validateTag, async (req, res) => {
 });
 
 // GET A USER'S TAG
-router.get("/:tagId", async(req,res) => {
+router.get("/:tagId", async (req, res) => {
   const user = req.user;
   const { tagId } = req.params;
   const tag = await Tag.findOne({
     where: { userId: user.id, id: tagId },
   });
   res.json(tag);
-})
+});
 
 // UPDATE TAG
 router.put("/:tagId", async (req, res) => {
@@ -55,20 +54,21 @@ router.put("/:tagId", async (req, res) => {
 
 // DELETE TAG
 router.delete("/:tagId", async (req, res) => {
-  const user = req.user;
   const { tagId } = req.params;
+  const noteTag = await NoteTag.findOne({ where: { tagId: tagId } });
   const tag = await Tag.findByPk(tagId);
+  await noteTag.destroy();
   await tag.destroy();
   res.status(204).json({
-    message: "Tag successfully deleted."
+    message: "Tag successfully deleted.",
   });
 });
 
 // GET CURRENT USER'S NOTES ASSOCIATED WITH TAG
 router.get("/:tagId/notes", async (req, res) => {
   const { tagId } = req.params;
-  const tag = await Tag.findByPk(tagId)
-  const notes = await tag.getNotes()
+  const tag = await Tag.findByPk(tagId);
+  const notes = await tag.getNotes();
   res.json(notes);
 });
 module.exports = router;

@@ -10,12 +10,6 @@ const HomePage = () => {
     <section className="home-page-section">
       <Navigation />
       <Switch>
-        <Route exact path="/">
-          <section className="home-page-section-design">
-            <HomePageHeader />
-            <HomePageNotes />
-          </section>
-        </Route>
         <Route path="/notebooks/:notebookId">
           <Notes />
         </Route>
@@ -24,6 +18,12 @@ const HomePage = () => {
         </Route>
         <Route path="/notes">
           <Notes />
+        </Route>
+        <Route exact path="/">
+          <section className="home-page-section-design">
+            <HomePageHeader />
+            <HomePageNotes />
+          </section>
         </Route>
       </Switch>
     </section>
