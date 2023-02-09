@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     for (let i = 0; i < numsTagsIdArr.length; i++) {
       const tagId = numsTagsIdArr[i];
       const tag = await Tag.findByPk(tagId, {
-        include: { model: Note },
+        include: [{ model: Note }],
       });
       notes.push(...tag.Notes);
     }
