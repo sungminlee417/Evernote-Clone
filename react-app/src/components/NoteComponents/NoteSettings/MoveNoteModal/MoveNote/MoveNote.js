@@ -49,24 +49,25 @@ const MoveNote = ({ note, onClose }) => {
       <header>
         <div className="move-note-container-header">Move note to...</div>
         <button
-            onClick={() => {
-              onClose();
-            }}
-            className="modal-close-button"
-          >
-            <span className="modal-line-one"></span>
-            <span className="modal-line-two"></span>
-          </button>
+          onClick={() => {
+            onClose();
+          }}
+          className="modal-close-button"
+        >
+          <span className="modal-line-one"></span>
+          <span className="modal-line-two"></span>
+        </button>
       </header>
       <div className="move-note-container-divider"></div>
       <div className="move-note-notebooks-container">
-        {notebooks.map((notebook, i) => {
+        {notebooks.map((notebook) => {
           return (
             <div
               className="move-note-notebooks-notebook-container"
               onClick={() => {
                 setCurrentNotebook(notebook.id);
               }}
+              key={notebook.id}
             >
               <div className="move-note-notebooks-notebook-left">
                 <div
@@ -86,15 +87,18 @@ const MoveNote = ({ note, onClose }) => {
                   </div>
                 )}
               </div>
-              
             </div>
           );
         })}
       </div>
       <div className="move-note-container-divider"></div>
       <div className="move-note-buttons">
-        <button className="move-note-cancel-button" onClick={onClose}>Cancel</button>
-        <button className="move-note-done-button" onClick={onSubmit}>Done</button>
+        <button className="move-note-cancel-button" onClick={onClose}>
+          Cancel
+        </button>
+        <button className="move-note-done-button" onClick={onSubmit}>
+          Done
+        </button>
       </div>
     </section>
   );

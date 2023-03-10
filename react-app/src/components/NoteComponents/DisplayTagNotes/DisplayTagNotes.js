@@ -10,7 +10,7 @@ const DisplayTagNotes = () => {
   const match = useRouteMatch();
   const dispatch = useDispatch();
   const location = useLocation();
-  const tagId = location.search.charAt(location.search.indexOf("=") + 1)
+  const tagId = location.search.charAt(location.search.indexOf("=") + 1);
   const notes = Object.values(useSelector((state) => state.notes));
   const tags = useSelector((state) => state.tags);
   const convertDate = (date) => {
@@ -18,7 +18,7 @@ const DisplayTagNotes = () => {
     const formatDate = dateTime.toDateString();
     return formatDate.slice(4);
   };
-  
+
   useEffect(() => {
     dispatch(loadNoteTagThunk(tagId)).then(() => {
       // notes.forEach((note) => {
@@ -43,33 +43,33 @@ const DisplayTagNotes = () => {
             <i className="fa-solid fa-note-sticky"></i>
             <span>Notes</span>
           </div>
-          <div className="list-notes-header-sub"> {notes.length} {notes.length == 1 ? "note" : "notes"}{" "}</div>
+          <div className="list-notes-header-sub">
+            {" "}
+            {notes.length} {notes.length == 1 ? "note" : "notes"}{" "}
+          </div>
         </div>
         <div>
-        { tags.length &&
-          <div className="display-note-filters">
-            <div className="display-note-filters-header">
-              FILTER
-              <div className="clear-filters">
-                Clear
+          {tags.length && (
+            <div className="display-note-filters">
+              <div className="display-note-filters-header">
+                FILTER
+                <div className="clear-filters">Clear</div>
               </div>
+              <div className="display-note-filter-names">
+                <i className="fa-solid fa-tag"></i>
+                {tags[tagId]?.name}
+              </div>
+              <div className="display-note-tags"></div>
             </div>
-            <div className="display-note-filter-names">
-              <i className="fa-solid fa-tag"></i>
-              {tags[tagId]?.name}
-            </div>
-            <div className="display-note-tags">
-            </div>
-          </div>
-        }        
+          )}
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">
-            {notes.reverse().map((note, i) => {
+            {notes.reverse().map((note) => {
               return (
                 <NavLink
                   className="display-note-container"
-                  key={i}
+                  key={note.id}
                   to={`tags/${tagId}/${note.id}`}
                 >
                   <div className="display-note-container-name">{note.name}</div>
@@ -94,7 +94,7 @@ const DisplayTagNotes = () => {
                 No notes found
               </div>
               <div className="display-notes-no-notes-text">
-                Try using a different keyword or filter. 
+                Try using a different keyword or filter.
               </div>
             </div>
           </div>

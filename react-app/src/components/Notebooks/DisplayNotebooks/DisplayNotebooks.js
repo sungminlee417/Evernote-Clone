@@ -4,17 +4,18 @@ import { NavLink } from "react-router-dom";
 import { clearNotebooks, loadNotebooksThunk } from "../../../store/notebooks";
 import CreateNotebookModal from "../CreateNotebookModal/CreateNotebookModal";
 import ModifyNotebook from "../ModifyNotebook/ModifyNotebook";
-import { searchNotebooksByNameThunk} from "../../../store/notebookSearch";
+import { searchNotebooksByNameThunk } from "../../../store/notebookSearch";
 import "./DisplayNotebooks.css";
 
 const DisplayNotebooks = () => {
   const dispatch = useDispatch();
   const notebooks = Object.values(useSelector((state) => state.notebooks));
-  const searchNotebooks = Object.values(useSelector((state) => state.notebookSearch));
+  const searchNotebooks = Object.values(
+    useSelector((state) => state.notebookSearch)
+  );
   const sessionUser = useSelector((state) => state.session.user);
   const [openNotebooks, setOpenNotebooks] = useState({});
   const [input, setInput] = useState("");
-
 
   const convertDate = (date) => {
     const dateTime = new Date(date);
@@ -29,7 +30,7 @@ const DisplayNotebooks = () => {
 
     return () => dispatch(clearNotebooks());
   }, [dispatch, input]);
-  
+
   useEffect(() => {
     dispatch(loadNotebooksThunk());
 
@@ -71,7 +72,7 @@ const DisplayNotebooks = () => {
           type="text"
           placeholder="Find Notebooks..."
           onChange={onChangeInput}
-          value={input} 
+          value={input}
         /> */}
       </div>
       <div className="second-notebook-header">
@@ -91,9 +92,9 @@ const DisplayNotebooks = () => {
           <div className="modify-notebook">ACTIONS</div>
         </div>
         <div>
-          {notebooks.reverse().map((notebook, i) => {
+          {notebooks.reverse().map((notebook) => {
             return (
-              <div key={i}>
+              <div key={notebook.id}>
                 <div
                   className={
                     i % 2 === 0 ? "style-even-notebook" : "style-odd-notebook"
@@ -127,11 +128,11 @@ const DisplayNotebooks = () => {
                 </div>
                 {openNotebooks[i] !== undefined && (
                   <div>
-                    {notebook.Notes.reverse().map((note, i) => {
+                    {notebook.Notes.reverse().map((note) => {
                       return (
                         <div
                           className="display-notebooks-note-container"
-                          key={i}
+                          key={note.id}
                         >
                           <div className="display-notebooks-note-first-col">
                             <NavLink

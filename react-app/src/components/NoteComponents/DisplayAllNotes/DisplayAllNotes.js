@@ -64,9 +64,9 @@ const DisplayAllNotes = () => {
               </div>
               <div>
                 <ul className="selected-tags">
-                  {Object.values(selectedTags).map((tag, i) => {
+                  {Object.values(selectedTags).map((tag) => {
                     return (
-                      <li className="display-note-filter-names" key={i}>
+                      <li className="display-note-filter-names" key={tag.id}>
                         <i className="fa-solid fa-tag"></i>
                         <div>{tag.name}</div>
                         <i
@@ -83,11 +83,11 @@ const DisplayAllNotes = () => {
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">
-            {notes.reverse().map((note, i) => {
+            {notes.reverse().map((note) => {
               return (
                 <NavLink
                   className="display-note-container"
-                  key={i}
+                  key={note.id}
                   to={`/notes/${note.id}`}
                 >
                   <div className="display-note-container-name">{note.name}</div>

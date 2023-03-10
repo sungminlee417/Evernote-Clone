@@ -50,11 +50,11 @@ const DisplayNotebookNotes = () => {
         </div>
         {notes.length > 0 ? (
           <div className="notes-list">
-            {notes.reverse().map((note, i) => {
+            {notes.reverse().map((note) => {
               return (
                 <NavLink
                   className="display-note-container"
-                  key={i}
+                  key={note.id}
                   to={`/notebooks/${notebookId}/${note.id}`}
                 >
                   <div className="display-note-container-name">{note.name}</div>

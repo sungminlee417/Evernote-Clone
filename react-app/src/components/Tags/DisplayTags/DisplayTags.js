@@ -7,13 +7,13 @@ import { useHistory } from "react-router-dom";
 import { TagContext } from "../../context/TagContext";
 import ModifyTag from "../ModifyTag/ModifyTag";
 
-const DisplayTags = ({tagOnClick}) => {
+const DisplayTags = ({ tagOnClick }) => {
   const { setSelectedTags } = useContext(TagContext);
   const dispatch = useDispatch();
   const history = useHistory();
   const tags = Object.values(useSelector((state) => state.tags));
   const [settingsClicked, setSettingsClicked] = useState(false);
-  const [preSettingsTag, setPreSettingsTag] = useState(null)
+  const [preSettingsTag, setPreSettingsTag] = useState(null);
   useEffect(() => {
     dispatch(loadTagsThunk());
   }, [dispatch]);
@@ -73,9 +73,9 @@ const DisplayTags = ({tagOnClick}) => {
     <>
       {tags.length ? (
         <ul>
-          {tags.map((tag, i) => {
+          {tags.map((tag) => {
             return (
-              <li className="display-individual-tag" key={i}>
+              <li className="display-individual-tag" key={tag.id}>
                 {/* <div onClick={() => {handleTagClick(tag); tagOnClick()}}>{tag.name}</div>
                 <button className="tag-buttons">
                   <img
@@ -89,8 +89,12 @@ const DisplayTags = ({tagOnClick}) => {
                   <EditTagModal tag={tag} />
                   <DeleteTagModal tag={tag} />
                 </div> */}
-                <ModifyTag tag={tag} tagOnClick = {tagOnClick} preSettingsTag={preSettingsTag} setPreSettingsTag={setPreSettingsTag}/>
-        
+                <ModifyTag
+                  tag={tag}
+                  tagOnClick={tagOnClick}
+                  preSettingsTag={preSettingsTag}
+                  setPreSettingsTag={setPreSettingsTag}
+                />
               </li>
             );
           })}

@@ -80,16 +80,18 @@ const HomePageNotes = () => {
             <NavLink to="/notes" className="home-page-go-to-notes">
               Go to Notes
             </NavLink>
-            <div className="home-page-create-new-note" onClick={newNote}>Create new note</div>
+            <div className="home-page-create-new-note" onClick={newNote}>
+              Create new note
+            </div>
           </div>
         </div>
         <div className="home-page-view-notes">
           <div className="home-page-notes-list">
-            {notes.reverse().map((note, i) => {
+            {notes.reverse().map((note) => {
               return (
                 <NavLink
                   className="home-page-display-note-container"
-                  key={i}
+                  key={note.id}
                   to={`/notes/${note.id}`}
                 >
                   <div className="home-page-display-note-container-name">

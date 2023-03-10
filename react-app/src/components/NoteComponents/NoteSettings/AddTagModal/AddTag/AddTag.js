@@ -64,9 +64,9 @@ const AddTag = ({ note, onClose }) => {
       </div>
       <div className="move-tag-container-divider"></div>
       <div className="add-tag-tags-container">
-        {tags.map((tag, i) => {
+        {tags.map((tag) => {
           return (
-            <div className="select-tag">
+            <div className="select-tag" key={tag.id}>
               <input
                 type="checkbox"
                 id="name"
