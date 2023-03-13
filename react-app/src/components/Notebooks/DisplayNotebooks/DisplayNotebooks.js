@@ -92,7 +92,7 @@ const DisplayNotebooks = () => {
           <div className="modify-notebook">ACTIONS</div>
         </div>
         <div>
-          {notebooks.reverse().map((notebook) => {
+          {notebooks.reverse().map((notebook, i) => {
             return (
               <div key={notebook.id}>
                 <div

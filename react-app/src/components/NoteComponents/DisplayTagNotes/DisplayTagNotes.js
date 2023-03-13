@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useRouteMatch } from "react-router-dom";
-import { clearNotes, loadNotes, loadNoteTagThunk } from "../../../store/notes";
+import { clearNotes, loadNoteTagThunk } from "../../../store/notes";
 import { clearTag } from "../../../store/singleTag";
 import noNotes from "../../../images/no-notes-with-tag.svg";
 import "./DisplayTagNotes.css";
