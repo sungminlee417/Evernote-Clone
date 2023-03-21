@@ -37,7 +37,8 @@
     ]
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "tailwindcss": "^3.2.7"
   },
   "proxy": "http://localhost:5000"
 }

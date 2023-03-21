@@ -25,7 +25,11 @@ const Header = () => {
   }, [scroll]);
 
   return (
-    <div className={scroll ? "landing-header-scrolled" : "landing-header"}>
+    <div
+      className={`fixed w-full flex justify-between items-center tracking-wide bg-white transition-all duration-200 lg:px-32 md:px-20 px-8 py-10 ${
+        scroll ? "shadow-md" : ""
+      }`}
+    >
       <button
         to="/"
         className="home-button"

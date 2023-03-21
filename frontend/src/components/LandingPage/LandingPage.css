@@ -1,14 +1,3 @@
-.landing-page {
-  padding: 10rem;
-  letter-spacing: 0.08rem;
-}
-
-.content {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
 .intro {
   padding: 3rem 11rem;
   text-align: center;

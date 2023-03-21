@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* TODO Add site wide styles */
 * {
   margin: 0;
