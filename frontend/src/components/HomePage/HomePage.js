@@ -1,13 +1,12 @@
 import { Route, Switch } from "react-router-dom";
 import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
-import "./HomePage.css";
 import Notes from "../NoteComponents/Notes";
-import HomePageHeader from "./HomePageHeader/HomePageHeader";
+import HomePageHeader from "./HomePageHeader";
 import HomePageNotes from "./HomePageNotes";
 const HomePage = () => {
   return (
-    <section className="home-page-section">
+    <section className="flex lg:flex-row flex-col-reverse h-full w-full">
       <Navigation />
       <Switch>
         <Route path="/notebooks/:notebookId">
@@ -20,7 +19,7 @@ const HomePage = () => {
           <Notes />
         </Route>
         <Route exact path="/">
-          <section className="home-page-section-design">
+          <section className="flex flex-col grow h-full relative">
             <HomePageHeader />
             <HomePageNotes />
           </section>

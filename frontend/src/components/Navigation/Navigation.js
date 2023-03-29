@@ -56,86 +56,66 @@ const Navigation = () => {
   }, [tagClicked]);
 
   return (
-    <section className="nav-bar-section">
-      <header className="nav-bar-header">
-        <div className="nav-bar-header-session-username">
-          {sessionUser.username}
-        </div>
+    <section className="flex flex-col gap-2 bg-[#201c1c] shadow-md lg:w-96 w-full">
+      <header className="flex justify-between text-[#a8a4a4] p-8 text-xl items-center">
+        <div>{sessionUser.username}</div>
         <ManageAccount />
       </header>
-      <div className="nav-bar-button-search">
-        {/* <div className="nav-bar-search">
-          <i className="fa-solid fa-magnifying-glass nav-bar-magnifying-glass"></i>
-          <input placeholder="Search" className="nav-bar-search-input" />
-        </div> */}
-        <div className="nav-bar-new-button-container" onClick={newNote}>
-          <button className="nav-bar-new-button">
-            <div className="nav-bar-new-button-new">
-              <i className="fa-solid fa-plus nav-bar-new-button-plus"></i>
-              New Note
-            </div>
-            {/* <i className="fa-solid fa-chevron-down"></i> */}
-          </button>
-          {/* <div
-            className="nav-bar-new-pop-up-container"
-            onClick={parentFunction}
-          >
-            <div className="nav-bar-new-pop-up-button-container">
-              <button
-                className="nav-bar-new-pop-up-button note"
-                onClick={newNote}
-              >
-                <i className="fa-solid fa-note-sticky"></i>
-                Note
-              </button>
-            </div>
-            <div className="nav-bar-new-pop-up-button-container">
-              <button className="nav-bar-new-pop-up-button tasks">
-                <i className="fa-solid fa-circle-check"></i>
-                Task
-              </button>
-            </div>
-          </div> */}
-        </div>
-      </div>
-      <div className="nav-bar-links">
-        <div className="nav-bar-links-section-one">
-          <NavLink exact to="/" className="nav-bar-link">
-            <i className="fa-solid fa-house nav-bar-link-icon"></i> Home
-          </NavLink>
-          <NavLink
-            to={`/notes`}
-            className="nav-bar-link"
-            onClick={() => setSelectedTags([])}
-          >
-            <i className="fa-solid fa-note-sticky nav-bar-link-icon"></i> Notes
-          </NavLink>
-        </div>
-        <div className="nav-bar-links-section-two">
-          <NavLink exact to="/notebooks" className="nav-bar-link">
-            <i className="fa-solid fa-book  nav-bar-link-icon"></i> Notebooks
-          </NavLink>
-          <div className="nav-bar-link tags" onClick={tagOnClick}>
-            <i className="fa-solid fa-tag"></i> Tags
+      <div className="flex flex-col gap-8">
+        <button
+          className="bg-[#00a82d] hover:bg-[#008f26] text-white cursor-pointer flex items-center gap-2 rounded-full py-4 mx-4 px-4 text-xl"
+          onClick={newNote}
+        >
+          <i className="fa-solid fa-plus" />
+          <span>New Note</span>
+        </button>
+        <div className="flex flex-col gap-8">
+          <div className="">
+            <NavLink
+              exact
+              to="/"
+              className={`flex items-center gap-4 text-[#a8a4a4] hover:bg-[#484444] text-2xl cursor-pointer px-6 py-4`}
+              activeClassName="bg-[#333333]"
+            >
+              <i className="fa-solid fa-house h-8 w-8 flex justify-center items-center" />
+              <span>Home</span>
+            </NavLink>
+            <NavLink
+              to={`/notes`}
+              className="flex items-center gap-4 text-[#a8a4a4] hover:bg-[#484444] text-2xl cursor-pointer px-6 py-4"
+              activeClassName="bg-[#333333]"
+              onClick={() => setSelectedTags([])}
+            >
+              <i className="fa-solid fa-note-sticky h-8 w-8 flex justify-center items-center" />
+              <span>Notes</span>
+            </NavLink>
           </div>
-          <div className="tags-container" onClick={tagParentFunction}>
-            <div className="tags-header">
-              <div className="tags-header-title">Tags</div>
-              <CreateTagModal />
+          <div>
+            <NavLink
+              exact
+              to="/notebooks"
+              className="flex items-center gap-4 text-[#a8a4a4] hover:bg-[#484444] text-2xl cursor-pointer px-6 py-4"
+              activeClassName="bg-[#333333]"
+            >
+              <i className="fa-solid fa-book h-8 w-8 flex justify-center items-center"></i>
+              <span>Notebooks</span>
+            </NavLink>
+            <div
+              className="flex items-center gap-4 text-[#a8a4a4] hover:bg-[#484444] text-2xl cursor-pointer px-6 py-4 tags"
+              onClick={tagOnClick}
+            >
+              <i className="fa-solid fa-tag  h-8 w-8 flex justify-center items-center"></i>
+              <span>Tags</span>
             </div>
-            {/* <input
-              className="search-for-tags"
-              type="text"
-              placeholder="Find tags..."
-            /> */}
-            <DisplayTags tagOnClick={tagOnClick} />
+            <div className="tags-container" onClick={tagParentFunction}>
+              <div className="tags-header">
+                <div className="tags-header-title">Tags</div>
+                <CreateTagModal />
+              </div>
+              <DisplayTags tagOnClick={tagOnClick} />
+            </div>
           </div>
         </div>
-        {/* <div className="nav-bar-links-section-three">
-          <NavLink to="/trash" className="nav-bar-link">
-            <i className="fa-solid fa-trash nav-bar-link-icon"></i> Trash
-          </NavLink>
-        </div> */}
       </div>
     </section>
   );

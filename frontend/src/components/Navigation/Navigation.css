@@ -1,47 +1,3 @@
-.nav-bar-section {
-  background-color: #201c1c;
-  min-width: 22rem;
-  box-shadow: 0.5rem 0.2rem 1rem 0rem rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-.nav-bar-header {
-  display: flex;
-  justify-content: space-between;
-  color: #a8a4a4;
-  font-size: 1.4rem;
-  padding: 2rem;
-}
-
-.nav-bar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.nav-bar-link {
-  display: flex;
-  color: #a8a4a4;
-  cursor: pointer;
-  font-size: 1.4rem;
-  gap: 0.8rem;
-  padding: 0.8rem 2rem;
-  text-decoration: none;
-}
-
-.nav-bar-link:hover {
-  background-color: #484444;
-}
-
-.nav-bar-link-icon {
-  height: 1.2rem;
-  width: 1.2rem;
-}
-
-.nav-bar-link.active {
-  background-color: rgb(51, 51, 51);
-}
-
 .nav-bar-button-search {
   align-items: center;
   display: flex;
@@ -78,32 +34,6 @@
 .nav-bar-new-button-container {
   position: relative;
   padding: 0 1rem;
-}
-
-.nav-bar-new-button {
-  align-items: center;
-  color: white;
-  cursor: pointer;
-  background-color: #00a82d;
-  border: none;
-  border-radius: 2rem;
-  display: flex;
-  height: 3.6rem;
-  justify-content: space-between;
-  padding: 0.8rem 1rem;
-  width: 20rem;
-}
-
-.nav-bar-new-button > * {
-  cursor: pointer;
-}
-
-.nav-bar-new-button-plus {
-  cursor: pointer;
-}
-
-.nav-bar-new-button:hover {
-  background-color: #008f26;
 }
 
 .nav-bar-new-button-new {

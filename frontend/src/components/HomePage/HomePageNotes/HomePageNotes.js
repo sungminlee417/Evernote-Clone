@@ -59,23 +59,24 @@ const HomePageNotes = () => {
   }, [dispatch]);
 
   return (
-    <div className="home-page-notes-subsection">
-      <div className="home-page-notes-container">
-        <div className="home-page-notes-header">
-          <NavLink to="/notes" className="home-page-notes-title">
-            <div className="home-page-notes-text">NOTES</div>
-            <img
-              className="click-for-note-page"
-              src={click_notes}
-              alt="get_notes"
-            ></img>
+    <div className="flex gap-10 justify-between absolute p-10 w-full bottom-0">
+      <div className="relative bg-white rounded-md w-[62.5%] shadow-xl">
+        <div className="flex justify-between p-6 items-center">
+          <NavLink
+            to="/notes"
+            className="flex items-center gap-2 hover:bg-[#e8e4e4] p-2 rounded-sm"
+          >
+            <div className="text-2xl font-semibold">NOTES</div>
+            <i className="fa-solid fa-chevron-right text-xl text-[#00a82d]"></i>
           </NavLink>
-          <img
-            className="home-page-notes-options"
-            src={options}
-            alt="notes_options"
-            onClick={showSettings}
-          ></img>
+          <button className="hover:bg-[#e8e4e4] text-3xl p-2 w-12 h-12 rounded-sm">
+            <i
+              className="fa-solid fa-ellipsis m-0"
+              src={options}
+              alt="notes_options"
+              onClick={showSettings}
+            />
+          </button>
           <div className="home-page-notes-options-container">
             <NavLink to="/notes" className="home-page-go-to-notes">
               Go to Notes

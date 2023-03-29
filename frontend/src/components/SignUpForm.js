@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../store/session";
 import { NavLink } from "react-router-dom";
 
-const SignUpFormPage = () => {
+const SignUpForm = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [username, setUsername] = useState("");
@@ -91,4 +91,4 @@ const SignUpFormPage = () => {
   );
 };
 
-export default SignUpFormPage;
+export default SignUpForm;
