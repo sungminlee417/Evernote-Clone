@@ -36,19 +36,19 @@ const ManageAccount = () => {
         <i className="fa-solid fa-chevron-down"></i>
       </button>
       <div
-        className={`flex flex-col gap-4 absolute bg-white border rounded-md lg:left-0 right-0 w-96 top-8 shadow-md p-4 divide-y ${
+        className={`flex flex-col absolute bg-white border rounded-md lg:left-0 right-0 w-96 top-8 shadow-md divide-y ${
           clicked
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <p>ACCOUNT</p>
-        <div className="flex justify-between items-center pt-4">
+        <p className="p-4">ACCOUNT</p>
+        <div className="flex justify-between items-center p-4">
           <i className="fa-solid fa-check text-blue-500 text-3xl"></i>
           <div className="text-bold text-3xl">{sessionUser.username}</div>
         </div>
         <button
-          className="text-start hover:bg-[#f4f4f4] pt-4 text-xl"
+          className="text-start hover:bg-[#f4f4f4] text-xl p-4"
           onClick={submit}
         >
           Sign out {sessionUser.username}
