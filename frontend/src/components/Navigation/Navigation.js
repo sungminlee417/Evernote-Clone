@@ -2,7 +2,7 @@ import { NavLink, useHistory, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useContext, useEffect, useState } from "react";
-import ManageAccount from "./ManageAccount/ManageAccount";
+import ManageAccount from "./ManageAccount";
 import { createNote } from "../../store/notes";
 import { loadNotesThunk } from "../../store/notes";
 import DisplayTags from "../Tags/DisplayTags";

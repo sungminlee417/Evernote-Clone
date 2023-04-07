@@ -44,7 +44,7 @@ const HomePageNotes = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex md:flex-row flex-col justify-between px-14 lg:-mt-128 -mt-80 md:py-32">
+    <div className="flex md:flex-row flex-col justify-between gap-10 px-14 lg:-mt-128 -mt-96 md:py-32 py-16">
       <div className="bg-white rounded-md shadow-xl md:w-192 lg:w-176 divide-y">
         <div className="flex justify-between p-3 items-center relative">
           <NavLink
