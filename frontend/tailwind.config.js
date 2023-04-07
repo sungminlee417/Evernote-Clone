@@ -4,6 +4,9 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
+    minWidth: {
+      96: "24rem",
+    },
     extend: {
       spacing: {
         128: "32rem",

@@ -44,12 +44,12 @@ const HomePageNotes = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex md:flex-row flex-col lg:gap-32 gap-10 justify-between lg:-mt-128 lg:justify-between -mt-80 px-10 md:py-32 py-10">
-      <div className="bg-white rounded-md shadow-xl md:w-192 lg:w-208">
+    <div className="flex md:flex-row flex-col justify-between px-14 lg:-mt-128 -mt-80 md:py-32">
+      <div className="bg-white rounded-md shadow-xl md:w-192 lg:w-176 divide-y">
         <div className="flex justify-between p-3 items-center relative">
           <NavLink
             to="/notes"
-            className="flex items-center gap-2 hover:bg-[#e8e4e4] p-2 rounded-sm"
+            className="flex items-center gap-2 hover:bg-[#e8e4e4] lg:p-4 p-2 rounded-sm"
           >
             <div className="text-2xl font-semibold">NOTES</div>
             <i className="fa-solid fa-chevron-right text-xl text-[#00a82d]"></i>
@@ -86,7 +86,7 @@ const HomePageNotes = () => {
             {notes.reverse().map((note) => {
               return (
                 <NavLink
-                  className="flex flex-col justify-between gap-6 text-2xl lg:h-96 h-60 w-64 shadow-lg hover:shadow-xl transition rounded-md lg:p-8 p-4"
+                  className="flex flex-col justify-between gap-6 text-2xl lg:h-80 h-60 w-64 shadow-lg hover:shadow-xl transition rounded-md lg:p-8 p-4"
                   key={note.id}
                   to={`/notes/${note.id}`}
                 >
@@ -102,7 +102,7 @@ const HomePageNotes = () => {
             })}
             <NavLink
               to="/notes"
-              className="flex flex-col items-center justify-center gap-6 text-2xl lg:h-96 h-60 w-64 shadow-lg hover:shadow-xl transition rounded-md"
+              className="flex flex-col items-center justify-center gap-6 text-2xl lg:h-80 h-60 w-64 shadow-lg hover:shadow-xl transition rounded-md"
             >
               <i class="fa-regular fa-file-lines w-20 h-20 bg-[#00a82d] text-white flex items-center justify-center rounded-full text-4xl"></i>
               <div className="flex items-center home-page-view-notes-text gap-2">
@@ -115,7 +115,7 @@ const HomePageNotes = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-8 position relative bg-[#fff4bc] rounded-md shadow-md p-10 lg:grow-0 grow lg:w-144">
+      <div className="flex flex-col gap-8 position relative bg-[#fff4bc] rounded-md shadow-md p-10 lg:grow-0 grow lg:w-128">
         <div>
           <div className="text-xl font-bold">SCRATCH PAD</div>
         </div>
