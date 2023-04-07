@@ -6,7 +6,7 @@ import HomePageHeader from "./HomePageHeader";
 import HomePageNotes from "./HomePageNotes";
 const HomePage = () => {
   return (
-    <section className="flex lg:flex-row flex-col-reverse h-full w-full">
+    <section className="flex lg:flex-row flex-col-reverse h-full">
       <Navigation />
       <Switch>
         <Route path="/notebooks/:notebookId">
