@@ -1,14 +1,16 @@
-import backgroundImage from "../../images/sean-benesh-wK8LMfHtRoM-unsplash.jpg";
+import React from "react";
+import backgroundImage from "../../images/background-homescreen.jpg";
 
 const HomePageHeader = () => {
   const today = new Date().toDateString();
   const time = new Date().getHours();
+
   return (
     <section
-      className="h-[70%] flex justify-between relative p-16 text-white text-shadow-lg shadow-black bg-cover"
+      className="flex justify-between md:py-32 px-20 text-white text-shadow-lg shadow-black bg-cover h-full"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="text-3xl absolute top-28 left-20">
+      <div className="md:text-3xl md:block hidden">
         Good
         {time > 11 && time < 18
           ? " afternoon"
@@ -17,7 +19,7 @@ const HomePageHeader = () => {
           : " morning"}
         !
       </div>
-      <div className="text-2xl absolute top-28 right-20">{today}</div>
+      <div className="md:text-2xl md:block hidden">{today}</div>
     </section>
   );
 };

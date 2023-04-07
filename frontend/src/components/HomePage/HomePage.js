@@ -1,9 +1,11 @@
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import DisplayNotebooks from "../Notebooks/DisplayNotebooks";
 import Navigation from "../Navigation";
 import Notes from "../NoteComponents/Notes";
-import HomePageHeader from "./HomePageHeader";
-import HomePageNotes from "./HomePageNotes";
+import HomePageNotes from "./HomePageNotes.js";
+import HomePageHeader from "./HomePageHeader.js";
+
 const HomePage = () => {
   return (
     <section className="flex lg:flex-row flex-col-reverse h-full">
@@ -19,7 +21,7 @@ const HomePage = () => {
           <Notes />
         </Route>
         <Route exact path="/">
-          <section className="flex flex-col grow h-full relative">
+          <section className="flex flex-col grow">
             <HomePageHeader />
             <HomePageNotes />
           </section>

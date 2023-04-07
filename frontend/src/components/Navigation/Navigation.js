@@ -105,13 +105,13 @@ const Navigation = () => {
           <i className="fa-solid fa-tag  h-8 w-8 flex justify-center items-center lg:text-2xl text-4xl"></i>
           <span className="lg:block hidden text-xl">Tags</span>
         </div>
-        <div className="tags-container" onClick={tagParentFunction}>
+        {/* <div className="tags-container" onClick={tagParentFunction}>
           <div className="tags-header">
             <div className="tags-header-title">Tags</div>
             <CreateTagModal />
           </div>
           <DisplayTags tagOnClick={tagOnClick} />
-        </div>
+        </div> */}
       </div>
     </section>
   );
