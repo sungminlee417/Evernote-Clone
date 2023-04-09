@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createNotebook } from "../../../store/notebooks";
-import "./CreateNotebook.css";
 
 const CreateNotebook = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -14,81 +13,60 @@ const CreateNotebook = ({ onClose }) => {
     setErrors([]);
     dispatch(createNotebook(name))
       .then(() => onClose())
-      .catch(async (data) => {
-        // const data = await res.json();
+      .catch(async (res) => {
+        const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors[1]);
         }
       });
   };
-  // const submit = async (e) => {
-  //     e.preventDefault();
-  //     if (!errors) {
-  //         await dispatch(createNotebook(name)).then(() =>
-  //         onClose()
-  //     );
-  //     }
-  // };
 
   useEffect(() => {
     setErrors("");
-    // if (!name)
-    //     setErrors("Your notebook name must contain at least one character");
     notebooks.forEach((notebookObj) => {
       if (notebookObj.name === name)
         setErrors(`Notebook name '${name}' is already in use`);
     });
   }, [name, notebooks]);
 
-  useEffect(() => {
-    const submitButton = document.querySelector(".create-notebook-button");
-    if (errors) {
-      submitButton.disabled = "true";
-      submitButton.classList.add("disabled");
-      submitButton.style.cursor = "not-allowed";
-    } else {
-      submitButton.classList.remove("disabled");
-      submitButton.removeAttribute("disabled");
-      submitButton.style.cursor = "pointer";
-    }
-  }, [errors]);
-
   return (
     <>
       <div
-        className="create-new-notebook-modal"
+        className="bg-white rounded-md border-[#d8d4d4] border shadow-md flex flex-col md:m-0 m-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="create-new-notebook-modal-header">
-          <div className="create-new-notebook">Create new notebook</div>
-          <button
-            onClick={() => {
-              onClose();
-            }}
-            className="modal-close-button"
-          >
-            <span className="modal-line-one"></span>
-            <span className="modal-line-two"></span>
-          </button>
-        </div>
-        <div className="create-new-notebook-subheader">
-          Notebooks are useful for grouping notes around a common topic. They
-          can be private or shared.
-        </div>
-        <form className="create-notebook-form" onSubmit={submit}>
-          <div className="create-notebook-form-title">Name</div>
-          <input
-            className="create-notebook-form-input"
-            type="text"
-            placeholder="Notebook name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <p className="create-notebook-error-message">{errors}</p>
-          <div className="create-new-notebook-modal-separator"></div>
-          <div className="buttons-for-creating-notebook-modal">
+        <div className="flex flex-col gap-8 md:p-8 p-6">
+          <div className="flex justify-between">
+            <div className="text-3xl font-bold">Create new notebook</div>
             <button
-              className="cancel-create-notebook"
+              onClick={() => {
+                onClose();
+              }}
+              className="text-3xl"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div className="text-[#787474] text-xl">
+            Notebooks are useful for grouping notes around a common topic. They
+            can be private or shared.
+          </div>
+        </div>
+        <form onSubmit={submit}>
+          <div className="md:p-8 p-6 flex flex-col gap-4">
+            <input
+              id="create-notebook-name"
+              className="w-full border border-[#d8d4d4] rounded-sm outline-none p-4 text-xl focus:border-[#2596be]"
+              type="text"
+              placeholder="Notebook name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <p className="text-[#ff7474]">{errors}</p>
+          </div>
+          <div className="flex justify-end border-t-[#ababab] border-t md:p-8 p-6 gap-4">
+            <button
+              className="rounded-md w-36 py-4 md:text-2xl text-xl bg-transparent text-[#787474] hover:text-[#504c4c] hover:bg-[#f8f4f4] border border-[#787474] hover:border-[#504c4c]"
               type="button"
               onClick={() => {
                 onClose();
@@ -96,7 +74,15 @@ const CreateNotebook = ({ onClose }) => {
             >
               Cancel
             </button>
-            <button className="create-notebook-button" type="submit">
+            <button
+              className={`rounded-md w-36 py-4 md:text-2xl text-xl text-white ${
+                errors.length
+                  ? "border border-[#d0cccc] text-white bg-[#d0cccc]"
+                  : "bg-[#08a42c] hover:bg-[#088c24]"
+              }`}
+              disabled={errors.length}
+              type="submit"
+            >
               Create
             </button>
           </div>
