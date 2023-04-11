@@ -11,7 +11,7 @@ const DeleteNotebookModal = ({ notebook, setClicked }) => {
       <button
         className={
           !notebook.firstNotebook
-            ? "modify-notebook-buttons modify-notebook-delete"
+            ? "bg-white text-xl w-full p-4 text-start hover:bg-[#f4f4f4]"
             : "modify-notebook-buttons modify-notebook-delete-disabled"
         }
         disabled={notebook.firstNotebook ? true : false}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createNotebook } from "../../../store/notebooks";
+import { createNotebook } from "../../store/notebooks";
 
 const CreateNotebook = ({ onClose }) => {
   const dispatch = useDispatch();

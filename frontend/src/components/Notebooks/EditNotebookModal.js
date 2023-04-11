@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Modal } from "../../../context/Modal";
-import EditNotebook from "./EditNotebook/EditNotebook";
-import "./EditNotebookModal.css";
+import { Modal } from "../context/Modal";
+import EditNotebook from "./ModifyNotebook/EditNotebookModal/EditNotebook/EditNotebook";
 
 const EditNotebookModal = ({ notebook, setClicked }) => {
   const [showModal, setShowModal] = useState(false);
@@ -9,7 +8,7 @@ const EditNotebookModal = ({ notebook, setClicked }) => {
   return (
     <>
       <button
-        className="modify-notebook-buttons modify-notebook-edit"
+        className="bg-white text-xl w-full p-4 text-start hover:bg-[#f4f4f4]"
         onClick={() => {
           setClicked(false);
           setShowModal(true);
